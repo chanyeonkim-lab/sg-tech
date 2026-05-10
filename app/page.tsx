@@ -215,7 +215,7 @@ export default function Home() {
               <p className="text-sg-charcoal leading-relaxed">6개 산업분야의 맞춤 제작 경험으로 다양한 요구사항에 대응합니다.</p>
             </div>
             <div className="lg:col-span-2 bg-sg-yellow rounded-lg p-8 flex items-center">
-              <p className="text-xl md:text-2xl font-bold text-sg-charcoal">"어떤 산업이든, 어떤 사이즈든 SG기전이 해결해드립니다"</p>
+              <p className="text-xl md:text-2xl font-bold text-sg-charcoal">&ldquo;어떤 산업이든, 어떤 사이즈든 SG기전이 해결해드립니다&rdquo;</p>
             </div>
           </div>
 
