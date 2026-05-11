@@ -22,24 +22,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ HERO (실제 제품 이미지) ============ */}
+      {/* ============ HERO (SEO 최적화) ============ */}
       <section className="bg-sg-yellow">
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <p className="inline-block bg-sg-charcoal text-sg-yellow px-4 py-2 text-sm font-bold mb-6 rounded">
-                국내 최고 품질 분전반 제조
+                국내 생산 철제 분전반 · SUS 스테인리스 분전함 전문
               </p>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-sg-charcoal mb-6 leading-tight">
-                맞춤 제작 분전반<br />
-                <span className="border-b-4 border-sg-charcoal">1-3일 빠른 납기</span>
+                국내 생산 철제 분전반<br />
+                <span className="border-b-4 border-sg-charcoal">SUS 스테인리스 분전함</span>
               </h1>
               <p className="text-lg md:text-xl text-sg-charcoal mb-10 leading-relaxed">
-                특수 사이즈도 가능합니다.<br />
-                다양한 산업현장의 상황에 맞게 맞춤 제작합니다.
+                맞춤 사이즈 제작 · 1-3일 빠른 납기<br />
+                경기도 화성 자체 공장에서 직접 제조합니다.
               </p>
               <div className="flex">
-                <a
+                
                   href="https://smartstore.naver.com/sg-powertech"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -55,7 +55,7 @@ export default function Home() {
               <div className="relative w-full h-[500px]">
                 <Image
                   src="/images/product-main.jpg"
-                  alt="SG기전 맞춤 제작 분전반"
+                  alt="국내 생산 철제 분전반 · SUS 스테인리스 분전함"
                   fill
                   className="object-cover"
                   priority
@@ -98,22 +98,25 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
           <div className="text-center mb-16">
             <p className="text-sg-yellow font-bold mb-2">PRODUCT GALLERY</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-sg-charcoal mb-4">실제 제작 사례</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-sg-charcoal mb-4">철제 분전함 · 분전반 실제 제작 사례</h2>
             <p className="text-sg-gray text-lg">다양한 산업 분야에 맞춤 제작한 분전반 사례입니다</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* 1. 분전반 내부 */}
             <div className="group relative overflow-hidden rounded-2xl bg-sg-cream hover:shadow-2xl transition">
               <div className="relative w-full h-[400px]">
                 <Image
                   src="/images/product-main.jpg"
-                  alt="분전반 내부 구조"
+                  alt="분전반 내부 구조 - 철제 분전함 · 전기 분전반"
                   fill
                   className="object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
               <div className="absolute top-4 left-4">
-                <span className="bg-sg-yellow text-sg-charcoal px-4 py-2 rounded font-bold text-sm">분전반</span>
+                <span className="bg-sg-yellow text-sg-charcoal px-4 py-2 rounded font-bold text-sm">
+                  분전반
+                </span>
               </div>
               <div className="p-6 bg-white">
                 <h3 className="text-xl font-bold text-sg-charcoal mb-2">정밀 제작 분전반</h3>
@@ -121,17 +124,20 @@ export default function Home() {
               </div>
             </div>
 
+            {/* 2. 기성품 철제함 */}
             <div className="group relative overflow-hidden rounded-2xl bg-sg-cream hover:shadow-2xl transition">
               <div className="relative w-full h-[400px]">
                 <Image
                   src="/images/product-cabinet.jpg"
-                  alt="기성품 철제 분전함"
+                  alt="기성품 철제 분전함 - SUS 스테인리스 분전함 · 노출 철함"
                   fill
                   className="object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
               <div className="absolute top-4 left-4">
-                <span className="bg-sg-yellow text-sg-charcoal px-4 py-2 rounded font-bold text-sm">철제함</span>
+                <span className="bg-sg-yellow text-sg-charcoal px-4 py-2 rounded font-bold text-sm">
+                  철제함
+                </span>
               </div>
               <div className="p-6 bg-white">
                 <h3 className="text-xl font-bold text-sg-charcoal mb-2">표준 분전함</h3>
@@ -139,17 +145,20 @@ export default function Home() {
               </div>
             </div>
 
+            {/* 3. 건설현장 가설 */}
             <div className="group relative overflow-hidden rounded-2xl bg-sg-cream hover:shadow-2xl transition">
               <div className="relative w-full h-[400px]">
                 <Image
                   src="/images/product-construction.jpg"
-                  alt="건설 현장 가설 분전반"
+                  alt="건설 현장 가설 분전반 - 경기도 화성 분전반 제작"
                   fill
                   className="object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
               <div className="absolute top-4 left-4">
-                <span className="bg-sg-yellow text-sg-charcoal px-4 py-2 rounded font-bold text-sm">가설 분전반</span>
+                <span className="bg-sg-yellow text-sg-charcoal px-4 py-2 rounded font-bold text-sm">
+                  가설 분전반
+                </span>
               </div>
               <div className="p-6 bg-white">
                 <h3 className="text-xl font-bold text-sg-charcoal mb-2">건설 현장 가설</h3>
@@ -157,17 +166,20 @@ export default function Home() {
               </div>
             </div>
 
+            {/* 4. 가설분전반 외관 */}
             <div className="group relative overflow-hidden rounded-2xl bg-sg-cream hover:shadow-2xl transition">
               <div className="relative w-full h-[400px]">
                 <Image
                   src="/images/product-orange.jpg"
-                  alt="가설 분전반 외관"
+                  alt="가설 분전반 외관 - 주문 제작 분전함 · 대형 분전반"
                   fill
                   className="object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
               <div className="absolute top-4 left-4">
-                <span className="bg-sg-yellow text-sg-charcoal px-4 py-2 rounded font-bold text-sm">외관</span>
+                <span className="bg-sg-yellow text-sg-charcoal px-4 py-2 rounded font-bold text-sm">
+                  외관
+                </span>
               </div>
               <div className="p-6 bg-white">
                 <h3 className="text-xl font-bold text-sg-charcoal mb-2">방수 외함 + 안전 표지</h3>
@@ -183,13 +195,13 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-20 md:py-28">
           <div className="text-center mb-16">
             <p className="text-sg-yellow font-bold mb-2">SG기전의 성과</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-sg-charcoal">숫자로 보는 SG기전</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-sg-charcoal">숫자로 보는 분전반 전문가</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-8 bg-white border-2 border-sg-pale-gray rounded-lg hover:border-sg-yellow transition">
               <div className="text-8xl font-bold text-sg-yellow mb-4">1000<span className="text-3xl">+</span></div>
               <p className="text-xl font-bold text-sg-charcoal mb-2">제작 실적</p>
-              <p className="text-sm text-sg-gray">국내 최고 품질의 분전반</p>
+              <p className="text-sm text-sg-gray">철제 분전함 · 분전반 제작</p>
             </div>
             <div className="text-center p-8 bg-white border-2 border-sg-pale-gray rounded-lg hover:border-sg-yellow transition">
               <div className="text-8xl font-bold text-sg-yellow mb-4">6</div>
@@ -212,10 +224,10 @@ export default function Home() {
             <div className="lg:col-span-1">
               <p className="text-sg-yellow font-bold mb-2">OUR EXPERTISE</p>
               <h2 className="text-3xl md:text-4xl font-bold text-sg-charcoal mb-4">다양한 산업 경험</h2>
-              <p className="text-sg-charcoal leading-relaxed">6개 산업분야의 맞춤 제작 경험으로 다양한 요구사항에 대응합니다.</p>
+              <p className="text-sg-charcoal leading-relaxed">철제 분전함, SUS 스테인리스 분전함 등 6개 산업분야의 맞춤 제작 경험.</p>
             </div>
             <div className="lg:col-span-2 bg-sg-yellow rounded-lg p-8 flex items-center">
-              <p className="text-xl md:text-2xl font-bold text-sg-charcoal">&ldquo;어떤 산업이든, 어떤 사이즈든 SG기전이 해결해드립니다&rdquo;</p>
+              <p className="text-xl md:text-2xl font-bold text-sg-charcoal">"어떤 산업이든, 어떤 사이즈든 SG기전이 해결해드립니다"</p>
             </div>
           </div>
 
@@ -248,7 +260,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { num: '01', title: '맞춤 사이즈 제작', desc: '특수 규격도 CAD 도면 기반으로 정확하게 제작합니다. 700mm부터 1500mm까지 어떤 사이즈든 가능합니다.' },
+              { num: '01', title: '주문 제작 분전함', desc: '특수 규격 철제 분전함도 CAD 도면 기반으로 정확하게 제작합니다. 700mm부터 1500mm까지 어떤 사이즈든 가능합니다.' },
               { num: '02', title: '1-3일 빠른 납기', desc: '화성 자체 공장에서 직접 생산하여 빠른 납기를 실현합니다. 긴급 주문도 상담 가능합니다.' },
               { num: '03', title: '12년 경력 전문성', desc: '건설 현장 12년 경험+건축기사 및 전기기능사 자격증 보유한 전문가가 직접 설계·제작합니다.' },
               { num: '04', title: 'KS·KEC 품질보증', desc: '모든 제품은 KS·KEC 규격을 준수하며 철저한 검사를 거쳐 출고됩니다.' },
@@ -308,10 +320,10 @@ export default function Home() {
               표준 규격 분전함은<br />
               네이버 스마트스토어에서 즉시 주문하세요
             </p>
-            <a
-              href="https://smartstore.naver.com/sg-powertech"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a 
+              href="https://smartstore.naver.com/sg-powertech" 
+              target="_blank" 
+              rel="noopener noreferrer" 
               className="inline-block px-10 py-5 bg-sg-yellow text-sg-charcoal font-bold rounded text-lg hover:bg-sg-yellow-pale transition"
             >
               네이버스마트스토어 바로가기 →
