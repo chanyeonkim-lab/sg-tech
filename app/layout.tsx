@@ -18,6 +18,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    google: "979c4d14ec58e355",
+    other: {
+      "naver-site-verification": "536a49fd2322a39413d27a985896a9434665b2ea",
+    },
+  },
 };
 
 export default function RootLayout({
