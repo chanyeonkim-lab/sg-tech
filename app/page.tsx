@@ -26,7 +26,7 @@ export default function Home() {
               </h1>
               <p className="text-lg text-sg-charcoal mb-10">
                 맞춤 사이즈 제작 · 1-3일 빠른 납기<br />
-                경기도 화성 자체 공장에서 직접 제조합니다.
+                자체 공장에서 직접 제조합니다.
               </p>
               <a href="https://smartstore.naver.com/sg-powertech" target="_blank" rel="noopener noreferrer"
                 className="px-8 py-4 bg-sg-charcoal text-sg-yellow font-bold rounded hover:bg-sg-dark-gray transition text-lg">
@@ -121,14 +121,14 @@ export default function Home() {
               <div className="bg-sg-yellow text-sg-charcoal w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0">02</div>
               <div>
                 <h3 className="text-xl font-bold text-sg-charcoal mb-2">1-3일 빠른 납기</h3>
-                <p className="text-sg-charcoal">화성 자체 공장에서 직접 생산하여 빠른 납기를 실현합니다.</p>
+                <p className="text-sg-charcoal">자체 공장에서 직접 생산하여 빠른 납기를 실현합니다.</p>
               </div>
             </div>
             <div className="flex gap-6 p-6 bg-sg-cream rounded-lg">
               <div className="bg-sg-yellow text-sg-charcoal w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0">03</div>
               <div>
-                <h3 className="text-xl font-bold text-sg-charcoal mb-2">12년 경력 전문성</h3>
-                <p className="text-sg-charcoal">건축기사 및 전기기능사 자격증 보유한 전문가가 직접 설계·제작합니다.</p>
+                <h3 className="text-xl font-bold text-sg-charcoal mb-2">국가 자격증 보유 전문가</h3>
+                <p className="text-sg-charcoal">건축기사 및 전기기능사 자격증을 보유한 전문 인력이 도면 검토부터 제작·검수까지 직접 담당합니다.</p>
               </div>
             </div>
             <div className="flex gap-6 p-6 bg-sg-cream rounded-lg">

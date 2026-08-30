@@ -70,7 +70,7 @@ export default async function OpengraphImage() {
             SUS 스테인리스 분전함
           </div>
           <div style={{ fontSize: 30, marginTop: 24, opacity: 0.75 }}>
-            맞춤 사이즈 · 1-3일 빠른 납기 · 경기도 화성
+            맞춤 사이즈 · 1-3일 빠른 납기 · 국가 자격증 보유
           </div>
         </div>
       </div>

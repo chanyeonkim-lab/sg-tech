@@ -86,30 +86,17 @@ export default function ContactPage() {
 
       <section className="bg-sg-cream">
         <div className="max-w-4xl mx-auto px-6 md:px-8 py-12">
-          <h2 className="text-2xl font-bold text-sg-charcoal mb-6">
-            위치 & 사업 영역
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-sm text-sg-gray font-medium mb-1">공장 위치</p>
-              <p className="text-lg text-sg-charcoal">
-                {siteConfig.address.region} {siteConfig.address.locality}
-              </p>
-              <p className="text-sm text-sg-gray mt-2">
-                방문 상담은 사전 연락 부탁드립니다.
-              </p>
-            </div>
-            <div>
-              <p className="text-sm text-sg-gray font-medium mb-1">업종</p>
-              <ul className="space-y-1">
-                {siteConfig.categories.map((c) => (
-                  <li key={c} className="text-sg-charcoal">
-                    · {c}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <h2 className="text-2xl font-bold text-sg-charcoal mb-6">사업 영역</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {siteConfig.categories.map((c) => (
+              <li
+                key={c}
+                className="bg-white rounded-lg px-5 py-4 text-sg-charcoal font-medium"
+              >
+                · {c}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </div>

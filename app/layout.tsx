@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     template: "%s | SG기전",
   },
   description:
-    "분전반, 철제 분전함, SUS 스테인리스 분전함 맞춤 제작 전문. 경기도 화성에서 1-3일 빠른 납기. 1000+ 제작 실적, 12년 경력, 건축기사 자격증 보유.",
+    "분전반, 철제 분전함, SUS 스테인리스 분전함 맞춤 제작 전문. 국가 자격증 보유 전문 인력, 자체 공장 직접 생산, 1-3일 빠른 납기.",
   keywords: [...siteConfig.keywords],
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name }],
