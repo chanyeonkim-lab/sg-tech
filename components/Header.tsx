@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 
 export default function Header() {
@@ -11,6 +12,7 @@ export default function Header() {
     { label: '회사소개', href: '/about' },
     { label: '제품', href: '/products' },
     { label: '포트폴리오', href: '/portfolio' },
+    { label: '블로그', href: '/blog' },
     { label: '문의', href: '/contact' },
   ]
 
@@ -19,11 +21,16 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* 로고 */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="bg-sg-yellow w-10 h-10 rounded flex items-center justify-center">
-              <span className="text-sg-charcoal font-bold text-xl">SG</span>
-            </div>
-            <span className="font-bold text-xl text-sg-charcoal">SG기전</span>
+          <Link href="/" aria-label="SG기전 홈으로 이동" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="SG기전"
+              width={840}
+              height={412}
+              priority
+              className="h-9 md:h-10 w-auto"
+              sizes="(max-width: 768px) 90px, 110px"
+            />
           </Link>
 
           {/* 데스크톱 네비게이션 */}
