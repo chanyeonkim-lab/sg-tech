@@ -11,6 +11,7 @@ export default function Header() {
     { label: '홈', href: '/' },
     { label: '회사소개', href: '/about' },
     { label: '제품', href: '/products' },
+    { label: '기관 납품', href: '/institutional-supply' },
     { label: '포트폴리오', href: '/portfolio' },
     { label: '블로그', href: '/blog' },
     { label: '문의', href: '/contact' },

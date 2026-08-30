@@ -6,6 +6,7 @@ import type {
   ContactPage,
   ItemList,
   Product,
+  Service,
   WithContext,
 } from "schema-dts";
 import { siteConfig } from "@/lib/site";
@@ -135,6 +136,36 @@ export interface ProductItemInput {
   slug: string;
   image?: string;
   category?: string;
+}
+
+export function serviceSchema(): WithContext<Service> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "기관·기업 맞춤 분전반 납품 서비스",
+    serviceType: "Custom electrical distribution panel manufacturing and supply for institutions",
+    provider: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    areaServed: siteConfig.areaServed,
+    audience: {
+      "@type": "BusinessAudience",
+      audienceType: "학교·기업·관공서·지식산업센터 전기설비팀·영선팀",
+    },
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/InStock",
+      priceCurrency: "KRW",
+      areaServed: siteConfig.areaServed,
+      seller: {
+        "@type": "Organization",
+        name: siteConfig.name,
+      },
+    },
+    termsOfService: `${siteConfig.url}/institutional-supply`,
+  };
 }
 
 export function productItemListSchema(items: ProductItemInput[]): WithContext<ItemList> {

@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: siteConfig.url },
     { url: `${siteConfig.url}/about` },
     { url: `${siteConfig.url}/products` },
+    { url: `${siteConfig.url}/institutional-supply` },
     { url: `${siteConfig.url}/portfolio` },
     { url: `${siteConfig.url}/contact` },
     { url: `${siteConfig.url}/blog` },
