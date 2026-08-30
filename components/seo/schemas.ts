@@ -3,6 +3,9 @@ import type {
   WebSite,
   BlogPosting,
   BreadcrumbList,
+  ContactPage,
+  ItemList,
+  Product,
   WithContext,
 } from "schema-dts";
 import { siteConfig } from "@/lib/site";
@@ -94,6 +97,61 @@ export function breadcrumbSchema(items: BreadcrumbItem[]): WithContext<Breadcrum
       position: index + 1,
       name: item.name,
       item: item.url.startsWith("http") ? item.url : `${siteConfig.url}${item.url}`,
+    })),
+  };
+}
+
+export function contactPageSchema(): WithContext<ContactPage> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "SG기전 · 문의",
+    url: `${siteConfig.url}/contact`,
+    inLanguage: "ko-KR",
+    mainEntity: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      telephone: siteConfig.telephone,
+      email: siteConfig.email,
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          telephone: siteConfig.telephone,
+          email: siteConfig.email,
+          areaServed: siteConfig.areaServed,
+          availableLanguage: ["ko"],
+        },
+      ],
+    },
+  };
+}
+
+export interface ProductItemInput {
+  name: string;
+  description: string;
+  slug: string;
+  image?: string;
+  category?: string;
+}
+
+export function productItemListSchema(items: ProductItemInput[]): WithContext<ItemList> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Product",
+        name: item.name,
+        description: item.description,
+        url: `${siteConfig.url}/products#${item.slug}`,
+        image: item.image ? `${siteConfig.url}${item.image}` : undefined,
+        category: item.category,
+        brand: { "@type": "Brand", name: siteConfig.name },
+        manufacturer: { "@type": "Organization", name: siteConfig.name },
+      } satisfies Product,
     })),
   };
 }
