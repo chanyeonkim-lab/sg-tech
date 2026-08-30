@@ -4,6 +4,7 @@ import Image from "next/image";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { MdxRenderer } from "@/components/mdx/MdxRenderer";
 import { Breadcrumb } from "@/components/blog/Breadcrumb";
+import { AuthorByline } from "@/components/blog/AuthorByline";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { blogPostingSchema } from "@/components/seo/schemas";
 import { siteConfig } from "@/lib/site";
@@ -111,6 +112,7 @@ export default function BlogPostPage({ params }: Params) {
       )}
 
       <div className="prose prose-lg max-w-none">
+        <AuthorByline reviewedDate={post.updated ?? post.date} />
         <MdxRenderer code={post.body} />
       </div>
     </article>
