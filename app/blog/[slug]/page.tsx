@@ -110,7 +110,7 @@ export default function BlogPostPage({ params }: Params) {
         </div>
       )}
 
-      <div className="prose prose-lg max-w-none prose-headings:text-sg-charcoal prose-a:text-sg-yellow-dark prose-strong:text-sg-charcoal">
+      <div className="prose prose-lg max-w-none">
         <MdxRenderer code={post.body} />
       </div>
     </article>
