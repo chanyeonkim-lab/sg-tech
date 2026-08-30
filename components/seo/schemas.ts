@@ -25,6 +25,7 @@ export function organizationSchema(): WithContext<Organization> {
       addressLocality: siteConfig.address.locality,
     },
     areaServed: siteConfig.areaServed,
+    knowsAbout: [...siteConfig.categories],
     sameAs: [siteConfig.smartStore, siteConfig.naverBlog],
   };
 }

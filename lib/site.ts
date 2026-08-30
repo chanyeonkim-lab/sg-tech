@@ -29,6 +29,12 @@ export const siteConfig = {
   smartStore: "https://smartstore.naver.com/sg-powertech",
   naverBlog: "https://blog.naver.com/puhe628",
   ogImage: "/opengraph-image",
+  categories: [
+    "전기분전함",
+    "맞춤 분전반 제작",
+    "가설 분전반 제작",
+    "컨트롤박스 판매",
+  ],
 } as const;
 
 export type SiteConfig = typeof siteConfig;
