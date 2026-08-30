@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { TrackedLink } from '@/components/analytics/TrackedLink'
 
 export default function Home() {
   return (
@@ -28,10 +29,24 @@ export default function Home() {
                 맞춤 사이즈 제작 · 1-3일 빠른 납기<br />
                 자체 공장에서 직접 제조합니다.
               </p>
-              <a href="https://smartstore.naver.com/sg-powertech" target="_blank" rel="noopener noreferrer"
-                className="px-8 py-4 bg-sg-charcoal text-sg-yellow font-bold rounded hover:bg-sg-dark-gray transition text-lg">
-                네이버스마트스토어 바로가기
-              </a>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <TrackedLink
+                  href="https://smartstore.naver.com/sg-powertech"
+                  event="cta_click"
+                  eventData={{ location: "hero_primary", target: "smartstore" }}
+                  className="px-8 py-4 bg-sg-charcoal text-sg-yellow font-bold rounded hover:bg-sg-dark-gray transition text-lg text-center"
+                >
+                  네이버스마트스토어 바로가기
+                </TrackedLink>
+                <TrackedLink
+                  href="/institutional-supply"
+                  event="cta_click"
+                  eventData={{ location: "hero_secondary", target: "institutional-supply" }}
+                  className="px-8 py-4 bg-white text-sg-charcoal font-bold rounded border-2 border-sg-charcoal hover:bg-sg-cream transition text-lg text-center"
+                >
+                  기관 · 대량 견적 문의
+                </TrackedLink>
+              </div>
             </div>
             <div className="relative bg-white rounded-2xl overflow-hidden shadow-2xl">
               <div className="relative w-full h-96">
@@ -176,10 +191,14 @@ export default function Home() {
           <div className="bg-sg-charcoal rounded-2xl p-16 text-center">
             <h2 className="text-4xl font-bold text-white mb-4">표준 분전반 바로 구매</h2>
             <p className="text-gray-300 mb-8">네이버 스마트스토어에서 즉시 주문하세요</p>
-            <a href="https://smartstore.naver.com/sg-powertech" target="_blank" rel="noopener noreferrer"
-              className="inline-block px-10 py-5 bg-sg-yellow text-sg-charcoal font-bold rounded text-lg hover:bg-sg-yellow-pale transition">
+            <TrackedLink
+              href="https://smartstore.naver.com/sg-powertech"
+              event="cta_click"
+              eventData={{ location: "bottom_cta", target: "smartstore" }}
+              className="inline-block px-10 py-5 bg-sg-yellow text-sg-charcoal font-bold rounded text-lg hover:bg-sg-yellow-pale transition"
+            >
               네이버스마트스토어 바로가기
-            </a>
+            </TrackedLink>
             <div className="mt-12 pt-8 border-t border-gray-700">
               <p className="text-sg-yellow font-bold mb-2">맞춤 제작 문의</p>
               <div className="flex gap-4 justify-center text-white">

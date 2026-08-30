@@ -6,15 +6,14 @@ export const alt = siteConfig.description;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const PRETENDARD_BOLD_URL =
-  "https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/public/static/Pretendard-Bold.otf";
-const PRETENDARD_BLACK_URL =
-  "https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/public/static/Pretendard-Black.otf";
-
 export default async function OpengraphImage() {
   const [bold, black] = await Promise.all([
-    fetch(PRETENDARD_BOLD_URL).then((r) => r.arrayBuffer()),
-    fetch(PRETENDARD_BLACK_URL).then((r) => r.arrayBuffer()),
+    fetch(new URL("/fonts/Pretendard-Bold.woff2", siteConfig.url)).then((r) =>
+      r.arrayBuffer()
+    ),
+    fetch(new URL("/fonts/Pretendard-Black.woff2", siteConfig.url)).then((r) =>
+      r.arrayBuffer()
+    ),
   ]);
 
   return new ImageResponse(

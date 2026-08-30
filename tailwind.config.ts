@@ -20,7 +20,8 @@ const config: Config = {
         'sg-cream': '#FAF8F3',
       },
       fontFamily: {
-        pretendard: ['Pretendard', 'sans-serif'],
+        sans: ['var(--font-pretendard)', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        pretendard: ['var(--font-pretendard)', 'sans-serif'],
       },
       typography: ({ theme }: { theme: (path: string) => string }) => ({
         DEFAULT: {
