@@ -17,7 +17,12 @@ export function organizationSchema(): WithContext<Organization> {
     name: siteConfig.name,
     legalName: siteConfig.legalName,
     url: siteConfig.url,
-    logo: `${siteConfig.url}${siteConfig.logo}`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteConfig.url}${siteConfig.logo}`,
+      width: "840",
+      height: "412",
+    },
     telephone: siteConfig.telephone,
     email: siteConfig.email,
     address: {
