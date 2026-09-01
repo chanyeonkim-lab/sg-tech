@@ -1,5 +1,5 @@
 version: 1
-next_index: 1
+next_index: 2
 last_curated_index: 24
 topics:
 - slug: quote-without-drawings
@@ -22,7 +22,8 @@ topics:
   - 분전반 재가공
   - 케이블 인입구
   - 현장 타공
-  status: pending
+  status: done
+  published_slug: 2026-09-01-retouch-prevention-checklist
 - slug: same-day-quote-seoul
   title: 서울 현장 급한 분전반 · 당일 견적 진행하는 방법
   segment: 전기공사업체
