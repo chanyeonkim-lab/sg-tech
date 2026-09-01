@@ -121,44 +121,6 @@ export default function Home() {
       </section>
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-20">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-sg-charcoal">왜 SG기전을 선택해야 하나요?</h2>
-            <p className="text-sg-charcoal mt-4">정품 자재 · 검사 대비 · 공사비 절감까지 한 번에 해결합니다.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex gap-6 p-6 bg-sg-cream rounded-lg">
-              <div className="bg-sg-yellow text-sg-charcoal w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0">01</div>
-              <div>
-                <h3 className="text-xl font-bold text-sg-charcoal mb-2">100% KS 정품 자재 적용</h3>
-                <p className="text-sg-charcoal">LS일렉트릭 등 100% KS 인증 정품 차단기와 정규격 동(구리) 부스바만을 사용하여 발열 및 차단기 오작동을 근본적으로 차단합니다.</p>
-              </div>
-            </div>
-            <div className="flex gap-6 p-6 bg-sg-cream rounded-lg">
-              <div className="bg-sg-yellow text-sg-charcoal w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0">02</div>
-              <div>
-                <h3 className="text-xl font-bold text-sg-charcoal mb-2">검사 대비 완벽 세팅</h3>
-                <p className="text-sg-charcoal">전기안전공사 정기검사 지적 1순위인 <strong>투명 난연 아크릴 보호판(차폐판)</strong>을 기본 포함하여 재검사 리스크 없이 한 번에 통과를 지원합니다.</p>
-              </div>
-            </div>
-            <div className="flex gap-6 p-6 bg-sg-cream rounded-lg">
-              <div className="bg-sg-yellow text-sg-charcoal w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0">03</div>
-              <div>
-                <h3 className="text-xl font-bold text-sg-charcoal mb-2">벽체 파손 없는 1:1 맞춤 속체 교체</h3>
-                <p className="text-sg-charcoal">기존 외함 구조는 그대로 유지한 채 내부 속판(속체)만 1:1로 맞춤 제작·교체하여 공사 비용과 시간을 <strong>최대 80% 절감</strong>해 드립니다.</p>
-              </div>
-            </div>
-            <div className="flex gap-6 p-6 bg-sg-cream rounded-lg">
-              <div className="bg-sg-yellow text-sg-charcoal w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0">04</div>
-              <div>
-                <h3 className="text-xl font-bold text-sg-charcoal mb-2">도면 없이도 빠른 견적</h3>
-                <p className="text-sg-charcoal">현장 사진 + 가로/세로/깊이 치수만 문자로 전송해 주시면 CAD 설계 및 상세 견적을 신속하게 안내해 드립니다.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="bg-sg-cream">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 py-20">
           <div className="text-center mb-12">
             <p className="inline-block px-4 py-1 bg-sg-yellow text-sg-charcoal text-sm font-bold rounded mb-4">KEC · 전기안전공사 정기검사 대응</p>
             <h2 className="text-4xl font-bold text-sg-charcoal mb-4">전기안전공사 정기검사 통과<br className="md:hidden" /> 법적 체크리스트 3</h2>

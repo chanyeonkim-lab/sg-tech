@@ -16,30 +16,24 @@ export const metadata: Metadata = {
   },
 };
 
-const cases = [
+type Case = {
+  title: string;
+  sector: string;
+  image: string;
+  summary: string;
+  highlights: string[];
+  href?: string;
+};
+
+const cases: Case[] = [
   {
-    title: "산업 설비 펌프 컨트롤 판넬 외부",
-    sector: "산업 설비",
+    title: "목동 대형 상가 오피스텔 노후 배수펌프 제어판넬 교체",
+    sector: "지하 기계실 · 배수펌프",
     image: "/images/case-control-panel-exterior.jpg",
     summary:
-      "전류계·전압계·셀렉터 스위치·표시등을 전면에 배치한 산업용 펌프 컨트롤 판넬. UNIVERSAL LASER-FILM 가공으로 각인·홀 가공 정밀도를 확보.",
-    highlights: ["펌프 제어반", "전류·전압 계측", "정밀 가공"],
-  },
-  {
-    title: "산업 설비 펌프 컨트롤 판넬 내부",
-    sector: "산업 설비",
-    image: "/images/case-control-panel-interior.jpg",
-    summary:
-      "마그네틱 컨택터·릴레이·단자대를 DIN 레일에 정렬 배치한 컴팩트 컨트롤 박스 내부. 회로별 배선 정리로 유지보수 접근성 확보.",
-    highlights: ["컨택터·릴레이", "DIN 레일 정렬", "배선 정리"],
-  },
-  {
-    title: "3상 380V 펌프 동력 판넬 내부",
-    sector: "산업 설비",
-    image: "/images/case-pump-cabinet-wiring.jpg",
-    summary:
-      "MCCB·MC·EOCR·CT·콘덴서를 결합한 3상 380V 동력반 내부. 모선 부스바 가공과 배선 라벨링으로 현장 시운전 시간을 단축.",
-    highlights: ["MCCB + MC + EOCR", "부스바 가공", "3상 380V"],
+      "목동 상가·주거 복합 오피스텔 지하 기계실. 습기·결로에 강한 SUS304 스텐함(600×1000×160, 1.0T)에 V-M/A-M 정밀 타공, 2-Pump 교대 구동(MC·EOCR·F/S) 회로로 맞춤 제작 교체했습니다.",
+    highlights: ["SUS304 스텐함", "2-Pump 교대 구동", "V-M/A-M 정밀 타공"],
+    href: "/blog/2026-09-02-mokdong-drainage-pump-control-panel",
   },
   {
     title: "건물 세대분전반 · 계량기함",
@@ -95,7 +89,7 @@ export default function PortfolioPage() {
                   {c.title}
                 </h2>
                 <p className="text-sg-charcoal mb-4">{c.summary}</p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {c.highlights.map((h) => (
                     <span
                       key={h}
@@ -105,6 +99,14 @@ export default function PortfolioPage() {
                     </span>
                   ))}
                 </div>
+                {c.href && (
+                  <a
+                    href={c.href}
+                    className="inline-flex items-center gap-1 text-sm font-bold text-sg-charcoal border-b-2 border-sg-yellow hover:text-sg-yellow-dark transition"
+                  >
+                    상세 사례 자세히 보기 →
+                  </a>
+                )}
               </div>
             </article>
           ))}
