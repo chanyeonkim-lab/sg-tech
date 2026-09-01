@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | SG기전",
   },
   description:
-    "분전반, 철제 분전함, SUS 스테인리스 분전함 맞춤 제작 전문. 국가 자격증 보유 전문 인력, 자체 공장 직접 생산, 1-3일 빠른 납기.",
+    "분전반·철제/SUS 박스 다목적 맞춤 제작 전문. 대형 LED 전광판·쇼핑몰·팝업스토어·대학교·상가 건물·수조 펌프 제어반부터 소방자재 보관함·초대형 박스까지. 국가 자격증 보유 전문 인력, 자체 공장 직접 생산, 1-3일 빠른 납기.",
   keywords: [...siteConfig.keywords],
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name }],

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { getAllPosts, getPostBySlug } from "@/lib/posts";
 import { MdxRenderer } from "@/components/mdx/MdxRenderer";
 import { Breadcrumb } from "@/components/blog/Breadcrumb";
 import { AuthorByline } from "@/components/blog/AuthorByline";
+import { LightboxImage } from "@/components/blog/LightboxImage";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { blogPostingSchema } from "@/components/seo/schemas";
 import { siteConfig } from "@/lib/site";
@@ -99,15 +99,14 @@ export default function BlogPostPage({ params }: Params) {
       </header>
 
       {post.cover && (
-        <div className="relative w-full aspect-[16/9] mb-10 rounded-2xl overflow-hidden bg-sg-cream">
-          <Image
+        <div className="mb-10">
+          <LightboxImage
             src={post.cover}
             alt={post.title}
-            fill
             priority
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
+            aspectClassName="aspect-[4/3] md:aspect-[16/10]"
           />
+          <p className="mt-2 text-xs text-sg-gray text-center">이미지를 클릭하면 크게 볼 수 있습니다.</p>
         </div>
       )}
 

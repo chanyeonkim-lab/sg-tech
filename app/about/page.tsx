@@ -5,15 +5,26 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "회사소개",
   description:
-    "SG기전은 자체 공장에서 철제 분전반, SUS 스테인리스 분전함, 가설 분전반, 컨트롤박스를 맞춤 제작하는 전문 제조업체입니다. 국가 자격증 보유 전문 인력, KS·KEC 규격 준수.",
+    "대형 LED 전광판·쇼핑몰 매장·야외 팝업스토어·대학교 등 기관·대형 상가 건물·수조 펌프 제어반, 소방자재 보관함·초대형 박스까지 다목적 분전반·철제/SUS 박스 맞춤 제작. 국가 자격증 보유 전문 인력, KS·KEC 규격 준수.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "회사소개 | SG기전",
     description:
-      "국가 자격증(건축기사·전기기능사) 보유 전문 인력. KS·KEC 규격 준수. 다양한 특수 목적 납품 경험.",
+      "다목적 분전반·철제/SUS 박스 맞춤 제작 경력. LED 전광판·쇼핑몰·팝업스토어·기관·상가·수조 펌프·소방자재 보관함·초대형 박스 납품.",
     url: `${siteConfig.url}/about`,
   },
 };
+
+const experienceAreas = [
+  { title: "대형 LED 전광판", body: "고전력 LED 스크린 전용 분전반·컨트롤 판넬 납품" },
+  { title: "쇼핑몰 · 매장", body: "매장별 부하 배분 세대분전반, 매장 인테리어 맞춤 사이즈" },
+  { title: "야외 팝업스토어", body: "이동식 · 방수(IP) 등급 대응 팝업 전력 판넬" },
+  { title: "대학교 · 기관", body: "경기대학교 등 기관 시방서·KEC 규격 대응 납품" },
+  { title: "대형 상가 · 오피스텔", body: "지하 기계실·세대분전반·계량기함 통합 납품" },
+  { title: "수조 펌프 제어반", body: "2-Pump 교대 구동, EOCR·F/S 결선 SUS304 스텐함" },
+  { title: "소방자재 보관함", body: "소방 관련 자재 안전 보관용 맞춤 철제/SUS 박스" },
+  { title: "초대형 박스", body: "규격 외 대형 사이즈 철제/SUS 박스 자체 공장 가공" },
+];
 
 const highlights = [
   {
@@ -70,13 +81,35 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 py-16">
+          <div className="mb-10">
+            <p className="inline-block px-3 py-1 bg-sg-yellow text-sg-charcoal text-xs font-bold rounded mb-3">다목적 제작 경험</p>
+            <h2 className="text-3xl font-bold text-sg-charcoal mb-3 break-keep">
+              다양한 산업·환경에서 검증된 납품 경력
+            </h2>
+            <p className="text-sg-charcoal max-w-3xl break-keep">
+              단순 분전반 제작을 넘어, 산업별 특수 요구조건을 반영한 다목적 분전반과 철제/SUS 박스 납품 경험을 축적해 왔습니다.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {experienceAreas.map((a) => (
+              <div key={a.title} className="bg-sg-cream rounded-lg p-5">
+                <p className="font-bold text-sg-charcoal mb-1 break-keep">{a.title}</p>
+                <p className="text-sm text-sg-gray break-keep">{a.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-sg-charcoal">
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-16">
-          <h2 className="text-3xl font-bold text-white mb-6">사업 영역</h2>
+          <h2 className="text-3xl font-bold text-white mb-6 break-keep">사업 영역</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {siteConfig.categories.map((c) => (
               <div key={c} className="bg-white rounded-lg px-6 py-8 text-center">
-                <p className="font-bold text-sg-charcoal">{c}</p>
+                <p className="font-bold text-sg-charcoal break-keep">{c}</p>
               </div>
             ))}
           </div>
