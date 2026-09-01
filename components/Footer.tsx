@@ -47,7 +47,7 @@ export function Footer() {
                   className="text-white hover:text-sg-yellow transition inline-flex items-baseline gap-2"
                 >
                   <span className="text-gray-400 text-xs">TEL</span>
-                  <span className="font-medium">{displayPhone}</span>
+                  <span className="font-medium whitespace-nowrap">{displayPhone}</span>
                 </a>
               </li>
               <li>
@@ -125,7 +125,7 @@ export function Footer() {
           <p>
             <a
               href={`tel:${displayPhone.replace(/-/g, "")}`}
-              className="text-sg-yellow hover:underline font-medium"
+              className="text-sg-yellow hover:underline font-medium whitespace-nowrap"
             >
               맞춤 견적 문의 → {displayPhone}
             </a>

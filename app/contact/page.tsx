@@ -74,7 +74,7 @@ export default function ContactPage() {
                 {c.label}
               </div>
               <div className="flex-1">
-                <p className="text-lg font-bold text-sg-charcoal group-hover:text-sg-yellow-dark transition">
+                <p className="text-lg font-bold text-sg-charcoal group-hover:text-sg-yellow-dark transition break-words">
                   {c.value}
                 </p>
                 <p className="text-sm text-sg-gray mt-1">{c.note}</p>
