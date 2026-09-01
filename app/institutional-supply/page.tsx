@@ -194,7 +194,7 @@ export default function InstitutionalSupplyPage() {
                 href="/portfolio"
                 className="text-sg-yellow-dark hover:underline font-medium"
               >
-                → 실제 납품 사례 (포트폴리오)
+                → 실제 납품 사례
               </Link>
             </li>
           </ul>

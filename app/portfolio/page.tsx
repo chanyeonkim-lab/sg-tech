@@ -4,12 +4,12 @@ import { PageHero } from "@/components/PageHero";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "포트폴리오",
+  title: "납품 사례",
   description:
     "대학교, 공공기관, 오피스텔, 건설 현장에 납품한 SG기전 분전반 실제 사례를 정리했습니다.",
   alternates: { canonical: "/portfolio" },
   openGraph: {
-    title: "포트폴리오 | SG기전",
+    title: "납품 사례 | SG기전",
     description:
       "실제 납품한 분전반·분전함 사례. 사양·환경·시공 포인트 요약.",
     url: `${siteConfig.url}/portfolio`,
@@ -18,36 +18,36 @@ export const metadata: Metadata = {
 
 const cases = [
   {
-    title: "대학 캠퍼스 옥외 IP65 SUS 분전반",
-    sector: "교육기관",
-    image: "/images/product-orange.jpg",
+    title: "산업 설비 펌프 컨트롤 판넬 외부",
+    sector: "산업 설비",
+    image: "/images/case-control-panel-exterior.jpg",
     summary:
-      "결로 반복 환경 + 캠퍼스 미관 유지를 위해 SUS304 5면 방수 처리로 납품. 케이블 인입부까지 IP65 유지.",
-    highlights: ["SUS304", "IP65", "5면 방수 처리"],
+      "전류계·전압계·셀렉터 스위치·표시등을 전면에 배치한 산업용 펌프 컨트롤 판넬. UNIVERSAL LASER-FILM 가공으로 각인·홀 가공 정밀도를 확보.",
+    highlights: ["펌프 제어반", "전류·전압 계측", "정밀 가공"],
   },
   {
-    title: "공공기관 관제실 정밀 배전반",
-    sector: "공공기관",
-    image: "/images/product-main.jpg",
+    title: "산업 설비 펌프 컨트롤 판넬 내부",
+    sector: "산업 설비",
+    image: "/images/case-control-panel-interior.jpg",
     summary:
-      "국산 차단기 표준으로 회로별 라벨링과 배선 정리를 진행. 유지보수 접근성을 최우선으로 설계.",
-    highlights: ["국산 차단기", "라벨링", "유지보수 접근성"],
+      "마그네틱 컨택터·릴레이·단자대를 DIN 레일에 정렬 배치한 컴팩트 컨트롤 박스 내부. 회로별 배선 정리로 유지보수 접근성 확보.",
+    highlights: ["컨택터·릴레이", "DIN 레일 정렬", "배선 정리"],
   },
   {
-    title: "오피스텔 세대분전반 · 계량기함",
+    title: "3상 380V 펌프 동력 판넬 내부",
+    sector: "산업 설비",
+    image: "/images/case-pump-cabinet-wiring.jpg",
+    summary:
+      "MCCB·MC·EOCR·CT·콘덴서를 결합한 3상 380V 동력반 내부. 모선 부스바 가공과 배선 라벨링으로 현장 시운전 시간을 단축.",
+    highlights: ["MCCB + MC + EOCR", "부스바 가공", "3상 380V"],
+  },
+  {
+    title: "건물 세대분전반 · 계량기함",
     sector: "주거·상업 시설",
-    image: "/images/product-cabinet.jpg",
+    image: "/images/case-residential-distribution.jpg",
     summary:
-      "동일 규격을 대량으로 안정적으로 공급. 시공사 요청 규격에 맞춘 표준화 도면을 확정 후 반복 생산.",
-    highlights: ["대량 공급", "규격 표준화", "반복 생산"],
-  },
-  {
-    title: "건설 현장 이동식 가설 분전반",
-    sector: "건설 현장",
-    image: "/images/product-construction.jpg",
-    summary:
-      "3상 380V 가설 전력 배분, 이동식 거치대와 누전차단기 표준 탑재로 우천·분진 환경에 대응.",
-    highlights: ["3상 380V", "이동식 거치대", "우천 대응"],
+      "메인 MCCB + 다회로 분기 차단기 구성으로 세대·매장별 부하 분배. 부스바 자동정렬로 균일한 시공 품질과 반복 생산성을 확보.",
+    highlights: ["다회로 분기", "부스바 자동정렬", "세대분전반"],
   },
 ];
 
@@ -59,7 +59,7 @@ export default function PortfolioPage() {
         subtitle="다양한 환경·규격·요구조건에 대응한 대표 프로젝트를 정리했습니다. 요청 시 유사 사양의 상세 도면과 시공 결과물을 공유해드립니다."
         breadcrumb={[
           { name: "홈", url: "/" },
-          { name: "포트폴리오", url: "/portfolio" },
+          { name: "납품 사례", url: "/portfolio" },
         ]}
       />
 

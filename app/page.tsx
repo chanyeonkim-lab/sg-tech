@@ -82,7 +82,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="rounded-2xl overflow-hidden bg-white shadow">
               <div className="relative w-full h-80">
-                <Image src="/images/product-main.jpg" alt="정밀 제작 분전반" fill className="object-cover" />
+                <Image src="/images/case-pump-cabinet-wiring.jpg" alt="정밀 제작 분전반" fill className="object-cover" />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-sg-charcoal">정밀 제작 분전반</h3>
