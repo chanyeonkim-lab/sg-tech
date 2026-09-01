@@ -123,34 +123,91 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-sg-charcoal">왜 SG기전을 선택해야 하나요?</h2>
+            <p className="text-sg-charcoal mt-4">정품 자재 · 검사 대비 · 공사비 절감까지 한 번에 해결합니다.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex gap-6 p-6 bg-sg-cream rounded-lg">
               <div className="bg-sg-yellow text-sg-charcoal w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0">01</div>
               <div>
-                <h3 className="text-xl font-bold text-sg-charcoal mb-2">주문 제작 분전함</h3>
-                <p className="text-sg-charcoal">700mm부터 1500mm까지 어떤 사이즈든 가능합니다.</p>
+                <h3 className="text-xl font-bold text-sg-charcoal mb-2">100% KS 정품 자재 적용</h3>
+                <p className="text-sg-charcoal">LS일렉트릭 등 100% KS 인증 정품 차단기와 정규격 동(구리) 부스바만을 사용하여 발열 및 차단기 오작동을 근본적으로 차단합니다.</p>
               </div>
             </div>
             <div className="flex gap-6 p-6 bg-sg-cream rounded-lg">
               <div className="bg-sg-yellow text-sg-charcoal w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0">02</div>
               <div>
-                <h3 className="text-xl font-bold text-sg-charcoal mb-2">1-3일 빠른 납기</h3>
-                <p className="text-sg-charcoal">자체 공장에서 직접 생산하여 빠른 납기를 실현합니다.</p>
+                <h3 className="text-xl font-bold text-sg-charcoal mb-2">검사 대비 완벽 세팅</h3>
+                <p className="text-sg-charcoal">전기안전공사 정기검사 지적 1순위인 <strong>투명 난연 아크릴 보호판(차폐판)</strong>을 기본 포함하여 재검사 리스크 없이 한 번에 통과를 지원합니다.</p>
               </div>
             </div>
             <div className="flex gap-6 p-6 bg-sg-cream rounded-lg">
               <div className="bg-sg-yellow text-sg-charcoal w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0">03</div>
               <div>
-                <h3 className="text-xl font-bold text-sg-charcoal mb-2">국가 자격증 보유 전문가</h3>
-                <p className="text-sg-charcoal">건축기사 및 전기기능사 자격증을 보유한 전문 인력이 도면 검토부터 제작·검수까지 직접 담당합니다.</p>
+                <h3 className="text-xl font-bold text-sg-charcoal mb-2">벽체 파손 없는 1:1 맞춤 속체 교체</h3>
+                <p className="text-sg-charcoal">기존 외함 구조는 그대로 유지한 채 내부 속판(속체)만 1:1로 맞춤 제작·교체하여 공사 비용과 시간을 <strong>최대 80% 절감</strong>해 드립니다.</p>
               </div>
             </div>
             <div className="flex gap-6 p-6 bg-sg-cream rounded-lg">
               <div className="bg-sg-yellow text-sg-charcoal w-16 h-16 rounded-lg flex items-center justify-center text-2xl font-bold flex-shrink-0">04</div>
               <div>
-                <h3 className="text-xl font-bold text-sg-charcoal mb-2">KS·KEC 품질보증</h3>
-                <p className="text-sg-charcoal">모든 제품은 KS·KEC 규격을 준수하며 철저한 검사를 거쳐 출고됩니다.</p>
+                <h3 className="text-xl font-bold text-sg-charcoal mb-2">도면 없이도 빠른 견적</h3>
+                <p className="text-sg-charcoal">현장 사진 + 가로/세로/깊이 치수만 문자로 전송해 주시면 CAD 설계 및 상세 견적을 신속하게 안내해 드립니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="bg-sg-cream">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 py-20">
+          <div className="text-center mb-12">
+            <p className="inline-block px-4 py-1 bg-sg-yellow text-sg-charcoal text-sm font-bold rounded mb-4">KEC · 전기안전공사 정기검사 대응</p>
+            <h2 className="text-4xl font-bold text-sg-charcoal mb-4">전기안전공사 정기검사 통과<br className="md:hidden" /> 법적 체크리스트 3</h2>
+            <p className="text-sg-charcoal max-w-3xl mx-auto">한국전기설비규정(KEC) 시행 이후 접지계통의 등전위본딩·보호도체 접속 기준이 대폭 강화되었습니다. SG기전은 아래 3가지 법적 요건을 완제품 상태로 세팅해 출고하므로 현장은 단순 설치만으로 기준을 충족합니다.</p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+            <div className="grid grid-cols-1 gap-6">
+              <div className="rounded-2xl overflow-hidden bg-white shadow">
+                <div className="relative w-full aspect-[4/5]">
+                  <Image src="/images/case-acrylic-shield-full.png" alt="투명 난연 아크릴 차폐판 전면 커버 분전반" fill className="object-contain bg-white" sizes="(max-width: 1024px) 100vw, 50vw" />
+                </div>
+                <div className="p-5">
+                  <p className="text-xs text-sg-gray font-medium mb-1">투명 난연 아크릴 차폐판</p>
+                  <p className="text-sg-charcoal">MCCB·분기 ELB의 충전부 노출을 아크릴 차폐판으로 완전 차폐. 검사관 지적 없이 한 번에 통과.</p>
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <div className="p-6 bg-white rounded-lg border-l-4 border-sg-yellow">
+                <p className="text-sg-yellow-dark font-bold text-sm mb-1">체크 1</p>
+                <h3 className="text-xl font-bold text-sg-charcoal mb-2">접지저항 개별 측정을 위한 단자 분리 구조</h3>
+                <p className="text-sg-charcoal">정기점검 시 각 수배전반·설비의 접지저항을 정확히 측정할 수 있도록, 주접지단자대에서 개별 접지선을 용이하게 분리할 수 있는 <strong>볼트 체결형 접속 구조</strong>로 정밀 가공합니다.</p>
+              </div>
+              <div className="p-6 bg-white rounded-lg border-l-4 border-sg-yellow">
+                <p className="text-sg-yellow-dark font-bold text-sm mb-1">체크 2</p>
+                <h3 className="text-xl font-bold text-sg-charcoal mb-2">KEC 140/240 기준 1선 1단자 접속 원칙</h3>
+                <p className="text-sg-charcoal">하나의 단자 타공에 여러 개의 접지 볼트를 겹쳐 묶는 방식은 접촉 불량·화재 위험으로 <strong>지적 1순위</strong>입니다. 현장 회로 수와 접지선 굵기(SQ)에 맞춰 1:1 전용 타공 홀을 세팅해 접속 신뢰성을 보장합니다.</p>
+              </div>
+              <div className="p-6 bg-white rounded-lg border-l-4 border-sg-yellow">
+                <p className="text-sg-yellow-dark font-bold text-sm mb-1">체크 3</p>
+                <h3 className="text-xl font-bold text-sg-charcoal mb-2">정규격 동부스바 · 절연 이격 거리 준수</h3>
+                <p className="text-sg-charcoal">함체·변전실 벽면에 단자대를 직접 밀착 설치하면 절연 기준 미달로 지적됩니다. <strong>전용 절연자(Standoff)</strong>로 벽면과 충분한 절연 이격 거리를 확보한 완제품 상태로 출고합니다.</p>
+              </div>
+              <div className="p-6 bg-sg-charcoal rounded-lg text-white">
+                <p className="text-sg-yellow font-bold text-sm mb-2">현장 검증된 대응</p>
+                <p className="mb-4">건축기사·전기기능사 자격 보유 인력이 도면 검토부터 제작·검수까지 직접 담당합니다. 재검사 리스크 없이 한 번에 통과하도록 완제품 상태로 출고합니다.</p>
+                <div className="flex gap-3 flex-wrap">
+                  <TrackedLink
+                    href="/contact"
+                    event="cta_click"
+                    eventData={{ location: "kec_checklist", target: "contact" }}
+                    className="px-5 py-3 bg-sg-yellow text-sg-charcoal font-bold rounded hover:bg-sg-yellow-pale transition"
+                  >
+                    정기검사 대응 견적 문의
+                  </TrackedLink>
+                  <a href="/blog/2026-08-30-kec-institutional-panels" className="px-5 py-3 border border-white text-white font-bold rounded hover:bg-white hover:text-sg-charcoal transition">
+                    KEC 규격 가이드 읽기
+                  </a>
+                </div>
               </div>
             </div>
           </div>

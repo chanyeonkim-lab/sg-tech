@@ -49,6 +49,14 @@ const cases = [
       "메인 MCCB + 다회로 분기 차단기 구성으로 세대·매장별 부하 분배. 부스바 자동정렬로 균일한 시공 품질과 반복 생산성을 확보.",
     highlights: ["다회로 분기", "부스바 자동정렬", "세대분전반"],
   },
+  {
+    title: "정기검사 대응 아크릴 차폐판 분전반",
+    sector: "정기검사 대응",
+    image: "/images/case-acrylic-shield-compact.png",
+    summary:
+      "메인 MCCB + 좌우 분기 ELB 충전부를 투명 난연 아크릴 차폐판으로 완전 차폐. KEC 규정에 맞춰 재검사 리스크 없이 한 번에 통과.",
+    highlights: ["투명 난연 아크릴", "충전부 차폐", "KEC 규정"],
+  },
 ];
 
 export default function PortfolioPage() {
