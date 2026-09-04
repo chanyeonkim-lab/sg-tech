@@ -1,5 +1,5 @@
 version: 1
-next_index: 2
+next_index: 3
 last_curated_index: 24
 topics:
 - slug: quote-without-drawings
@@ -33,7 +33,8 @@ topics:
   - 분전반 급한
   - 서울 분전반
   - 당일 견적
-  status: pending
+  status: done
+  published_slug: 2026-09-04-same-day-quote-seoul
 - slug: outdated-panel-inspection-fail
   title: 정기 전기안전점검에서 '부적합' 판정받으셨나요? — 재검사 통과까지 3단계
   segment: 시설관리자
