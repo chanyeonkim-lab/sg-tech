@@ -27,6 +27,15 @@ type Case = {
 
 const cases: Case[] = [
   {
+    title: "판교 현대백화점 입점 대형 식당 주방·홀 분전반 2면",
+    sector: "백화점 입점 식당 · 지정 자재",
+    image: "/images/case-pangyo-cover.png",
+    summary:
+      "판교 현대백화점에 입점한 대형 식당(협력 입점 매장)의 승인도면 조건에 맞춰 주방용(NP-01, 800×1200×200) · 홀용(NP-02, 800×1400×200) 분전반 2면을 제작했습니다. HD현대일렉트릭 차단기 지정 자재를 직접 수급해 도면대로 반영, 자재 준비 후 하루 만에 조립·결선·라벨링까지 완료했습니다.",
+    highlights: ["HD현대일렉트릭 지정 자재", "주방·홀 2면 분리", "승인도면 하루 제작"],
+    href: "/blog/2026-09-08-pangyo-hyundai-restaurant-panel",
+  },
+  {
     title: "목동 대형 상가 오피스텔 노후 배수펌프 제어판넬 교체",
     sector: "지하 기계실 · 배수펌프",
     image: "/images/case-control-panel-exterior.jpg",
