@@ -1,5 +1,5 @@
 version: 1
-next_index: 4
+next_index: 5
 last_curated_index: 24
 topics:
 - slug: quote-without-drawings
@@ -55,7 +55,8 @@ topics:
   - 정전시간
   - 분전반 교체
   - 무정전 교체
-  status: pending
+  status: done
+  published_slug: 2026-09-11-no-blackout-panel-replacement
 - slug: aging-panel-when-to-replace
   title: 20년 넘은 분전반 · 언제 교체해야 할까요? — 노후 위험 신호 8가지
   segment: 시설관리자
