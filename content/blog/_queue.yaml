@@ -1,5 +1,5 @@
 version: 1
-next_index: 5
+next_index: 6
 last_curated_index: 24
 topics:
 - slug: quote-without-drawings
@@ -66,7 +66,8 @@ topics:
   - 노후 분전반
   - 분전반 교체 시기
   - 분전반 수명
-  status: pending
+  status: done
+  published_slug: 2026-09-15-aging-panel-when-to-replace
 - slug: control-box-heat-management
   title: CCTV 제어함 내부가 뜨거울 때 루버만 뚫으면 될까? — 발열 관리 3단계
   segment: 보안업체
