@@ -52,6 +52,12 @@ BANNED_PHRASES = [
     "당일 제작",
 ]
 
+# SG기전 판매 제품에 근거 없는 인증·등급 표현이 게시되지 않도록
+# 대소문자와 띄어쓰기 변형까지 전체 MDX(frontmatter 포함)에서 차단한다.
+PROHIBITED_CLAIM_PATTERNS = [
+    (re.compile(r"\bIP[\s-]?66\b", re.IGNORECASE), "판매하지 않는 IP 등급 표현"),
+]
+
 
 # ─── 큐 조작 ────────────────────────────────────────────
 def load_queue() -> dict:
@@ -249,6 +255,12 @@ SG기전이 실제로 제공하는 것만 다루세요:
 - ❌ 시공(전기공사)·유지보수 서비스는 SG기전이 직접 하지 않음
 - ❌ 설치 인력 파견도 아님
 
+### IP 등급·인증 표현 안전 규칙 (필수)
+- SG기전 판매 제품은 `IP` 뒤에 숫자 `66`이 붙는 등급의 인증 제품이 아닙니다. 해당 문자열은 대소문자·띄어쓰기·하이픈 변형을 포함해 **제목·description·tags·본문·FAQ·링크 문구 어디에도 쓰지 마세요**.
+- 검색 유입을 위한 일반 비교·권장 등급·타사 제품 설명에도 위 금지 등급을 넣지 마세요.
+- SG기전 제품의 IP 등급이나 인증을 단정하기 전에 해당 모델의 시험성적서 또는 인증 자료가 확인된 범위인지 검토하세요.
+- 근거 자료가 없는 경우에는 "옥외용", "방우 구조", "설치 환경에 맞춘 보호 사양 협의"처럼 설명하고, 요구 등급의 시험 자료 보유 여부를 견적 전에 확인하도록 안내하세요.
+
 ---
 
 ## 8. 활용 가능한 기존 포스트 (내부 링크 대상)
@@ -318,8 +330,12 @@ def validate_mdx(text: str) -> tuple[bool, str]:
         return False, f"어절 수 부족 ({len(words)} < {MIN_WORD_COUNT})"
 
     for phrase in BANNED_PHRASES:
-        if phrase in body:
+        if phrase in text:
             return False, f"금지 어구 포함: {phrase}"
+
+    for pattern, label in PROHIBITED_CLAIM_PATTERNS:
+        if pattern.search(text):
+            return False, f"금지된 제품 주장 포함: {label}"
 
     if "<ContactCta" not in body:
         return False, "<ContactCta /> 컴포넌트 없음"
@@ -383,6 +399,7 @@ def curate_new_topic(posts_inventory: list[tuple[str, str]]) -> dict:
 - 7 고객 세그먼트 로테이션: 전기공사업체 · 시설관리자 · 보안업체 · LED전광판 · 건설회사 · 행사운영사 · 소방업체 · 검색유입
 - 7 앵글 로테이션: 페인해결 · 시간단축 · 안전리스크 · 비용절감 · 편의성 · 품질신뢰 · 맞춤적합성 · 증거 · 구매가이드 · 검색유입
 - 한국 B2B 분전반 시장의 실제 검색어를 반영 (부스바 · MCCB · 아크릴 · 옥외 · IP등급 · 서울교통공사 · 접지 · 매립 · 승압 · 배수펌프 · 조명 · 옥외 SUS 등)
+- SG기전 제품에 확인되지 않은 인증·성능 등급을 만들지 말 것. 특히 `IP` 뒤에 숫자 `66`이 붙는 표현은 주제·제목·키워드에 제안하지 말 것
 - slug는 영문 kebab-case
 
 ## 출력 형식 (YAML만, 다른 설명 없이)
