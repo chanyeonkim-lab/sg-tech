@@ -1,5 +1,5 @@
 version: 1
-next_index: 6
+next_index: 7
 last_curated_index: 24
 topics:
 - slug: quote-without-drawings
@@ -77,7 +77,8 @@ topics:
   - 제어함 발열
   - 함체 팬
   - SMPS 방열
-  status: pending
+  status: done
+  published_slug: 2026-09-18-control-box-heat-management
 - slug: access-control-panel-guide
   title: 출입통제 시스템 함체 · 리더 · 컨트롤러 배치 표준 가이드
   segment: 보안업체
