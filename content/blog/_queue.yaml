@@ -1,5 +1,5 @@
 version: 1
-next_index: 7
+next_index: 8
 last_curated_index: 24
 topics:
 - slug: quote-without-drawings
@@ -88,7 +88,8 @@ topics:
   - 출입통제 함체
   - 도어락 컨트롤러
   - 카드리더
-  status: pending
+  status: done
+  published_slug: 2026-09-22-access-control-panel-guide
 - slug: seoul-metro-tps-case
   title: 서울교통공사 관제센터 TPS실 CCTV·출입통제 제어함체 제작 사례 심층 공개
   segment: 보안업체
