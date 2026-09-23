@@ -6,15 +6,19 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { organizationSchema, websiteSchema } from "@/components/seo/schemas";
+import {
+  organizationSchema,
+  websiteSchema,
+  localBusinessSchema,
+  personAuthorSchema,
+} from "@/components/seo/schemas";
 import { siteConfig } from "@/lib/site";
 import { pretendard } from "./fonts";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default:
-      "국내 생산 철제 분전반 · SUS 스테인리스 분전함 전문 제조업체 | SG기전",
+    default: "철제 분전반 · SUS 분전함 맞춤 제작 | SG기전",
     template: "%s | SG기전",
   },
   description:
@@ -37,14 +41,12 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title:
-      "국내 생산 철제 분전반 · SUS 스테인리스 분전함 전문 제조업체 | SG기전",
+    title: "철제 분전반 · SUS 분전함 맞춤 제작 | SG기전",
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "국내 생산 철제 분전반 · SUS 스테인리스 분전함 전문 제조업체 | SG기전",
+    title: "철제 분전반 · SUS 분전함 맞춤 제작 | SG기전",
     description: siteConfig.description,
   },
   robots: {
@@ -85,7 +87,14 @@ export default function RootLayout({
       className={`scroll-smooth ${pretendard.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-white font-sans">
-        <JsonLd data={[organizationSchema(), websiteSchema()]} />
+        <JsonLd
+          data={[
+            organizationSchema(),
+            websiteSchema(),
+            personAuthorSchema(),
+            ...(localBusinessSchema() ? [localBusinessSchema()!] : []),
+          ]}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -101,6 +101,7 @@ export function LightboxImage({
             className="relative max-h-[90vh] max-w-[95vw]"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* eslint-disable-next-line @next/next/no-img-element -- 라이트박스 확대 뷰는 원본 크기 유지가 목적이라 next/image 부적합 */}
             <img
               src={src}
               alt={alt}

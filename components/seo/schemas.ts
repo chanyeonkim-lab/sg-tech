@@ -7,9 +7,17 @@ import type {
   ItemList,
   Product,
   Service,
+  LocalBusiness,
+  Person,
   WithContext,
 } from "schema-dts";
 import { siteConfig } from "@/lib/site";
+
+function absoluteUrl(path: string): string {
+  if (!path) return siteConfig.url;
+  if (path.startsWith("http://") || path.startsWith("https://")) return path;
+  return `${siteConfig.url}${path.startsWith("/") ? path : `/${path}`}`;
+}
 
 export function organizationSchema(): WithContext<Organization> {
   return {
@@ -29,10 +37,99 @@ export function organizationSchema(): WithContext<Organization> {
     address: {
       "@type": "PostalAddress",
       addressCountry: siteConfig.address.country,
+      ...(siteConfig.address.streetAddress
+        ? { streetAddress: siteConfig.address.streetAddress }
+        : {}),
+      ...(siteConfig.address.addressLocality
+        ? { addressLocality: siteConfig.address.addressLocality }
+        : {}),
+      ...(siteConfig.address.addressRegion
+        ? { addressRegion: siteConfig.address.addressRegion }
+        : {}),
+      ...(siteConfig.address.postalCode
+        ? { postalCode: siteConfig.address.postalCode }
+        : {}),
     },
     areaServed: siteConfig.areaServed,
     knowsAbout: [...siteConfig.categories],
     sameAs: [siteConfig.smartStore, siteConfig.naverBlog],
+  };
+}
+
+export function localBusinessSchema(): WithContext<LocalBusiness> | null {
+  const { address, geo } = siteConfig;
+  if (!address.streetAddress || !address.addressLocality) return null;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${siteConfig.url}#localbusiness`,
+    name: siteConfig.name,
+    url: siteConfig.url,
+    telephone: siteConfig.telephone,
+    email: siteConfig.email,
+    image: absoluteUrl(siteConfig.logo),
+    priceRange: "₩₩",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: address.country,
+      streetAddress: address.streetAddress,
+      addressLocality: address.addressLocality,
+      ...(address.addressRegion ? { addressRegion: address.addressRegion } : {}),
+      ...(address.postalCode ? { postalCode: address.postalCode } : {}),
+    },
+    ...(geo.latitude && geo.longitude
+      ? {
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: geo.latitude,
+            longitude: geo.longitude,
+          },
+        }
+      : {}),
+    ...(siteConfig.openingHours.length > 0
+      ? {
+          openingHoursSpecification: siteConfig.openingHours.map((spec) => ({
+            "@type": "OpeningHoursSpecification" as const,
+            ...parseOpeningHours(spec),
+          })),
+        }
+      : {}),
+    areaServed: siteConfig.areaServed,
+    sameAs: [siteConfig.smartStore, siteConfig.naverBlog],
+  };
+}
+
+function parseOpeningHours(spec: string): Record<string, string | string[]> {
+  const [days, hours] = spec.split(" ");
+  const [opens, closes] = (hours ?? "").split("-");
+  return {
+    dayOfWeek: days?.split(",") ?? [],
+    ...(opens && { opens }),
+    ...(closes && { closes }),
+  };
+}
+
+export function personAuthorSchema(): WithContext<Person> {
+  const { author } = siteConfig;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${siteConfig.url}#author-${encodeURIComponent(author.name)}`,
+    name: author.name,
+    jobTitle: author.jobTitle,
+    worksFor: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    knowsAbout: [...author.knowsAbout],
+    hasCredential: author.credentials.map((cred) => ({
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "license",
+      name: cred,
+    })),
+    url: `${siteConfig.url}/about`,
   };
 }
 
@@ -69,7 +166,13 @@ export function blogPostingSchema(post: BlogPostingInput): WithContext<BlogPosti
     description: post.description,
     datePublished: post.datePublished,
     dateModified: post.dateModified ?? post.datePublished,
-    author: { "@type": "Organization", name: siteConfig.name },
+    author: {
+      "@type": "Person",
+      "@id": `${siteConfig.url}#author-${encodeURIComponent(siteConfig.author.name)}`,
+      name: siteConfig.author.name,
+      jobTitle: siteConfig.author.jobTitle,
+      worksFor: { "@type": "Organization", name: siteConfig.name },
+    },
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,
@@ -80,7 +183,7 @@ export function blogPostingSchema(post: BlogPostingInput): WithContext<BlogPosti
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     url,
-    image: post.cover ? `${siteConfig.url}${post.cover}` : undefined,
+    image: absoluteUrl(post.cover ?? siteConfig.defaultOgImage),
     keywords: post.tags?.join(", "),
     inLanguage: "ko-KR",
   };

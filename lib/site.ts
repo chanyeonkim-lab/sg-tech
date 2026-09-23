@@ -29,12 +29,33 @@ export const siteConfig = {
   email: "jaeyoung@sg-powertech.com",
   address: {
     country: "KR",
+    streetAddress: "",
+    addressLocality: "",
+    addressRegion: "",
+    postalCode: "",
   },
+  geo: {
+    latitude: "",
+    longitude: "",
+  },
+  openingHours: [] as string[],
   areaServed: "KR",
   logo: "/logo.png",
+  defaultOgImage: "/opengraph-image",
   smartStore: "https://smartstore.naver.com/sg-powertech",
   naverBlog: "https://blog.naver.com/puhe628",
   ogImage: "/opengraph-image",
+  author: {
+    name: "박재영",
+    jobTitle: "SG기전 대표",
+    credentials: ["건축기사", "전기기능사"],
+    knowsAbout: [
+      "전기 분전반",
+      "KEC 규정",
+      "MCCB / ELB",
+      "SUS 함체 제작",
+    ],
+  },
   categories: [
     "전기분전함",
     "맞춤 분전반 제작",

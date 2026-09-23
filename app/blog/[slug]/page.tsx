@@ -6,8 +6,14 @@ import { Breadcrumb } from "@/components/blog/Breadcrumb";
 import { AuthorByline } from "@/components/blog/AuthorByline";
 import { LightboxImage } from "@/components/blog/LightboxImage";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { blogPostingSchema } from "@/components/seo/schemas";
+import { blogPostingSchema, breadcrumbSchema } from "@/components/seo/schemas";
 import { siteConfig } from "@/lib/site";
+
+function absoluteImage(path?: string): string {
+  const src = path ?? siteConfig.defaultOgImage;
+  if (src.startsWith("http://") || src.startsWith("https://")) return src;
+  return `${siteConfig.url}${src.startsWith("/") ? src : `/${src}`}`;
+}
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -35,7 +41,7 @@ export function generateMetadata({ params }: Params): Metadata {
       publishedTime: post.date,
       modifiedTime: post.updated,
       tags: [...post.tags],
-      images: post.cover ? [{ url: post.cover }] : undefined,
+      images: [{ url: absoluteImage(post.cover) }],
     },
     twitter: {
       card: "summary_large_image",
@@ -52,15 +58,22 @@ export default function BlogPostPage({ params }: Params) {
   return (
     <article className="max-w-3xl mx-auto px-6 md:px-8 py-16">
       <JsonLd
-        data={blogPostingSchema({
-          title: post.title,
-          description: post.description,
-          slug: post.slug,
-          datePublished: post.date,
-          dateModified: post.updated,
-          cover: post.cover,
-          tags: post.tags,
-        })}
+        data={[
+          blogPostingSchema({
+            title: post.title,
+            description: post.description,
+            slug: post.slug,
+            datePublished: post.date,
+            dateModified: post.updated,
+            cover: post.cover,
+            tags: post.tags,
+          }),
+          breadcrumbSchema([
+            { name: "홈", url: "/" },
+            { name: "블로그", url: "/blog" },
+            { name: post.title, url: `/blog/${post.slug}` },
+          ]),
+        ]}
       />
       <Breadcrumb
         items={[
