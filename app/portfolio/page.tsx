@@ -32,6 +32,15 @@ type Case = {
 
 const cases: Case[] = [
   {
+    title: "인천환경공단 송도 공공하수처리시설 배수펌프 SUS 분전함",
+    sector: "공공기관 납품 · 설계 · 도면 · 승인 서류",
+    image: "/images/case-songdo-sus-cover.jpg",
+    summary:
+      "인천환경공단 승기사업소 송도지소(송도 공공하수처리시설) 배수펌프 전기공사용 분전함을 스테인리스(SUS)로 맞춤 제작했습니다. 제작만이 아니라 분전반 설계와 제어회로도·결선도·외함 정면도/측면도·계통도 작성, 발주처 승인용 서류 준비까지 함께 진행했습니다. 인양고리·PL 표시등·내부 히터·내부 LED 조명을 적용했습니다.",
+    highlights: ["공공기관 납품", "승인 서류 대응", "설계·도면 직접 수행", "스테인리스(SUS) 함체"],
+    href: "/blog/2026-09-24-songdo-sewage-pump-sus-panel",
+  },
+  {
     title: "한양여자대학교 교내 카페 분전반",
     sector: "대학교 교내 상업시설 · 인테리어 업체 발주",
     image: "/images/case-hanyang-cafe-cover.jpg",
