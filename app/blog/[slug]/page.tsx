@@ -11,6 +11,7 @@ import {
   blogPostingSchema,
   breadcrumbSchema,
   faqPageSchema,
+  howToSchema,
 } from "@/components/seo/schemas";
 import { siteConfig } from "@/lib/site";
 
@@ -82,6 +83,16 @@ export default function BlogPostPage({ params }: Params) {
             { name: post.title, url: `/blog/${post.slug}` },
           ]),
           ...(faqs.length > 0 ? [faqPageSchema(faqs, postUrl)] : []),
+          ...(post.howto
+            ? [
+                howToSchema({
+                  name: post.howto.name,
+                  description: post.howto.description,
+                  steps: post.howto.steps,
+                  pageUrl: postUrl,
+                }),
+              ]
+            : []),
         ]}
       />
       <Breadcrumb

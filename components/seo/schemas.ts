@@ -8,6 +8,7 @@ import type {
   AboutPage,
   CollectionPage,
   FAQPage,
+  HowTo,
   ItemList,
   Product,
   Service,
@@ -213,6 +214,30 @@ export function faqPageSchema(
         "@type": "Answer",
         text: f.answer,
       },
+    })),
+  };
+}
+
+export interface HowToInput {
+  name: string;
+  description: string;
+  steps: { name: string; text: string }[];
+  pageUrl: string;
+}
+
+export function howToSchema(input: HowToInput): WithContext<HowTo> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "@id": `${input.pageUrl}#howto`,
+    name: input.name,
+    description: input.description,
+    inLanguage: "ko-KR",
+    step: input.steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
     })),
   };
 }
