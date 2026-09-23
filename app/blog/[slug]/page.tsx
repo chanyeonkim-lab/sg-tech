@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug } from "@/lib/posts";
+import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/posts";
 import { MdxRenderer } from "@/components/mdx/MdxRenderer";
 import { Breadcrumb } from "@/components/blog/Breadcrumb";
 import { AuthorByline } from "@/components/blog/AuthorByline";
 import { LightboxImage } from "@/components/blog/LightboxImage";
+import { RelatedPosts } from "@/components/blog/RelatedPosts";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
   blogPostingSchema,
@@ -135,6 +136,8 @@ export default function BlogPostPage({ params }: Params) {
         <AuthorByline reviewedDate={post.updated ?? post.date} />
         <MdxRenderer code={post.body} />
       </div>
+
+      <RelatedPosts posts={getRelatedPosts(post, 3)} />
     </article>
   );
 }
