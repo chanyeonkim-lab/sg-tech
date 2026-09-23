@@ -27,6 +27,15 @@ type Case = {
 
 const cases: Case[] = [
   {
+    title: "한양여자대학교 교내 카페 분전반",
+    sector: "대학교 교내 상업시설 · 인테리어 업체 발주",
+    image: "/images/case-hanyang-cafe-cover.jpg",
+    summary:
+      "한양여자대학교 교내에 새로 들어서는 카페 현장. 학교 시설팀의 유지보수 편의를 고려해 LS ELECTRIC 차단기(Metasol ABN 104c 75A 메인 MCCB + EBS 30A 누전차단기 2계통)로 통일하고, 부스바 배열·투명 아크릴 차폐판·도어 접지 본딩까지 반영했습니다. 기성 규격 함체와 상시 취급 자재 조건이 맞아 주문하신 날 제작을 마치고 현장으로 배송했습니다.",
+    highlights: ["LS ELECTRIC 차단기", "기성 규격 함체", "주문 당일 배송"],
+    href: "/blog/2026-09-23-hanyang-univ-cafe-panel",
+  },
+  {
     title: "판교 현대백화점 입점 대형 식당 주방·홀 분전반 2면",
     sector: "백화점 입점 식당 · 지정 자재",
     image: "/images/case-pangyo-cover.png",
