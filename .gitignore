@@ -38,3 +38,8 @@ next-env.d.ts
 # velite
 .velite
 /public/velite
+
+# 네이버 블로그·오피스 원본 (SEO 사이트 배포와 무관)
+*.docx
+*.doc
+*.hwp
