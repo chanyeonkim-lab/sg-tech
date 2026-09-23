@@ -7,6 +7,7 @@ import type {
   ContactPage,
   AboutPage,
   CollectionPage,
+  FAQPage,
   ItemList,
   Product,
   Service,
@@ -189,6 +190,30 @@ export function blogPostingSchema(post: BlogPostingInput): WithContext<BlogPosti
     image: absoluteUrl(post.cover ?? siteConfig.defaultOgImage),
     keywords: post.tags?.join(", "),
     inLanguage: "ko-KR",
+  };
+}
+
+export interface FaqPair {
+  question: string;
+  answer: string;
+}
+
+export function faqPageSchema(
+  faqs: FaqPair[],
+  pageUrl: string,
+): WithContext<FAQPage> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": `${pageUrl}#faq`,
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
   };
 }
 

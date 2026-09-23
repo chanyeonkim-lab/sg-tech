@@ -6,7 +6,11 @@ import { Breadcrumb } from "@/components/blog/Breadcrumb";
 import { AuthorByline } from "@/components/blog/AuthorByline";
 import { LightboxImage } from "@/components/blog/LightboxImage";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { blogPostingSchema, breadcrumbSchema } from "@/components/seo/schemas";
+import {
+  blogPostingSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+} from "@/components/seo/schemas";
 import { siteConfig } from "@/lib/site";
 
 function absoluteImage(path?: string): string {
@@ -55,6 +59,9 @@ export default function BlogPostPage({ params }: Params) {
   const post = getPostBySlug(params.slug);
   if (!post) notFound();
 
+  const postUrl = `${siteConfig.url}/blog/${post.slug}`;
+  const faqs = post.faqs ?? [];
+
   return (
     <article className="max-w-3xl mx-auto px-6 md:px-8 py-16">
       <JsonLd
@@ -73,6 +80,7 @@ export default function BlogPostPage({ params }: Params) {
             { name: "블로그", url: "/blog" },
             { name: post.title, url: `/blog/${post.slug}` },
           ]),
+          ...(faqs.length > 0 ? [faqPageSchema(faqs, postUrl)] : []),
         ]}
       />
       <Breadcrumb
