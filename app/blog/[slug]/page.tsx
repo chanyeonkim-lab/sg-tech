@@ -76,6 +76,9 @@ export default function BlogPostPage({ params }: Params) {
             dateModified: post.updated,
             cover: post.cover,
             tags: post.tags,
+            wordCount: post.metadata.wordCount,
+            readingTimeMinutes: post.metadata.readingTime,
+            articleSection: post.tags[0],
           }),
           breadcrumbSchema([
             { name: "홈", url: "/" },

@@ -160,6 +160,9 @@ export interface BlogPostingInput {
   dateModified?: string;
   cover?: string;
   tags?: string[];
+  wordCount?: number;
+  readingTimeMinutes?: number;
+  articleSection?: string;
 }
 
 export function blogPostingSchema(post: BlogPostingInput): WithContext<BlogPosting> {
@@ -191,6 +194,17 @@ export function blogPostingSchema(post: BlogPostingInput): WithContext<BlogPosti
     image: absoluteUrl(post.cover ?? siteConfig.defaultOgImage),
     keywords: post.tags?.join(", "),
     inLanguage: "ko-KR",
+    ...(post.articleSection ? { articleSection: post.articleSection } : {}),
+    ...(post.wordCount ? { wordCount: post.wordCount } : {}),
+    ...(post.readingTimeMinutes
+      ? { timeRequired: `PT${post.readingTimeMinutes}M` }
+      : {}),
+    isPartOf: {
+      "@type": "Blog",
+      "@id": `${siteConfig.url}/blog#blog`,
+      name: `${siteConfig.name} 블로그`,
+      url: `${siteConfig.url}/blog`,
+    },
   };
 }
 
@@ -292,6 +306,8 @@ export interface ProductItemInput {
   slug: string;
   image?: string;
   category?: string;
+  features?: string[];
+  offerUrl?: string;
 }
 
 export function serviceSchema(): WithContext<Service> {
@@ -409,13 +425,44 @@ export function productItemListSchema(items: ProductItemInput[]): WithContext<It
       position: index + 1,
       item: {
         "@type": "Product",
+        "@id": `${siteConfig.url}/products#${item.slug}`,
         name: item.name,
         description: item.description,
         url: `${siteConfig.url}/products#${item.slug}`,
-        image: item.image ? `${siteConfig.url}${item.image}` : undefined,
+        image: item.image ? absoluteUrl(item.image) : absoluteUrl(siteConfig.defaultOgImage),
         category: item.category,
         brand: { "@type": "Brand", name: siteConfig.name },
-        manufacturer: { "@type": "Organization", name: siteConfig.name },
+        manufacturer: {
+          "@type": "Organization",
+          name: siteConfig.name,
+          url: siteConfig.url,
+        },
+        ...(item.features && item.features.length > 0
+          ? {
+              additionalProperty: item.features.map((f) => ({
+                "@type": "PropertyValue" as const,
+                name: "특징",
+                value: f,
+              })),
+            }
+          : {}),
+        ...(item.offerUrl
+          ? {
+              offers: {
+                "@type": "Offer" as const,
+                url: item.offerUrl,
+                priceCurrency: "KRW",
+                availability: "https://schema.org/InStock",
+                itemCondition: "https://schema.org/NewCondition",
+                seller: {
+                  "@type": "Organization" as const,
+                  name: siteConfig.name,
+                  url: siteConfig.url,
+                },
+                areaServed: siteConfig.areaServed,
+              },
+            }
+          : {}),
       } satisfies Product,
     })),
   };

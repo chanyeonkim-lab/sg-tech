@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { productItemListSchema } from "@/components/seo/schemas";
+import {
+  breadcrumbSchema,
+  collectionPageSchema,
+  productItemListSchema,
+} from "@/components/seo/schemas";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -76,7 +80,23 @@ const products = [
 export default function ProductsPage() {
   return (
     <div>
-      <JsonLd data={productItemListSchema(products)} />
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            slug: "/products",
+            name: "SG기전 제품 카탈로그",
+            description:
+              "철제 분전반, SUS 스테인리스 분전함, 가설 분전반, 컨트롤박스. 사이즈·회로 수·설치 환경에 맞춰 맞춤 제작합니다.",
+          }),
+          breadcrumbSchema([
+            { name: "홈", url: "/" },
+            { name: "제품", url: "/products" },
+          ]),
+          productItemListSchema(
+            products.map((p) => ({ ...p, offerUrl: siteConfig.smartStore })),
+          ),
+        ]}
+      />
       <PageHero
         title="맞춤 제작 분전반 · 표준 분전함 · 컨트롤박스"
         subtitle="현장 사양에 맞춰 사이즈와 회로 구성을 조정합니다. 표준 사양은 네이버 스마트스토어에서 즉시 구매 가능합니다."

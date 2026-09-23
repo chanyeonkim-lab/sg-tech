@@ -45,6 +45,7 @@ export const siteConfig = {
   smartStore: "https://smartstore.naver.com/sg-powertech",
   naverBlog: "https://blog.naver.com/puhe628",
   ogImage: "/opengraph-image",
+  indexNowKey: "a966d5534eacc7eea330a3f3c960b491",
   author: {
     name: "박재영",
     jobTitle: "SG기전 대표",
