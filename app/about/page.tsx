@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/PageHero";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { aboutPageSchema, breadcrumbSchema } from "@/components/seo/schemas";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -56,6 +58,15 @@ const highlights = [
 export default function AboutPage() {
   return (
     <div>
+      <JsonLd
+        data={[
+          aboutPageSchema(),
+          breadcrumbSchema([
+            { name: "홈", url: "/" },
+            { name: "회사소개", url: "/about" },
+          ]),
+        ]}
+      />
       <PageHero
         title="분전반 전문 제조업체, SG기전"
         subtitle="철제 분전반, SUS 스테인리스 분전함, 가설 분전반, 컨트롤박스를 자체 공장에서 직접 맞춤 제작합니다."

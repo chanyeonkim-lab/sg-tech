@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/posts";
 import { PostCard } from "@/components/blog/PostCard";
 import { Breadcrumb } from "@/components/blog/Breadcrumb";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { blogSchema, breadcrumbSchema } from "@/components/seo/schemas";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -22,6 +24,23 @@ export default function BlogIndexPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-8 py-16">
+      <JsonLd
+        data={[
+          blogSchema({
+            posts: posts.map((p) => ({
+              slug: p.slug,
+              title: p.title,
+              description: p.description,
+              date: p.date,
+              updated: p.updated,
+            })),
+          }),
+          breadcrumbSchema([
+            { name: "홈", url: "/" },
+            { name: "블로그", url: "/blog" },
+          ]),
+        ]}
+      />
       <Breadcrumb
         items={[
           { name: "홈", url: "/" },

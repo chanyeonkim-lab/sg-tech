@@ -1,9 +1,12 @@
 import type {
   Organization,
   WebSite,
+  Blog,
   BlogPosting,
   BreadcrumbList,
   ContactPage,
+  AboutPage,
+  CollectionPage,
   ItemList,
   Product,
   Service,
@@ -268,6 +271,82 @@ export function serviceSchema(): WithContext<Service> {
       },
     },
     termsOfService: `${siteConfig.url}/institutional-supply`,
+  };
+}
+
+export interface BlogListInput {
+  posts: {
+    slug: string;
+    title: string;
+    description: string;
+    date: string;
+    updated?: string;
+  }[];
+}
+
+export function blogSchema({ posts }: BlogListInput): WithContext<Blog> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${siteConfig.url}/blog#blog`,
+    name: `${siteConfig.name} 블로그`,
+    url: `${siteConfig.url}/blog`,
+    inLanguage: "ko-KR",
+    description:
+      "분전반·분전함 시공 노하우, 실제 납품 사례, KEC·KS 규정 해설을 정리합니다.",
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    blogPost: posts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      description: p.description,
+      datePublished: p.date,
+      dateModified: p.updated ?? p.date,
+      url: `${siteConfig.url}/blog/${p.slug}`,
+      mainEntityOfPage: `${siteConfig.url}/blog/${p.slug}`,
+      author: {
+        "@type": "Person",
+        "@id": `${siteConfig.url}#author-${encodeURIComponent(siteConfig.author.name)}`,
+        name: siteConfig.author.name,
+      },
+    })),
+  };
+}
+
+export function aboutPageSchema(): WithContext<AboutPage> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${siteConfig.url}/about#aboutpage`,
+    url: `${siteConfig.url}/about`,
+    name: `${siteConfig.name} 회사소개`,
+    inLanguage: "ko-KR",
+    mainEntity: {
+      "@type": "Organization",
+      "@id": `${siteConfig.url}#organization`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+}
+
+export function collectionPageSchema(input: {
+  slug: string;
+  name: string;
+  description: string;
+}): WithContext<CollectionPage> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${siteConfig.url}${input.slug}#collectionpage`,
+    url: `${siteConfig.url}${input.slug}`,
+    name: input.name,
+    description: input.description,
+    inLanguage: "ko-KR",
+    isPartOf: { "@type": "WebSite", "@id": siteConfig.url },
   };
 }
 

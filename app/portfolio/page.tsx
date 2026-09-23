@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/PageHero";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  breadcrumbSchema,
+  collectionPageSchema,
+} from "@/components/seo/schemas";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -74,6 +79,20 @@ const cases: Case[] = [
 export default function PortfolioPage() {
   return (
     <div>
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            slug: "/portfolio",
+            name: "SG기전 실제 납품 사례",
+            description:
+              "다양한 환경·규격·요구조건에 대응한 대표 분전반·컨트롤박스 납품 프로젝트 모음.",
+          }),
+          breadcrumbSchema([
+            { name: "홈", url: "/" },
+            { name: "납품 사례", url: "/portfolio" },
+          ]),
+        ]}
+      />
       <PageHero
         title="실제 납품 사례"
         subtitle="다양한 환경·규격·요구조건에 대응한 대표 프로젝트를 정리했습니다. 요청 시 유사 사양의 상세 도면과 시공 결과물을 공유해드립니다."
