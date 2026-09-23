@@ -8,10 +8,10 @@ export const contentType = "image/png";
 
 export default async function OpengraphImage() {
   const [bold, black] = await Promise.all([
-    fetch(new URL("/fonts/Pretendard-Bold.woff2", siteConfig.url)).then((r) =>
+    fetch(new URL("/fonts/Pretendard-Bold.ttf", siteConfig.url)).then((r) =>
       r.arrayBuffer()
     ),
-    fetch(new URL("/fonts/Pretendard-Black.woff2", siteConfig.url)).then((r) =>
+    fetch(new URL("/fonts/Pretendard-Black.ttf", siteConfig.url)).then((r) =>
       r.arrayBuffer()
     ),
   ]);
