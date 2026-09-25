@@ -1,5 +1,5 @@
 version: 1
-next_index: 8
+next_index: 9
 last_curated_index: 24
 topics:
 - slug: quote-without-drawings
@@ -100,7 +100,8 @@ topics:
   - TPS실
   - 관제센터
   - 제어함체
-  status: pending
+  status: done
+  published_slug: 2026-09-25-seoul-metro-tps-case
 - slug: led-signboard-power-panel
   title: 대형 LED 전광판 · 전원 분전함 회로 분리와 발열 관리
   segment: LED전광판
