@@ -1,5 +1,5 @@
 version: 1
-next_index: 9
+next_index: 10
 last_curated_index: 24
 topics:
 - slug: quote-without-drawings
@@ -111,7 +111,8 @@ topics:
   - LED 전광판
   - 전원 분전함
   - SMPS 회로 분리
-  status: pending
+  status: done
+  published_slug: 2026-09-29-led-signboard-power-panel
 - slug: outdoor-lighting-panel
   title: 옥외 조명 개선 공사의 성공은 분전함 업그레이드에서 결정됩니다
   segment: LED전광판
