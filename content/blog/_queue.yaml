@@ -1,5 +1,5 @@
 version: 1
-next_index: 10
+next_index: 11
 last_curated_index: 24
 topics:
 - slug: quote-without-drawings
@@ -122,7 +122,8 @@ topics:
   - 옥외 조명
   - 조명 분전함
   - 가로등 분전함
-  status: pending
+  status: done
+  published_slug: 2026-10-02-outdoor-lighting-panel
 - slug: welding-machine-circuit-tripping
   title: 용접기만 켜면 차단기가 내려간다? — 가설분전반 회로 재설계 실무
   segment: 건설회사
