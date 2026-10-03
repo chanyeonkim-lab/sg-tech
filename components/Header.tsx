@@ -22,10 +22,10 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* 로고 */}
-          <Link href="/" aria-label="SG기전 홈으로 이동" className="flex items-center">
+          <Link href="/" aria-label="SG기전(에스지기전) 홈으로 이동" className="flex items-center">
             <Image
               src="/logo.png"
-              alt="SG기전"
+              alt="SG기전(에스지기전)"
               width={840}
               height={412}
               priority

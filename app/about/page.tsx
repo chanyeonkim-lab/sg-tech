@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "회사소개",
   description:
-    "대형 LED 전광판·쇼핑몰 매장·야외 팝업스토어·대학교 등 기관·대형 상가 건물·수조 펌프 제어반, 소방자재 보관함·초대형 박스까지 다목적 분전반·철제/SUS 박스 맞춤 제작. 국가 자격증 보유 전문 인력, KS·KEC 규격 준수.",
+    "에스지기전(SG기전) - 대형 LED 전광판·쇼핑몰 매장·야외 팝업스토어·대학교 등 기관·대형 상가 건물·수조 펌프 제어반, 소방자재 보관함·초대형 박스까지 다목적 분전반·철제/SUS 박스 맞춤 제작. 국가 자격증 보유 전문 인력, KS·KEC 규격 준수.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "회사소개 | SG기전",
@@ -68,7 +68,7 @@ export default function AboutPage() {
         ]}
       />
       <PageHero
-        title="분전반 전문 제조업체, SG기전"
+        title="분전반 전문 제조업체, SG기전(에스지기전)"
         subtitle="철제 분전반, SUS 스테인리스 분전함, 가설 분전반, 컨트롤박스를 자체 공장에서 직접 맞춤 제작합니다."
         breadcrumb={[
           { name: "홈", url: "/" },

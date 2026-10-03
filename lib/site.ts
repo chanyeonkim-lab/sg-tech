@@ -1,11 +1,15 @@
 export const siteConfig = {
   name: "SG기전",
   legalName: "SG기전",
+  alternateName: "에스지기전",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.sg-powertech.com",
   locale: "ko_KR",
   description:
-    "분전반·철제/SUS 박스 다목적 맞춤 제작 전문. 대형 LED 전광판·쇼핑몰 매장·야외 팝업스토어·대학교 등 기관·대형 상가·수조 펌프 제어반부터 소방자재 보관함·초대형 박스까지 자체 공장 직접 생산, 1-3일 빠른 납기.",
+    "에스지기전(SG기전) - 분전반·철제/SUS 박스 다목적 맞춤 제작 전문. 대형 LED 전광판·쇼핑몰 매장·야외 팝업스토어·대학교 등 기관·대형 상가·수조 펌프 제어반부터 소방자재 보관함·초대형 박스까지 자체 공장 직접 생산, 1-3일 빠른 납기.",
   keywords: [
+    "에스지기전",
+    "에스지기전 분전반",
+    "SG기전",
     "분전반",
     "철제 분전함",
     "SUS 분전함",

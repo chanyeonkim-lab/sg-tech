@@ -25,6 +25,7 @@ export function Footer() {
               <span className="text-sg-yellow">SG</span>
               <span className="text-white">기전</span>
             </p>
+            <p className="text-xs text-gray-400 mt-1">에스지기전</p>
             <p className="mt-3 text-sm text-gray-300 leading-relaxed">
               분전반 · 분전함 · 컨트롤박스<br />
               맞춤 제작 전문 제조업체

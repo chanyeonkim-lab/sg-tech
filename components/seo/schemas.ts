@@ -30,6 +30,7 @@ export function organizationSchema(): WithContext<Organization> {
     "@type": "Organization",
     name: siteConfig.name,
     legalName: siteConfig.legalName,
+    alternateName: siteConfig.alternateName,
     url: siteConfig.url,
     logo: {
       "@type": "ImageObject",
@@ -70,6 +71,7 @@ export function localBusinessSchema(): WithContext<LocalBusiness> | null {
     "@type": "LocalBusiness",
     "@id": `${siteConfig.url}#localbusiness`,
     name: siteConfig.name,
+    alternateName: siteConfig.alternateName,
     url: siteConfig.url,
     telephone: siteConfig.telephone,
     email: siteConfig.email,
