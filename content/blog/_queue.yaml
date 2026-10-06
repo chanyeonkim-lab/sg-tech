@@ -1,5 +1,5 @@
 version: 1
-next_index: 11
+next_index: 12
 last_curated_index: 24
 topics:
 - slug: quote-without-drawings
@@ -133,7 +133,8 @@ topics:
   - 용접기 차단기
   - 가설분전반 트립
   - 3상 380V
-  status: pending
+  status: done
+  published_slug: 2026-10-06-welding-machine-circuit-tripping
 - slug: standardized-temp-panels-multi-site
   title: 여러 현장 · 여러 층 반복 발주 · 가설분전반 표준화 방법
   segment: 건설회사
