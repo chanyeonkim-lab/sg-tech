@@ -71,11 +71,11 @@ function extractFaqs(mdx: string): { question: string; answer: string }[] {
   const endMatch = rest.slice(1).search(/^## |^<ContactCta/m);
   const section = endMatch === -1 ? rest : rest.slice(0, endMatch + 1);
 
-  const blocks = section.split(/\n(?=\*\*Q[0-9.]*\.?\s)/);
+  const blocks = section.split(/\n(?=(?:\*\*)?Q[0-9.]*\.?\s)/);
   const faqs: { question: string; answer: string }[] = [];
 
   for (const block of blocks) {
-    const m = block.match(/^\*\*Q[0-9]*\.?\s*(.+?)\*\*\s*\n([\s\S]+)$/);
+    const m = block.match(/^(?:\*\*)?Q[0-9]*\.?\s*(.+?)(?:\*\*)?\s*\n([\s\S]+)$/);
     if (!m) continue;
     const question = m[1].trim().replace(/\s+/g, " ");
     let answer = m[2].trim();

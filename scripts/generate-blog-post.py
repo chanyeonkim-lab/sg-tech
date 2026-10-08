@@ -111,7 +111,7 @@ def build_system_prompt(posts_inventory: list[tuple[str, str]]) -> str:
     banned_list = "\n".join(f"- {p}" for p in BANNED_PHRASES)
     today = datetime.date.today().isoformat()
 
-    return f"""당신은 SG기전(한국 B2B 분전반·컨트롤박스 맞춤 제조업체) 블로그의 시니어 콘텐츠 에디터이자 SEO 브리프 스페셜리스트입니다.
+    prompt = f"""당신은 SG기전(한국 B2B 분전반·컨트롤박스 맞춤 제조업체) 블로그의 시니어 콘텐츠 에디터이자 SEO 브리프 스페셜리스트입니다.
 
 ## 미션
 
@@ -211,7 +211,7 @@ draft: false
 - **각 H2 아래 본문**: 답 우선(answer-first) 구조. 첫 2-3문장에 결론, 그다음 근거. 이상적 패시지 길이 134-167 어절 (AI 검색 인용 최적).
 - **표 (마크다운 `| ... |`)**: 최소 1개 삽입. 규격 비교 · 체크리스트 · 사양 정리 등에 활용.
 - **불릿·번호 리스트**: 절차·기준·항목 나열에 적극 활용.
-- **강조**: 핵심 용어에 `**bold**`. 남용 금지 (문단당 1-3회).
+- 글쓰기 금지 규칙: 별표 두 개를 사용하는 굵은 글씨 문법과 긴 대시(em dash)를 제목·설명·본문 어디에도 사용하지 않는다. 강조는 문장 구성과 소제목으로 표현하고, 구분은 콜론·쉼표·마침표로 처리한다.
 - **인용 · Callout**: `<Callout variant="info" title="핵심 요약">` 또는 `variant="warning" title="주의"` 로 결정적 인사이트 시각화.
 - **ContactCta**: 본문 상단(문제 정의 직후)과 하단(FAQ/다음 읽을거리 직전) **각 1회 이상**. headline은 문맥에 맞게 (예: "맞춤 견적 · 도면 상담", "긴급 발주 · 서울 대응").
 - **자주 묻는 질문 (Q&A)**: 말미 근처에 `## 자주 묻는 질문` 섹션 필수. Q 3-5개, 각 A 2-4문장. 이 섹션은 AI 검색(ChatGPT, Perplexity, AI Overviews) 인용에 최적.
@@ -285,6 +285,8 @@ SG기전이 실제로 제공하는 것만 다루세요:
 - 파일명·저장 지시 등 포함 금지
 - 브리프 · 아웃라인 · 메타 코멘트 없이 바로 최종 콘텐츠만
 """
+    # Keep examples consistent with the public writing rules.
+    return prompt.replace("**", "").replace("—", ":")
 
 
 def build_user_prompt(topic: dict) -> str:
@@ -300,7 +302,7 @@ def build_user_prompt(topic: dict) -> str:
 
 제목은 초안을 그대로 쓰거나, 더 매력적인 문구로 다듬어도 됩니다 (단 slug URL은 유지). Frontmatter의 tags에는 위 검색어들이 자연스럽게 포함되도록 하세요.
 
-바로 MDX 본문을 출력해주세요."""
+바로 MDX 본문을 출력해주세요.""".replace("**", "").replace("—", ":")
 
 
 # ─── 검증 ────────────────────────────────────────────────
@@ -315,6 +317,8 @@ def validate_mdx(text: str) -> tuple[bool, str]:
     for field in ("title:", "description:", "date:", "tags:", "draft:"):
         if field not in fm:
             return False, f"Frontmatter에 {field} 없음"
+    if "**" in text or "—" in text:
+        return False, "금지된 글쓰기 기호 포함: 별표 두 개 또는 긴 대시"
     if "draft: true" in fm:
         return False, "draft: true 상태"
 
