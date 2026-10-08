@@ -37,6 +37,43 @@ const supportedDocs = [
   },
 ];
 
+const supplyCaseGroups = [
+  {
+    category: "공공기관 납품 이력",
+    cases: [
+      {
+        title: "인천환경공단 송도 재이용시설 배수펌프 제어반",
+        summary:
+          "SUS304 함체에 수위 감지·알람과 누전 경보 기능을 구성했습니다. LS ELECTRIC 기기를 사용하고 승인도서 12종 준비를 함께 진행했습니다.",
+        href: "/blog/2026-09-24-songdo-sewage-pump-sus-panel",
+      },
+      {
+        title: "서울교통공사 사옥 CCTV 제어함체",
+        summary:
+          "CCTV·출입통제 장비를 수용하는 제어함체를 제작했습니다. 설치 공간과 장비 배치에 맞춰 함체 규격과 배선 인입 위치를 구성했습니다.",
+        href: "/blog/2026-09-25-seoul-metro-tps-case",
+      },
+    ],
+  },
+  {
+    category: "기업·기관 납품 이력",
+    cases: [
+      {
+        title: "경기대학교 분전반 납품",
+        summary:
+          "학교 시설의 요구 사양에 맞춰 분전반을 제작·납품했습니다. 회로 구성과 자재 사양을 반영하고 담당자에게 필요한 도면·사양서 준비를 지원합니다.",
+        href: "/blog/2026-08-30-kec-institutional-panels",
+      },
+      {
+        title: "판교 현대백화점 입점 매장 분전반",
+        summary:
+          "입점 식당의 주방용·홀용 분전반 2면을 제작했습니다. 승인도면과 HD현대일렉트릭 지정 차단기를 반영해 용도별로 회로를 구성했습니다.",
+        href: "/blog/2026-09-08-pangyo-hyundai-restaurant-panel",
+      },
+    ],
+  },
+];
+
 const processSteps = [
   {
     step: "01",
@@ -91,6 +128,55 @@ export default function InstitutionalSupplyPage() {
           { name: "기관 납품 서비스", url: "/institutional-supply" },
         ]}
       />
+
+      <section
+        aria-labelledby="supply-case-summary"
+        className="max-w-7xl mx-auto px-6 md:px-8 pt-16"
+      >
+        <h2
+          id="supply-case-summary"
+          className="text-2xl md:text-3xl font-bold text-sg-charcoal mb-4"
+        >
+          공공기관·기업 납품 사례
+        </h2>
+        <p className="text-sg-charcoal mb-8">
+          에스지기전은 공공기관·대학교·기업 현장의 목적과 요구 사양에 맞춰
+          분전반과 제어함체를 제작합니다.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {supplyCaseGroups.map((group) => (
+            <div key={group.category}>
+              <h3 className="text-lg font-bold text-sg-charcoal mb-4">
+                {group.category}
+              </h3>
+              <div className="space-y-4">
+                {group.cases.map((item) => (
+                  <article
+                    key={item.href}
+                    className="p-6 bg-sg-cream rounded-xl border-l-4 border-sg-yellow"
+                  >
+                    <h4 className="font-bold text-sg-charcoal mb-3">
+                      <Link href={item.href} className="hover:underline">
+                        {item.title}
+                      </Link>
+                    </h4>
+                    <p className="text-sm text-sg-charcoal leading-relaxed mb-4">
+                      {item.summary}
+                    </p>
+                    <Link
+                      href={item.href}
+                      aria-label={`${item.title} 자세히 보기`}
+                      className="text-sm font-medium text-sg-yellow-dark hover:underline"
+                    >
+                      사례 자세히 보기 →
+                    </Link>
+                  </article>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className="max-w-7xl mx-auto px-6 md:px-8 py-16">
         <h2 className="text-2xl md:text-3xl font-bold text-sg-charcoal mb-8">
@@ -151,44 +237,22 @@ export default function InstitutionalSupplyPage() {
       <section className="bg-sg-cream">
         <div className="max-w-4xl mx-auto px-6 md:px-8 py-16">
           <h2 className="text-2xl md:text-3xl font-bold text-sg-charcoal mb-4">
-            관련 실무 가이드
+            기관 및 기업 납품 사례
           </h2>
           <p className="text-sg-charcoal mb-6">
-            발주 · 도면 검토 · KEC 준수 확인에 도움이 되는 실무 자료들:
+            현장 목적과 요구 사양을 반영한 분전반·제어함체 제작 사례를 소개합니다.
           </p>
           <ul className="space-y-3">
-            <li>
-              <Link
-                href="/blog/2026-08-30-kec-institutional-panels"
-                className="text-sg-yellow-dark hover:underline font-medium"
-              >
-                → 경기대학교 등 기관 납품 실적이 증명하는 KEC 규격 맞춤 분전반 제작 과정
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/blog/2026-08-31-mccb-vs-elb-difference"
-                className="text-sg-yellow-dark hover:underline font-medium"
-              >
-                → 배선용차단기(MCCB)와 누전차단기(ELB), 무엇이 다른가요?
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/blog/2026-08-31-busbar-complete-guide"
-                className="text-sg-yellow-dark hover:underline font-medium"
-              >
-                → 분전반 부스바(Busbar), 규격·허용전류·절연 처리 완전 정리
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/blog/2026-08-31-acrylic-cover-guide"
-                className="text-sg-yellow-dark hover:underline font-medium"
-              >
-                → 분전반 아크릴 커버 — 안전점검 “충전부 노출” 지적 대응 완벽 가이드
-              </Link>
-            </li>
+            {supplyCaseGroups.flatMap((group) => group.cases).map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="text-sg-yellow-dark hover:underline font-medium"
+                >
+                  → {item.title}
+                </Link>
+              </li>
+            ))}
             <li>
               <Link
                 href="/portfolio"
@@ -219,9 +283,16 @@ export default function InstitutionalSupplyPage() {
             </a>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="px-8 py-4 bg-white text-sg-charcoal font-bold rounded text-lg border-2 border-sg-charcoal"
+              aria-label={`이메일 문의 ${siteConfig.email}`}
+              className="inline-flex flex-col items-center justify-center gap-1 px-6 md:px-8 py-4 bg-white text-sg-charcoal rounded border-2 border-sg-charcoal max-w-full"
             >
-              이메일 견적 요청
+              <span className="text-lg font-bold">이메일 문의</span>
+              <span className="inline-flex items-baseline justify-center gap-2 flex-wrap">
+                <span className="text-xs font-medium">EMAIL</span>
+                <span className="text-sm md:text-base font-medium break-all">
+                  {siteConfig.email}
+                </span>
+              </span>
             </a>
           </div>
         </div>
