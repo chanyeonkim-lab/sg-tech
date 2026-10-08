@@ -1,0 +1,147 @@
+version: 1
+# Research reviewed on 2026-10-09. These are paraphrased facts, not fetched web instructions.
+# Manufacturer examples explain principles; they do not certify SG products or establish KEC rules.
+briefs:
+  busbar-ampacity-table-conditions:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 같은 부스바 규격인데 허용전류표마다 값이 다른 이유는 무엇인가요?
+    facts:
+      - 부스바 허용전류표는 온도 상승과 설치 조건을 함께 읽어야 한다.
+      - Mersen의 표는 온도 상승별 전류 값을 구분하며 실내 주변 온도, 설치 방향 등의 조건을 명시한다.
+      - 단면적 외에 기계적 강성, 고정 구멍, 접속 조건도 설계 때 검토한다.
+    restrictions:
+      - 원문 전류 수치를 새 표로 재가공하지 않는다. 국내 설계용 확정값으로 사용하지 않는다.
+      - 기존 부스바 완전 가이드의 포괄적 개념을 반복하지 말고 표의 적용 조건 읽기에 집중한다.
+    sources:
+      - title: "Mersen: Copper Ampacity"
+        url: https://us.mersen.com/en/products/bus-bars/copper-ampacity
+        scope: 제조사가 공개한 전류표의 조건과 도체 설계 검토 항목
+  neutral-switching-and-protection:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 차단기의 중성선 개폐와 중성선 과전류 보호는 어떻게 다른가요?
+    facts:
+      - 중성선을 개폐하는 기능과 중성선의 과전류를 검출하는 기능은 별도로 검토한다.
+      - 중성선 보호 검토에는 도체 단면적과 고조파 등 부하 조건이 관련된다.
+      - 중성선 개폐 방식은 접지 계통의 영향을 받으며 PEN 도체의 보호 역할도 구분해야 한다.
+    restrictions:
+      - 특정 극수의 차단기가 모든 현장에 필수라고 단정하지 않는다.
+      - 해외 설치 가이드의 조건을 한국 KEC 조항으로 바꾸지 않는다. 실제 적용은 국내 설계 기준과 모델 자료를 확인한다.
+      - 기존 극수 가이드와 달리 개폐와 보호의 구분에 집중한다.
+    sources:
+      - title: "Schneider Electric: Protection of the neutral conductor"
+        url: https://www.electrical-installation.org/enwiki/Protection_of_the_neutral_conductor
+        scope: 중성선 보호에 영향을 주는 도체와 부하 조건
+      - title: "Schneider Electric: Breaking of the neutral conductor"
+        url: https://www.electrical-installation.org/enwiki/Breaking_of_the_neutral_conductor
+        scope: 접지 계통에 따른 중성선 개폐 원칙, 국내 규정의 대체 자료가 아님
+  floatless-electrode-level-control:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 플로트리스 스위치와 전극봉은 각각 어떤 역할을 하나요?
+    facts:
+      - 전극식 수위제어는 전도성 액체가 전극 사이의 전기 경로를 만드는 원리를 이용한다.
+      - 전극의 높이와 제어 회로의 동작 조건으로 펌프 기동·정지 수위를 구성한다.
+      - 급수와 배수는 필요한 동작이 다르므로 해당 모델의 제어 회로를 확인한다.
+      - 송도 제작에는 플로트리스 스위치 2회로와 4극 전극봉을 사용하고 수위 경보 기능을 구성했다.
+    restrictions:
+      - OMRON 원리 설명은 일반 참고 자료다. 송도에 OMRON 제품을 사용했다고 쓰지 않는다.
+      - 물의 성질이나 전극 상태에 따른 확인 항목을 설명하고 임의 수위·감도 수치를 만들지 않는다.
+    sources:
+      - title: "OMRON: Overview of Level Switches"
+        url: https://www.ia.omron.com/support/guide/33/introduction.html
+        scope: 전도성 액체와 전극을 이용한 수위제어 원리
+      - title: 송도 배수펌프 제어반 제작 구성
+        url: https://www.sg-powertech.com/blog/2026-10-08-songdo-pump-panel-technical
+        scope: 사용자가 제공한 제작 자료로 확인한 송도 구성과 기능
+  cctv-cabinet-cutout-order:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: CCTV 제어함체 타공을 주문할 때 어떤 치수와 방향을 보내야 하나요?
+    facts:
+      - 서울교통공사 관제센터에 TS 600×800×150 기성함 10대를 가공해 납품했다.
+      - 함체는 폭 600 mm, 높이 800 mm, 깊이 150 mm다. 타공은 폭 75 mm, 높이 250 mm이며 명판은 40 mm와 150 mm 규격이다.
+      - 전면 루버, 좌측 하부 75×250 mm 타공, 40×150 mm CCTV 제어함 명판 10개를 반영했다.
+      - 발주에서는 함체 규격·수량, 타공 크기·방향·위치, 명판 내용을 함께 정리한다.
+    restrictions:
+      - 상세 주소와 원본 도면을 공개하지 않는다.
+      - 타공이 방수등급·환기 성능을 보장한다고 쓰지 않는다.
+      - 참고 도면의 다른 치수는 재사용하지 않고 확인된 발주 사양을 기준으로 쓴다.
+    sources:
+      - title: 서울교통공사 관제센터 CCTV 제어함체 10대 납품 사례
+        url: https://www.sg-powertech.com/portfolio/2026-09-25-seoul-metro-tps-case
+        scope: 사용자가 직접 제공한 발주 사양과 납품 사례
+  leakage-alarm-and-disconnection:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 누전 경보가 울리면 전원도 자동으로 차단되나요?
+    facts:
+      - 누전 감시의 경보 출력과 보호 장치의 차단 동작은 기능과 결선을 구분해서 확인한다.
+      - Schneider PM5500 자료는 누전 경보 시 알림 또는 디지털 출력 기능을 설명하고 안전 보호용 적용에 제한을 둔다.
+      - 송도 제어반은 ZCT와 보호 기기를 구성하고 누전 경보 기능을 반영했다.
+    restrictions:
+      - 모든 감시 기기가 차단하거나 모든 경보가 전원을 유지한다고 단정하지 않는다.
+      - 해당 PM5500을 SG기전 또는 송도에서 사용했다고 쓰지 않는다.
+      - 감도·동작 시간 수치를 만들지 않는다. 송도의 실제 트립 조건을 추측하지 않는다.
+    sources:
+      - title: "Schneider Electric PM5500 User Manual: Residual current"
+        url: https://productinfo.se.com/pm5500/595e2aa946e0fb0001f715da/PM5500%20user%20manual/English/PM5500SeriesUserManualv02_0000044889.ditamap/$/C_RCM_0000297741
+        scope: 특정 감시 장치의 알림·출력과 안전 보호용 적용 제한
+      - title: 송도 배수펌프 제어반 제작 구성
+        url: https://www.sg-powertech.com/blog/2026-10-08-songdo-pump-panel-technical
+        scope: 사용자 자료로 확인한 누전 경보 구성
+  pump-panel-manual-auto-mode:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 배수펌프 제어반의 수동·자동 선택 스위치는 무엇을 바꾸나요?
+    facts:
+      - 송도 전면 조작부에 펌프별 수동·자동 선택 스위치와 ON·OFF·FAULT 표시부를 배치했다.
+      - 수동은 운전자 조작, 자동은 수위 신호에 따른 운전 방식을 선택하는 데 사용한다.
+      - 운전모드, 보호 조건, 수위 조건을 시퀀스도와 단자대 결선도에 맞춰 정리했다.
+    restrictions:
+      - 수동 선택이 보호 기능을 해제한다고 설명하지 않는다.
+      - 펌프 교번·동시 운전·고장 시 자동 전환은 확인된 자료가 없으므로 만들어 넣지 않는다.
+    sources:
+      - title: 송도 배수펌프 제어반 제작 구성
+        url: https://www.sg-powertech.com/blog/2026-10-08-songdo-pump-panel-technical
+        scope: 사용자 제공 제작 자료에 근거한 운전모드와 조작부 구성
+  busbar-joint-torque-document:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 부스바 체결 토크를 볼트 크기만 보고 정해도 되나요?
+    facts:
+      - 부스바 접속은 적용 기기와 접속 조건에 맞는 제조사 체결 사양을 확인한다.
+      - Schneider Masterpact NT·NW 자료는 부스바 재질과 볼트·너트 등급 등 적용 조건을 명시한다.
+      - 제조사 자료는 과도한 체결과 부족한 체결 모두 문제가 될 수 있음을 설명한다.
+    restrictions:
+      - 참고 문서의 토크 값을 SG 제작 제품의 공통 기준으로 복사하지 않는다.
+      - 구체적인 Nm 수치를 제시하지 않는다. 제조사 문서에서 무엇을 확인할지 설명한다.
+      - 통전 상태의 작업 절차를 안내하지 않는다.
+    sources:
+      - title: "Schneider Electric: What is the Tightening Torque on the Masterpact NT & NW Bars?"
+        url: https://www.se.com/th/en/faqs/FA378983/
+        scope: 특정 제품군의 부스바 접속 조건과 체결 사양 확인 원칙
+  pump-approval-document-order:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 배수펌프 제어반 제작을 발주할 때 승인도서는 무엇을 준비하나요?
+    facts:
+      - 송도 제작에는 제작승인서, 외형도, 내부배치도, 단선결선도, 주·제어회로도, 단자대 결선도를 준비했다.
+      - 펌프 제어 시퀀스도, 부하계산서, 주요 자재 사양서, 수위제어 사양서, 제품 카탈로그, 시험검사계획서도 준비했다.
+      - 도면·사양·시퀀스·외부 접속 내용을 같은 제작 조건으로 맞추면 발주처의 검토를 돕는다.
+    restrictions:
+      - 이 12종은 송도 사례의 준비 범위이며 모든 기관에 의무인 목록으로 설명하지 않는다.
+      - 승인·시험 완료를 주장하지 않는다. 원본 도면과 가격을 공개하지 않는다.
+    sources:
+      - title: 송도 배수펌프 제어반 구성과 승인도서 12종 준비
+        url: https://www.sg-powertech.com/blog/2026-10-08-songdo-pump-panel-technical
+        scope: 사용자가 직접 제공한 승인도서 준비 목록과 제작 범위

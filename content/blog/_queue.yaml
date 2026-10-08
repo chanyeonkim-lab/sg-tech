@@ -2,6 +2,70 @@ version: 1
 next_index: 12
 last_curated_index: 24
 topics:
+- slug: busbar-ampacity-table-conditions
+  title: 부스바 허용전류표마다 값이 다른 이유와 적용 조건 읽는 법
+  segment: 검색유입
+  angle: 개념이해
+  intent: informational
+  pain: 규격이 같은 부스바의 전류표를 비교할 기준이 부족함
+  keywords: [부스바 허용전류표, 부스바 온도 상승, 부스바 규격]
+  status: pending
+- slug: neutral-switching-and-protection
+  title: 차단기 중성선 개폐와 중성선 보호는 어떻게 다른가요?
+  segment: 검색유입
+  angle: 비교가이드
+  intent: informational
+  pain: 극수 표기만으로 중성선 보호 기능을 판단하기 어려움
+  keywords: [차단기 중성선, 중성선 보호, 차단기 극수]
+  status: pending
+- slug: floatless-electrode-level-control
+  title: 플로트리스 스위치와 전극봉은 각각 어떤 역할을 하나요?
+  segment: 시설관리자
+  angle: 개념이해
+  intent: informational
+  pain: 수위 감지와 펌프 제어 부품의 역할을 구분하기 어려움
+  keywords: [플로트리스 스위치, 전극봉, 수위제어]
+  status: pending
+- slug: cctv-cabinet-cutout-order
+  title: CCTV 제어함체 타공 주문에 필요한 치수와 방향 정리
+  segment: 보안업체
+  angle: 발주가이드
+  intent: commercial
+  pain: 타공 크기와 위치를 제작 업체에 전달하기 어려움
+  keywords: [CCTV 제어함체 타공, 기성함 가공, 명판 제작]
+  status: pending
+- slug: leakage-alarm-and-disconnection
+  title: 누전 경보가 울리면 전원도 자동으로 차단되나요?
+  segment: 시설관리자
+  angle: 비교가이드
+  intent: informational
+  pain: 경보 출력과 전원 차단 기능을 혼동함
+  keywords: [누전 경보, 누전 감시, 누전 차단]
+  status: pending
+- slug: pump-panel-manual-auto-mode
+  title: 배수펌프 제어반 수동·자동 선택 스위치의 역할
+  segment: 시설관리자
+  angle: 개념이해
+  intent: informational
+  pain: 운전모드와 수위 신호·보호 조건의 관계가 궁금함
+  keywords: [배수펌프 수동 자동, 펌프 제어반, 수위제어]
+  status: pending
+- slug: busbar-joint-torque-document
+  title: 부스바 체결 토크를 확인할 때 제조사 자료에서 볼 항목
+  segment: 전기공사업체
+  angle: 실무확인
+  intent: informational
+  pain: 볼트 크기만으로 체결 토크를 정하려는 혼동
+  keywords: [부스바 체결 토크, 부스바 접속, 제조사 체결 사양]
+  status: pending
+- slug: pump-approval-document-order
+  title: 배수펌프 제어반 발주를 위한 승인도서 준비 항목
+  segment: 전기공사업체
+  angle: 발주가이드
+  intent: commercial
+  pain: 발주처 검토에 필요한 제작 문서 범위를 정하기 어려움
+  keywords: [배수펌프 승인도서, 제어반 제작승인서, 펌프 시퀀스도]
+  status: pending
 - slug: quote-without-drawings
   title: 도면 없이도 분전반 견적받는 법 — 현장 사진과 치수 7장이면 시작됩니다
   segment: 전기공사업체

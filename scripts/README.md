@@ -1,150 +1,158 @@
-# SG기전 자동 블로그 발행 시스템
+# SG기전 정보성 블로그 자동 발행
 
-`.github/workflows/auto-blog.yml` + `scripts/generate-blog-post.py` + `content/blog/_queue.yaml`
-조합으로 매주 화요일·금요일 09:00 KST에 새 블로그 포스트를 자동 발행합니다.
+2026-10-09: ChatGPT 검색 유입을 참고해 정보성 콘텐츠 중심으로 운영 기준을 수정했습니다.
+유입 수치는 사용자가 보고한 최근 30일, 10명 미만이라는 정보입니다.
+분석 계정이나 원시 데이터를 조회한 결과가 아니며 인용 노출 횟수와 같지 않습니다.
+
+## 운영 전략
+
+독자가 묻는 질문에 먼저 답하고 원리, 차이, 선택 조건, 발주 확인 사항을 설명합니다.
+기초 용어를 검색하는 고객에게 유용한 지식을 제공하고 관련 제작 사례로 자연스럽게 연결합니다.
+정보 글을 회사 소개·과장된 손실·견적 요청으로 시작하지 않습니다.
+
+첫 실험 큐는 정보성 글 6편과 발주 가이드 2편입니다.
+이는 사업에 맞춘 편집 가설이며 AI 엔진이 권장하는 비율이 아닙니다.
+기존 화요일·금요일 09:00 한국 시간 발행 일정을 유지합니다.
+
+| 순서 | 질문 | 의도 |
+| --- | --- | --- |
+| 1 | 부스바 허용전류표마다 값이 다른 이유 | 정보 탐색 |
+| 2 | 중성선 개폐와 중성선 보호의 차이 | 비교·이해 |
+| 3 | 플로트리스 스위치와 전극봉의 역할 | 원리 이해 |
+| 4 | CCTV 함체 타공 주문에 필요한 치수·방향 | 발주 검토 |
+| 5 | 누전 경보와 자동 차단의 차이 | 비교·이해 |
+| 6 | 펌프 제어반 수동·자동 선택 스위치 역할 | 원리 이해 |
+| 7 | 부스바 체결 사양을 확인하는 방법 | 실무 확인 |
+| 8 | 배수펌프 제어반 승인도서 준비 항목 | 발주 검토 |
+
+기존 부스바·극수 글을 중심으로 좁은 후속 질문을 다룹니다.
+같은 내용을 제목만 바꿔 새 URL로 발행하지 않습니다.
+기존 글을 고칠 때는 URL·발행일을 유지하고 실제 수정일을 표시합니다.
+
+## 영어 연구 자료와 적용 범위
+
+### OpenAI 공식 문서
+
+- [Overview of OpenAI Crawlers](https://developers.openai.com/api/docs/bots):
+  검색용 OAI-SearchBot과 학습용 GPTBot은 별도 통제입니다.
+  검색 봇 허용과 공개 IP 대역 접근은 검색에 참여하기 위한 기반입니다.
+  학습 봇 허용을 인용 순위 상승 방법으로 설명하지 않습니다.
+- [Web search](https://learn.chatgpt.com/docs/web-search):
+  웹 검색을 사용한 답변에는 검색 결과와 인용이 표시됩니다.
+  일반 채팅의 모든 답변에 사이트가 검색·인용되는 것은 아닙니다.
+
+검토한 OpenAI 문서에는 공개된 인용 순위 공식이나 특정 문단 길이 기준이 없습니다.
+API 검색 결과를 ChatGPT 사용자 화면의 성과로 대신 측정하지 않습니다.
+
+### Microsoft 공식 자료
+
+- [Introducing AI Performance in Bing Webmaster Tools](https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/):
+  지원되는 Microsoft AI 경험과 일부 파트너의 인용 활동을 관찰하는 도구입니다.
+  인용 수와 방문 수는 다릅니다. 이 데이터가 ChatGPT 전체 노출을 보여준다고 해석하지 않습니다.
+  명확한 구조·근거·최신 정보와 IndexNow를 운영 점검에 활용합니다.
+
+### Google 공식 자료
+
+- [AI features and your website](https://developers.google.com/search/docs/appearance/ai-features):
+  텍스트 접근성, 내부 링크, 크롤링과 본문에 맞는 구조화 데이터를 강조합니다.
+  Google용 별도 AI 스키마나 AI 텍스트 파일이 필요하지 않습니다.
+- [Optimizing your website for generative AI features](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide):
+  고정 글 길이, 강제 chunking, llms.txt를 Google 노출 공식으로 취급하지 않습니다.
+
+Google 지침을 ChatGPT 내부 순위 규칙으로 일반화하지 않습니다.
+기존 llms.txt는 보조 안내로 유지하되 AEO 투자의 핵심으로 삼지 않습니다.
+
+### 동료 심사를 거친 연구
+
+- [GEO: Generative Engine Optimization, KDD 2024](https://arxiv.org/abs/2311.09735):
+  연구용 생성 검색 환경에서 출처·인용·통계 추가 같은 전략을 평가했습니다.
+  논문의 최대 개선치는 실험상 가시성 지표입니다.
+  현재 ChatGPT, 한국어 전기 분야, 사이트 방문·매출 증가율을 보장하는 값이 아닙니다.
+  통계나 인용문을 더 넣으려고 근거 없는 숫자를 만들어서는 안 됩니다.
+
+## 기술 기반 점검
+
+이미 OAI-SearchBot 허용, 서버에서 읽을 수 있는 본문 HTML, canonical,
+사이트맵, 저자·수정일, BlogPosting·FAQ 구조화 데이터, IndexNow 코드가 있습니다.
+더 많은 마크업보다 원문 정확성·질문별 내용 개선에 우선순위를 둡니다.
+
+robots.txt와 정상 HTTP 응답만으로 실제 크롤러 접근 성공을 입증할 수는 없습니다.
+호스팅 방화벽과 봇 차단 정책, 접근 로그, Bing 색인을 별도로 확인해야 합니다.
+FAQ 스키마는 실제 본문의 Q/A를 나타내며 인용을 보장하지 않습니다.
 
 ## 동작 흐름
 
-```
-매주 화·금 09:00 KST (cron)
-     ↓
-GitHub Actions runner (ubuntu-latest)
-     ↓
-1. Checkout main
-2. Python 3.12 + anthropic SDK 설치
-3. Node.js 20 + npm ci (velite 실행에 필요)
-4. python scripts/generate-blog-post.py 실행
-     ├─ content/blog/_queue.yaml 로드
-     ├─ next_index 위치의 pending 주제 pick
-     ├─ 큐 소진 시 Claude가 새 주제 발굴
-     ├─ 기존 포스트 인벤토리 수집 (내부 링크용)
-     ├─ Claude API 호출 (모델 기본 claude-opus-5)
-     ├─ MDX 검증 (frontmatter · H2 개수 · 어절 · 금지어구 · <ContactCta>)
-     └─ content/blog/YYYY-MM-DD-{slug}.mdx 저장 + 큐 업데이트
-5. npx next build (velite 검증 포함)
-6. git commit + push (main 직접)
-     ↓
-Vercel 자동 배포 → 새 글 라이브
-```
+1. GitHub Actions에서 Python 의존성 설치 후 비공개 시험 입력으로 단위 테스트합니다.
+2. 큐의 pending 항목 중 검토된 근거 브리프가 있는 첫 주제를 선택합니다.
+3. Claude는 브리프의 사실·출처·적용 제한을 받아 글을 작성합니다.
+4. 형식·금지 표현·참고 자료 URL·내부 링크를 검사합니다. 최대 3회 재시도합니다.
+5. Next.js 빌드까지 통과한 글과 큐 상태를 main에 커밋합니다.
+6. Vercel 배포로 게시합니다.
 
-## 필수 시크릿·변수
+생성기는 웹 검색이나 원문 검증을 자동으로 수행하지 않습니다.
+sources URL 허용 목록 검사는 링크 위조를 줄이는 장치이며 사실의 의미를 검증하지 않습니다.
+발행 후에는 실제 글의 원문 인용 적합성과 기술 설명을 확인해야 합니다.
 
-### Secret (필수)
+## 근거 브리프 관리
 
-Repository → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**:
+content/blog/_evidence.yaml에 다음을 준비합니다.
 
-- **`ANTHROPIC_API_KEY`** = Anthropic Console(<https://console.anthropic.com/>)에서 발급받은 키 (`sk-ant-...`)
+- status: reviewed
+- reviewed_on: 원문·사실 검토일
+- review_by: 재검토 기한
+- question: 고객의 구체적인 질문
+- facts: 확인한 사실을 짧게 요약
+- restrictions: 해당 제품·국가·시험 조건과 공개 제한
+- sources: 정확한 제목, HTTPS URL, 적용 범위(scope)
 
-### Variable (선택)
+제조사 영어 원문은 개념과 모델 사양의 참고 자료입니다.
+해외 규정을 한국 KEC의 법적 요구로 바꾸지 않습니다.
+실제 제작 사례는 사용자가 확인한 발주·제작 사실만 씁니다.
 
-Repository → **Settings** → **Secrets and variables** → **Actions** → **Variables** 탭:
+준비한 8편은 검토일로부터 90일 범위의 브리프를 사용합니다.
+유효한 주제가 소진되면 발행을 건너뜁니다.
+기존 pending 주제는 삭제하지 않았지만 근거 브리프가 준비되기 전에는 발행하지 않습니다.
+새 주제 무제한 자동 발굴·발행은 사용하지 않습니다.
 
-- **`CLAUDE_MODEL`** = 사용할 Claude 모델 ID
-  - 기본값: `claude-opus-5` (품질 우선, 글당 약 $0.15)
-  - 저렴한 대안: `claude-sonnet-5` (글당 약 $0.05, 품질 우수)
+## 검사와 실행
 
-변수를 설정하지 않으면 Opus 5를 사용합니다.
+API 호출 없이 설정과 테스트를 확인합니다.
 
-## 수동 실행 (테스트)
+    python -m unittest discover -s scripts/tests -v
+    python scripts/generate-blog-post.py --check-config
 
-`workflow_dispatch` 트리거가 활성화돼 있어 언제든 수동 실행 가능:
-
-Repository → **Actions** → **Auto-Generate Blog Post** → **Run workflow**
-
-## 로컬에서 실행
-
-```bash
-# API 키 준비
-export ANTHROPIC_API_KEY=sk-ant-...
-export CLAUDE_MODEL=claude-opus-5  # 선택
-
-# 실행 (프로젝트 루트에서)
-pip install anthropic pyyaml
-python scripts/generate-blog-post.py
-```
-
-## 주제 큐 관리
-
-`content/blog/_queue.yaml` 편집으로 관리합니다.
-
-- **새 주제 추가**: `topics:` 배열 끝에 항목 추가
-- **우선순위 변경**: 배열 순서 재조정
-- **주제 스킵**: 해당 항목을 `status: skipped`로 표시
-- **큐 소진 후**: 스크립트가 Claude에게 새 주제 하나를 발굴하도록 요청, 결과를 큐 끝에 자동 추가
-
-### 주제 필드
-
-```yaml
-- slug: english-kebab-case-url
-  title: "한국어 제목 초안 (Claude가 다듬을 수 있음)"
-  segment: 전기공사업체 | 시설관리자 | 보안업체 | LED전광판 | 건설회사 | 행사운영사 | 소방업체 | 검색유입
-  angle: 페인해결 | 시간단축 | 안전리스크 | 비용절감 | 편의성 | 품질신뢰 | 맞춤적합성 | 증거 | 구매가이드 | 검색유입
-  pain: "핵심 페인 한 줄"
-  keywords: [검색어1, 검색어2, 검색어3]
-  status: pending  # pending → done (자동 갱신)
-```
+실제 생성에는 저장소의 ANTHROPIC_API_KEY 시크릿을 사용합니다.
+CLAUDE_MODEL 변수와 기본 모델 설정은 기존 값을 유지합니다.
+현행 비용은 Anthropic 계정에서 확인합니다. 새 조사 중 유료 생성 호출은 하지 않았습니다.
 
 ## 품질 게이트
 
-스크립트는 다음을 자동 검증하고 통과 못 하면 최대 3회까지 재생성합니다:
+- 한국 시간 날짜와 실제 draft 상태, 필수 frontmatter
+- 350~1400어절 범위와 H2 최소 4개: 편집 기준이며 인용 공식이 아님
+- 첫 문단 답 우선, 하단 CTA 한 번
+- 평문 Q. / A.와 참고 자료·관련 글 섹션
+- 검토된 참고 자료와 관련 기존 글 2개 이상
+- 허용되지 않은 출처 URL·내부 링크 차단
+- 별표 두 개, 긴 대시, SLA·근거 없는 인증 표현 등 차단
+- 자동 생성 글의 KEC/KS 조항 번호는 별도 검토 대상으로 차단
+- Next.js의 MDX·타입·빌드 검사
 
-- Frontmatter 필수 필드 (title · description · date · tags · draft)
-- `draft: true` 상태 아님
-- H2 개수 ≥ 4
-- 어절 수 ≥ 1,500
-- 금지 어구(박재영, 12년 경력, 1000+ 제작 실적, 1000+ 납품) 및 시간 SLA 표현(당일 견적, 24시간 이내, 하루 제작 등) 미포함
-- SG기전이 판매하지 않는 IP 등급 표현은 대소문자·띄어쓰기·하이픈 변형까지 frontmatter와 본문 전체에서 차단
-- IP 등급·인증 주장은 해당 모델의 시험성적서 또는 인증 자료가 확인된 범위에서만 작성
-- `<ContactCta />` 컴포넌트 존재
+350어절을 채우려고 문장을 늘리지 않습니다.
+허용전류·체결 토크·이격거리·보호 설정은 모델·조건이 확인된 근거 범위에서만 설명합니다.
 
-3회 모두 실패하면 워크플로가 exit 1로 종료 (커밋 없음).
+## 성과 측정
 
-빌드 검증(`npx next build`) 실패 시에도 커밋되지 않음.
+기준일 2026-10-09부터 30일·60일·90일의 방향성 비교를 권장합니다.
+새 측정 도구나 유료 AEO 서비스 가입은 하지 않았습니다.
 
-## 비용 관리
+- ChatGPT 리퍼러 세션과 유입 페이지를 같은 분석 도구·필터로 비교합니다.
+- 실제 URL에 utm_source=chatgpt.com이 있는 경우 보조로 분류하고 중복 세션을 더하지 않습니다.
+- 문의 완료, 이메일·전화 클릭은 구분합니다. 클릭을 실제 견적 문의나 주문으로 계산하지 않습니다.
+- 새 글과 기존 유입 글의 페이지별 방문, 관련 사례 이동, 문의를 함께 봅니다.
+- 직접 방문·리퍼러 없는 방문은 별도로 남깁니다. 알려진 ChatGPT 방문 수를 전체 인용량으로 보지 않습니다.
+- 작은 표본의 증가율보다 실제 문의 건수와 여러 기간의 누적 흐름을 봅니다.
 
-### 예상 비용
-
-- **Opus 5** 기준 글당 약 $0.15 (입력 8K + 출력 4K 토큰)
-- **주 2회** × **월 4.3주** = **월 약 $1.30**
-
-- **Sonnet 5** 기준 글당 약 $0.05
-- **월 약 $0.43**
-
-### 비용 확인
-
-Anthropic Console → Usage 탭에서 실시간 확인 가능. Anthropic 계정 자체에 지출 한도(월 상한) 설정도 권장.
-
-### 모델 변경
-
-Repository Variable `CLAUDE_MODEL` 값을 바꾸면 다음 실행부터 적용됩니다.
-
-## 실패 알림
-
-기본 설정에는 별도 알림 없음. 워크플로 실패 시 GitHub 웹훅 · 이메일이 계정 알림 설정에 따라 발송됩니다.
-
-Slack/Discord 알림 필요 시 워크플로 마지막에 `if: failure()` 스텝 추가로 확장 가능.
-
-## 롤백
-
-자동 발행된 글이 마음에 안 들 때:
-
-```bash
-# 해당 파일 삭제 + 큐 상태 원복
-git rm content/blog/YYYY-MM-DD-{slug}.mdx
-# _queue.yaml에서 해당 topic의 status를 다시 pending으로
-# next_index를 1 감소
-git commit -m "rollback: remove auto-generated post"
-git push
-```
-
-Vercel이 즉시 재배포해서 프로덕션에서 사라집니다.
-
-## 확장 아이디어
-
-- **GSC 검색어 자동 수집**: Google Search Console API로 새 유입 키워드를 자동으로 큐에 추가
-- **Naver Search Advisor 연동**: 유입 검색어 fetching
-- **A/B 제목 실험**: 같은 본문에 제목 3안 생성 후 30일 뒤 성과 좋은 것 유지
-- **성과 기반 재시도**: Vercel Analytics 데이터로 저성과 글 재작성
-
-이 기능들은 필요 시 별도 PR로 확장하시면 됩니다.
+진단용 한국어 질문은 개념·비교·발주 의도를 섞어 정해둡니다.
+같은 조건의 새 대화에서 검색 사용 여부, 날짜, 질문, 인용 URL을 기록합니다.
+브랜드를 먼저 넣어 유도한 답변은 자연 인용 성과와 구분합니다.
+진단 표본은 사용자 전체 노출 점유율이나 공식 순위가 아닙니다.
