@@ -125,8 +125,40 @@ A. 시험 답변입니다.
         slugs = [t["slug"] for t in queue["topics"]]
         self.assertEqual(len(slugs), len(set(slugs)))
         with patch.object(generator, "local_today", return_value=generator.datetime.date(2026, 10, 9)):
-            self.assertEqual(len([b for b in briefs.values() if generator.brief_ready(b)]), 8)
+            self.assertEqual(len([b for b in briefs.values() if generator.brief_ready(b)]), 12)
         self.assertTrue(set(briefs).issubset(slugs))
+
+    def test_topic_specific_cta(self):
+        self.brief["cta_headline"] = "맞춤 박스 제작 상담"
+        self.assertFalse(self.result(self.text)[0])
+        self.assertTrue(self.result(self.text.replace('headline="제작 상담"',
+                                                    'headline="맞춤 박스 제작 상담"'))[0])
+
+    def test_audience_prompt_keeps_metrics_private(self):
+        context = generator.load_editorial_context()
+        self.assertEqual(set(context), {"audience_intents", "business_facts", "writing_rules", "exclusions"})
+        prompt = generator.build_system_prompt([])
+        self.assertIn("맞춤 사이즈 박스", prompt)
+        self.assertIn("다양한 목적의 분전반", prompt)
+        for private_metric in ("610", "194", "91.39", "44.76", "1.03"):
+            self.assertNotIn(private_metric, prompt)
+
+    def test_prepared_topics_bridge_to_actual_business(self):
+        queue, briefs = generator.load_queue(), generator.load_briefs()
+        prepared = [t for t in queue["topics"] if t["slug"] in briefs]
+        self.assertEqual(len(prepared), 12)
+        self.assertEqual(sum(t["intent"] == "informational" for t in prepared), 8)
+        self.assertEqual(sum(t["intent"] == "commercial" for t in prepared), 4)
+        self.assertEqual(prepared[0]["slug"], "breaker-rating-cable-order")
+        self.assertEqual(prepared[2]["slug"], "custom-box-size-order")
+        for topic in prepared:
+            brief = briefs[topic["slug"]]
+            self.assertTrue(brief["business_bridge"])
+            self.assertTrue(brief["cta_headline"])
+            prompt = generator.build_user_prompt(topic, brief)
+            embedded = prompt.split("검토된 근거 브리프:\n", 1)[1].split("\n\nfacts만", 1)[0]
+            self.assertEqual(generator.yaml.safe_load(embedded)["business_bridge"],
+                             brief["business_bridge"])
 
     def test_prompt_has_no_magic_ranking_claim(self):
         prompt = generator.build_system_prompt([])

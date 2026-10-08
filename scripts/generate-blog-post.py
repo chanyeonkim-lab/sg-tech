@@ -28,6 +28,7 @@ ROOT = pathlib.Path(__file__).parent.parent
 CONTENT_DIR = ROOT / "content" / "blog"
 QUEUE_FILE = CONTENT_DIR / "_queue.yaml"
 EVIDENCE_FILE = CONTENT_DIR / "_evidence.yaml"
+AUDIENCE_FILE = CONTENT_DIR / "_audience.yaml"
 MODEL = os.environ.get("CLAUDE_MODEL", "claude-opus-5")
 # 편집 기준이며 AI 검색 엔진의 순위 기준이 아니다.
 MIN_WORD_COUNT = 350
@@ -91,6 +92,11 @@ def load_briefs() -> dict:
     return yaml.safe_load(EVIDENCE_FILE.read_text(encoding="utf-8"))["briefs"]
 
 
+def load_editorial_context() -> dict:
+    """Pass intent and confirmed business facts, never private traffic metrics."""
+    return yaml.safe_load(AUDIENCE_FILE.read_text(encoding="utf-8"))["editorial"]
+
+
 def brief_ready(brief: dict | None) -> bool:
     if not brief or brief.get("status") != "reviewed":
         return False
@@ -139,6 +145,7 @@ def existing_posts() -> list[tuple[str, str]]:
 def build_system_prompt(posts_inventory: list[tuple[str, str]]) -> str:
     posts = "\n".join(f"- [{title}]({url})" for title, url in posts_inventory)
     banned = ", ".join(BANNED_PHRASES)
+    editorial = yaml.safe_dump(load_editorial_context(), allow_unicode=True, sort_keys=False)
     prompt = f"""에스지기전의 한국어 B2B 정보성 블로그를 작성한다.
 독자가 궁금해하는 부품의 원리, 차이, 선택 조건에 정확히 답한다.
 검색·AI 인용 순위나 유입 증가를 보장하지 않는다.
@@ -151,6 +158,9 @@ def build_system_prompt(posts_inventory: list[tuple[str, str]]) -> str:
 - 확인되지 않은 사례·경력·자격·시험·인증·설치 서비스·납기 약속을 만들지 않는다.
 - 금지 표현: {banned}.
 - SG기전은 분전반·제어함체 맞춤 제작 업체다. 현장 전기공사 업체로 묘사하지 않는다.
+- 두 사업 축은 맞춤 사이즈 박스·함체 제작과 다양한 목적의 분전반·제어반 맞춤 제조다.
+- 박스의 외형 치수·내부 공간·타공 요구와 완성 분전반의 부하·회로·제어 요구를 구분한다.
+- 기성함 가공 사례를 비규격 주문 제작 사례라고 바꾸지 않는다.
 - 판매하지 않는 IP 등급(IP 뒤에 숫자 66)을 어떤 형태로도 쓰지 않는다.
 
 근거:
@@ -163,6 +173,13 @@ def build_system_prompt(posts_inventory: list[tuple[str, str]]) -> str:
 - 기존 글은 관련 링크 대상이다. 오래된 글의 수치·주장을 새 근거로 복사하지 않는다.
 - 영어 원문은 짧게 한국어로 풀어 쓰고 출처 링크를 가까이 둔다.
 - 제공된 실제 납품 사실만 사용하고 관련된 주제에만 사례를 연결한다.
+- business_bridge가 있으면 기술 원리와 해당 제작 판단의 관계를 본문 한 문단에서 설명한다.
+  회사 소개 문구를 반복하지 않고, 부품의 역할이 회로·함체·발주 조건에 주는 의미를 쓴다.
+- 발주형 글에는 상담 때 전달할 정보와 원하는 공급 범위를 구체적으로 정리한다.
+- cta_headline이 있으면 하단 ContactCta의 headline에 그대로 사용한다.
+
+고객 질문과 확인된 사업 범위에 대한 편집 기준:
+{editorial}
 
 구조:
 1. 첫 문단 2~3문장에 핵심 질문의 직접적인 답과 적용 조건을 쓴다.
@@ -270,6 +287,10 @@ def validate_mdx(text: str, brief: dict, inventory: list[tuple[str, str]]) -> tu
         return False, "첫 문단은 질문의 답과 조건으로 시작"
     if body.count("<ContactCta") != 1:
         return False, "하단 CTA 한 번만 사용"
+    headline = brief.get("cta_headline")
+    if headline and not re.search(
+            r'<ContactCta\b[^>]*\bheadline="' + re.escape(headline) + r'"', body):
+        return False, "주제와 제작 범위에 맞는 CTA headline 필요"
     for heading in ("## 자주 묻는 질문", "## 참고 자료", "## 다음 읽을거리"):
         if heading not in body:
             return False, f"필수 섹션 없음: {heading}"

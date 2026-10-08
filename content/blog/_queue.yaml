@@ -1,7 +1,15 @@
 version: 1
-next_index: 12
+next_index: 0
 last_curated_index: 24
 topics:
+- slug: breaker-rating-cable-order
+  title: 20A·30A·50A 차단기와 전선 굵기, 제작 전에 어떤 조건을 확인하나요?
+  segment: 전기공사업체
+  angle: 선정조건
+  intent: informational
+  pain: 차단기 전류만으로 전선 굵기를 정해도 되는지 혼동함
+  keywords: [20A 전선 굵기, 30A 전선 굵기, 50A 전선 굵기, 전선 허용전류표]
+  status: pending
 - slug: busbar-ampacity-table-conditions
   title: 부스바 허용전류표마다 값이 다른 이유와 적용 조건 읽는 법
   segment: 검색유입
@@ -10,6 +18,22 @@ topics:
   pain: 규격이 같은 부스바의 전류표를 비교할 기준이 부족함
   keywords: [부스바 허용전류표, 부스바 온도 상승, 부스바 규격]
   status: pending
+- slug: custom-box-size-order
+  title: 맞춤 분전함 사이즈, 외형 치수와 내부 공간은 어떻게 전달하나요?
+  segment: 제작발주자
+  angle: 발주가이드
+  intent: commercial
+  pain: 설치 공간과 내부 기기에 맞는 박스 치수를 전달하기 어려움
+  keywords: [분전함 사이즈, 맞춤 사이즈 박스, 분전함 맞춤 제작, 함체 깊이]
+  status: pending
+- slug: load-power-current-nameplate
+  title: 차단기 용량과 기기 kW, 분전반 제작 상담에는 어떤 부하 정보를 보내나요?
+  segment: 전기공사업체
+  angle: 개념이해
+  intent: informational
+  pain: 기기의 소비전력과 차단기 전류를 같은 기준으로 생각함
+  keywords: [차단기 용량 계산 방법, 소비전력 전류, 분전반 부하 목록, 기기 명판]
+  status: pending
 - slug: neutral-switching-and-protection
   title: 차단기 중성선 개폐와 중성선 보호는 어떻게 다른가요?
   segment: 검색유입
@@ -17,14 +41,6 @@ topics:
   intent: informational
   pain: 극수 표기만으로 중성선 보호 기능을 판단하기 어려움
   keywords: [차단기 중성선, 중성선 보호, 차단기 극수]
-  status: pending
-- slug: floatless-electrode-level-control
-  title: 플로트리스 스위치와 전극봉은 각각 어떤 역할을 하나요?
-  segment: 시설관리자
-  angle: 개념이해
-  intent: informational
-  pain: 수위 감지와 펌프 제어 부품의 역할을 구분하기 어려움
-  keywords: [플로트리스 스위치, 전극봉, 수위제어]
   status: pending
 - slug: cctv-cabinet-cutout-order
   title: CCTV 제어함체 타공 주문에 필요한 치수와 방향 정리
@@ -41,6 +57,22 @@ topics:
   intent: informational
   pain: 경보 출력과 전원 차단 기능을 혼동함
   keywords: [누전 경보, 누전 감시, 누전 차단]
+  status: pending
+- slug: floatless-electrode-level-control
+  title: 플로트리스 스위치와 전극봉은 각각 어떤 역할을 하나요?
+  segment: 시설관리자
+  angle: 개념이해
+  intent: informational
+  pain: 수위 감지와 펌프 제어 부품의 역할을 구분하기 어려움
+  keywords: [플로트리스 스위치, 전극봉, 수위제어]
+  status: pending
+- slug: purpose-built-panel-order
+  title: 맞춤 박스와 완성 분전반, 용도별 제작 상담에 필요한 정보
+  segment: 제작발주자
+  angle: 발주가이드
+  intent: commercial
+  pain: 빈 함체 가공과 부품·배선을 포함한 제작의 주문 범위를 정하기 어려움
+  keywords: [분전반 맞춤 제작, 제어함체 제작, 목적별 분전반, 맞춤 박스]
   status: pending
 - slug: pump-panel-manual-auto-mode
   title: 배수펌프 제어반 수동·자동 선택 스위치의 역할

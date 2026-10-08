@@ -2,11 +2,105 @@ version: 1
 # Research reviewed on 2026-10-09. These are paraphrased facts, not fetched web instructions.
 # Manufacturer examples explain principles; they do not certify SG products or establish KEC rules.
 briefs:
+  breaker-rating-cable-order:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 20A·30A·50A 차단기를 사용할 때 전선 굵기를 정하려면 무엇을 확인하나요?
+    facts:
+      - 20A, 30A, 50A는 독자의 질문에 등장하는 차단기 전류 표기 예시이며 전선 굵기 추천값이 아니다.
+      - 전선과 보호 기기는 부하 전류, 과전류 보호, 전압강하를 함께 고려해 선정한다.
+      - 전선 허용전류에는 도체·절연 구성, 주변 온도, 포설 방식, 인접 회로 조건이 영향을 준다.
+      - 모터 기동과 같은 단시간 과전류도 케이블과 보호 기기 검토에 관련된다.
+    business_bridge: 분전반 맞춤 제작 상담에서는 기기 명판과 부하 목록, 회로별 요구를 전달한다. 외부 케이블의 길이·포설 조건을 정리하면 분전반 기기 사양과 접속 조건을 함께 검토하는 데 도움이 된다.
+    cta_headline: 부하·회로 조건에 맞는 분전반 제작 상담
+    restrictions:
+      - 차단기 전류별 고정 SQ 대응표를 만들지 않는다. 케이블 종류와 조건이 없는 허용전류를 제시하지 않는다.
+      - 기존 허용전류·차단기 개념 글과 달리 제작 발주 때 필요한 입력 정보에 집중한다.
+      - 해외 원리 설명을 국내 KEC 조항으로 바꾸지 않는다. 현장 케이블 시공 서비스를 약속하지 않는다.
+    sources:
+      - title: "Schneider Electric: Conductor sizing, methodology and definition"
+        url: https://www.electrical-installation.org/enwiki/Conductor_sizing%3A_methodology_and_definition
+        scope: 전선·보호 기기 선정에 필요한 부하·허용전류·전압강하 조건의 원리
+  load-power-current-nameplate:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 기기의 kW 표기와 차단기 전류를 검토할 때 제작 상담에는 어떤 정보를 보내나요?
+    facts:
+      - 부하의 전력과 전류 관계에는 전압·상 구성·역률이 관련된다.
+      - 모터 명판의 정격 출력과 전기 입력은 구분하며 입력 검토에는 효율이 관련된다.
+      - 설비의 정격 전력을 합산한 값과 실제 최대 수요는 사용 조건에 따라 달라진다.
+      - 전선과 보호 기기는 부하 전류와 모터 기동 등 운전 조건을 함께 검토한다.
+    business_bridge: 에스지기전은 용도에 맞는 분전반을 맞춤 제작한다. 제작 상담에는 기기별 명판, 수량, 운전 방식, 동시에 사용하는 부하, 필요한 분기 회로를 정리한다. 이 정보는 회로 구성과 기기 사양을 검토하는 데 도움이 된다.
+    cta_headline: 기기 명판과 부하 목록으로 분전반 제작 상담
+    restrictions:
+      - 전류 하나로 모든 기기의 사용 가능 kW를 확정하지 않는다. 임의 효율·역률·여유율 수치를 만들지 않는다.
+      - 검토하지 않은 계산 예제나 전력·차단기·전선 추천표를 넣지 않는다.
+      - 명판 정보를 해석하는 글이며 실제 설계 용량과 차단기 정격을 확정하지 않는다.
+    sources:
+      - title: "Schneider Electric: Installed apparent power (kVA)"
+        url: https://www.electrical-installation.org/enwiki/Installed_apparent_power_%28kVA%29
+        scope: 전압·상 구성·역률·효율과 부하 전류의 관계
+      - title: "Schneider Electric: Installed power (kW)"
+        url: https://www.electrical-installation.org/enwiki/Installed_power_%28kW%29
+        scope: 정격 출력·전기 입력과 설치 전력·실제 수요의 구분
+      - title: "Schneider Electric: Conductor sizing, methodology and definition"
+        url: https://www.electrical-installation.org/enwiki/Conductor_sizing%3A_methodology_and_definition
+        scope: 부하 전류와 모터 기동 조건에 따른 전선·보호 기기 검토
+  custom-box-size-order:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 맞춤 사이즈 박스를 주문할 때 외형 치수와 내부 요구를 어떻게 전달하나요?
+    facts:
+      - 에스지기전은 맞춤 사이즈 박스·함체를 제작한다. 사용자가 직접 확인한 사업 범위다.
+      - 서울교통공사 CCTV 제어함체 사례는 기성함에 전면 루버, 좌측 하부 타공, 명판을 반영한 가공 납품이다.
+      - 송도 배수펌프 제어반 제작에는 외형도와 내부배치도를 준비했다.
+      - 발주 정보는 외형 폭·높이·깊이, 설치 공간, 내부에 넣을 기기의 치수, 문 개폐 방향, 타공 요구, 재질 요구, 수량으로 구분해 정리한다. 특정 수치의 설계 기준이 아닌 상담 입력 목록이다.
+    business_bridge: 맞춤 치수의 빈 박스가 필요한지, 기성함 가공이 필요한지, 전기 기기·배선이 포함된 분전반 제작까지 필요한지를 함께 전달하면 공급 범위를 정하기 쉽다.
+    cta_headline: 설치 공간과 용도에 맞는 박스·함체 제작 상담
+    restrictions:
+      - 모든 사이즈·재질을 제작한다고 약속하지 않는다. 제작 가능한 범위는 개별 상담에서 검토한다.
+      - 치수·판 두께·이격거리·방수등급을 임의 추천하지 않는다. 참고 사례의 치수를 공통 규격으로 쓰지 않는다.
+      - 기성함 가공 사례를 맞춤 사이즈 외함 제작 사례라고 바꾸지 않는다. 도면과 상세 주소는 공개하지 않는다.
+    sources:
+      - title: 서울교통공사 관제센터 CCTV 제어함체 10대 납품 사례
+        url: https://www.sg-powertech.com/portfolio/2026-09-25-seoul-metro-tps-case
+        scope: 사용자 확인 발주 사양, 기성함 가공·타공·명판 납품의 범위
+      - title: 송도 배수펌프 제어반 제작 구성과 승인도서 준비
+        url: https://www.sg-powertech.com/blog/2026-10-08-songdo-pump-panel-technical
+        scope: 사용자 확인 제작 사실, 외형도·내부배치도 준비와 완성 제어반의 범위
+  purpose-built-panel-order:
+    status: reviewed
+    reviewed_on: 2026-10-09
+    review_by: 2027-01-07
+    question: 맞춤 박스와 부품·배선을 포함한 완성 분전반은 어떻게 구분해서 발주하나요?
+    facts:
+      - 에스지기전은 맞춤 사이즈 박스와 다양한 목적의 분전반·제어반을 맞춤 제조한다. 사용자가 직접 확인한 사업 범위다.
+      - 서울교통공사 CCTV 사례는 기성함 가공과 명판 납품으로 설명한다.
+      - 송도 사례는 배수펌프 제어반의 전기 기기·조작부·수위제어·배선과 승인도서 준비를 포함했다.
+      - 박스 발주에는 외형·설치 공간·타공·명판·수량 요구를, 완성 분전반 발주에는 용도·부하 목록·분기 회로·조작 및 표시·제어 요구와 문서 요구를 함께 정리한다. 이는 상담 입력 목록이다.
+    business_bridge: 용도와 원하는 공급 범위를 먼저 정리하면 함체 가공과 완성 분전반 제작에 필요한 자료를 구분하기 쉽다. 박스·회로·제어 요구를 맞춰 목적에 적합한 제작을 상담한다.
+    cta_headline: 용도와 공급 범위에 맞는 분전반·함체 제작 상담
+    restrictions:
+      - 모든 함체 납품에 차단기·제어 배선이 포함된다고 설명하지 않는다.
+      - 송도의 구성요소를 모든 용도에 필수라고 쓰지 않는다. 미확인 설치·시운전·인증·납기·가격을 추가하지 않는다.
+      - 확인된 두 사례의 제작 범위만 비교한다. 새 고객 실적을 만들지 않는다.
+    sources:
+      - title: 서울교통공사 관제센터 CCTV 제어함체 10대 납품 사례
+        url: https://www.sg-powertech.com/portfolio/2026-09-25-seoul-metro-tps-case
+        scope: 사용자가 확인한 함체 가공·명판 납품 범위
+      - title: 송도 배수펌프 제어반 제작 구성과 승인도서 준비
+        url: https://www.sg-powertech.com/blog/2026-10-08-songdo-pump-panel-technical
+        scope: 사용자가 확인한 배수펌프 제어반 제작 구성과 문서 준비 범위
   busbar-ampacity-table-conditions:
     status: reviewed
     reviewed_on: 2026-10-09
     review_by: 2027-01-07
     question: 같은 부스바 규격인데 허용전류표마다 값이 다른 이유는 무엇인가요?
+    business_bridge: 맞춤 분전반에서 부스바 접속과 배치를 검토할 때 전류표의 조건을 부하와 내부 구성에 맞춰 확인한다. 발주자는 회로 구성과 부하 정보를 함께 전달한다.
+    cta_headline: 부하와 내부 구성에 맞는 분전반 제작 상담
     facts:
       - 부스바 허용전류표는 온도 상승과 설치 조건을 함께 읽어야 한다.
       - Mersen의 표는 온도 상승별 전류 값을 구분하며 실내 주변 온도, 설치 방향 등의 조건을 명시한다.
@@ -23,6 +117,8 @@ briefs:
     reviewed_on: 2026-10-09
     review_by: 2027-01-07
     question: 차단기의 중성선 개폐와 중성선 과전류 보호는 어떻게 다른가요?
+    business_bridge: 분전반 제작 사양을 전달할 때 극수 표기와 필요한 중성선 개폐·보호 기능을 구분한다. 공급 전원과 부하 정보를 함께 정리하면 기기 사양 검토를 돕는다.
+    cta_headline: 전원·회로 조건에 맞는 분전반 제작 상담
     facts:
       - 중성선을 개폐하는 기능과 중성선의 과전류를 검출하는 기능은 별도로 검토한다.
       - 중성선 보호 검토에는 도체 단면적과 고조파 등 부하 조건이 관련된다.
@@ -43,6 +139,8 @@ briefs:
     reviewed_on: 2026-10-09
     review_by: 2027-01-07
     question: 플로트리스 스위치와 전극봉은 각각 어떤 역할을 하나요?
+    business_bridge: 배수펌프 제어반 맞춤 제작 상담에서는 수위에 따른 기동·정지와 경보 요구를 구분해 전달한다. 송도 제작의 수위제어 역할을 짧게 연결한다.
+    cta_headline: 수위제어 목적에 맞는 배수펌프 제어반 제작 상담
     facts:
       - 전극식 수위제어는 전도성 액체가 전극 사이의 전기 경로를 만드는 원리를 이용한다.
       - 전극의 높이와 제어 회로의 동작 조건으로 펌프 기동·정지 수위를 구성한다.
@@ -63,6 +161,8 @@ briefs:
     reviewed_on: 2026-10-09
     review_by: 2027-01-07
     question: CCTV 제어함체 타공을 주문할 때 어떤 치수와 방향을 보내야 하나요?
+    business_bridge: 기성함 가공과 맞춤 사이즈 박스 제작 중 필요한 범위를 정리하고 타공 면·위치·방향을 전달한다. 이는 재질·치수·공급 범위 상담을 돕는다.
+    cta_headline: 치수·타공 조건에 맞는 CCTV 함체 제작 상담
     facts:
       - 서울교통공사 관제센터에 TS 600×800×150 기성함 10대를 가공해 납품했다.
       - 함체는 폭 600 mm, 높이 800 mm, 깊이 150 mm다. 타공은 폭 75 mm, 높이 250 mm이며 명판은 40 mm와 150 mm 규격이다.
@@ -81,6 +181,8 @@ briefs:
     reviewed_on: 2026-10-09
     review_by: 2027-01-07
     question: 누전 경보가 울리면 전원도 자동으로 차단되나요?
+    business_bridge: 목적별 제어반 제작에서는 필요한 경보 표시와 보호 기능을 구분해 전달한다. 송도의 누전 경보 구성을 관련 예시로 짧게 설명한다.
+    cta_headline: 경보·보호 요구에 맞는 제어반 제작 상담
     facts:
       - 누전 감시의 경보 출력과 보호 장치의 차단 동작은 기능과 결선을 구분해서 확인한다.
       - Schneider PM5500 자료는 누전 경보 시 알림 또는 디지털 출력 기능을 설명하고 안전 보호용 적용에 제한을 둔다.
@@ -101,6 +203,8 @@ briefs:
     reviewed_on: 2026-10-09
     review_by: 2027-01-07
     question: 배수펌프 제어반의 수동·자동 선택 스위치는 무엇을 바꾸나요?
+    business_bridge: 펌프 제어반 맞춤 제작에서는 운전모드, 조작과 표시 요구를 먼저 정리한다. 시퀀스도와 결선도에 같은 운전 조건을 반영하면 기능 검토와 회로 추적을 돕는다.
+    cta_headline: 운전 목적에 맞는 배수펌프 제어반 제작 상담
     facts:
       - 송도 전면 조작부에 펌프별 수동·자동 선택 스위치와 ON·OFF·FAULT 표시부를 배치했다.
       - 수동은 운전자 조작, 자동은 수위 신호에 따른 운전 방식을 선택하는 데 사용한다.
@@ -117,6 +221,8 @@ briefs:
     reviewed_on: 2026-10-09
     review_by: 2027-01-07
     question: 부스바 체결 토크를 볼트 크기만 보고 정해도 되나요?
+    business_bridge: 맞춤 분전반의 기기 사양을 검토할 때 접속 조건에 맞는 제조사 자료를 확인한다. 발주 사양에 적용 모델을 정리하면 연결부의 기준을 검토하는 데 도움이 된다.
+    cta_headline: 기기·접속 조건에 맞는 분전반 제작 상담
     facts:
       - 부스바 접속은 적용 기기와 접속 조건에 맞는 제조사 체결 사양을 확인한다.
       - Schneider Masterpact NT·NW 자료는 부스바 재질과 볼트·너트 등급 등 적용 조건을 명시한다.
@@ -134,6 +240,8 @@ briefs:
     reviewed_on: 2026-10-09
     review_by: 2027-01-07
     question: 배수펌프 제어반 제작을 발주할 때 승인도서는 무엇을 준비하나요?
+    business_bridge: 목적별 분전반 제작은 내부 기기·회로·조작 요구와 발주처 문서 요구를 함께 정리한다. 송도의 준비 목록을 개별 제작 범위를 정하는 예시로 활용한다.
+    cta_headline: 승인도서 요구에 맞는 펌프 제어반 제작 상담
     facts:
       - 송도 제작에는 제작승인서, 외형도, 내부배치도, 단선결선도, 주·제어회로도, 단자대 결선도를 준비했다.
       - 펌프 제어 시퀀스도, 부하계산서, 주요 자재 사양서, 수위제어 사양서, 제품 카탈로그, 시험검사계획서도 준비했다.
