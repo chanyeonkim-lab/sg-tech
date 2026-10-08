@@ -111,10 +111,25 @@ const posts = defineCollection({
       const filename = meta.path.split("/").pop()?.replace(/\.mdx$/, "") ?? "";
       const slug = data.slug ?? filename;
       const raw = readFileSync(meta.path, "utf8");
+      // Count the article body, not the frontmatter or compiled MDX metadata.
+      const plainText = raw
+        .replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/, "")
+        .replace(/!\[[^\]]*\]\([^)]+\)/g, "")
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+        .replace(/<[^>]+>/g, "")
+        .replace(/[|#*_`]/g, " ")
+        .replace(/^[\s:-]+$/gm, "")
+        .trim();
+      const wordCount = plainText ? plainText.split(/\s+/).length : 0;
       const faqs = extractFaqs(raw);
       const howto = extractHowTo(raw);
       return {
         ...data,
+        metadata: {
+          ...data.metadata,
+          wordCount,
+          readingTime: Math.max(1, Math.ceil(wordCount / 200)),
+        },
         slug,
         permalink: `/blog/${slug}`,
         faqs,

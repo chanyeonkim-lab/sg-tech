@@ -32,11 +32,11 @@ type Case = {
 
 const cases: Case[] = [
   {
-    title: "인천환경공단 송도 공공하수처리시설 배수펌프 SUS 분전함",
+    title: "인천환경공단 송도 재이용시설 배수펌프 제어반",
     sector: "공공기관 납품 · 설계 · 도면 · 승인 서류",
-    image: "/images/case-songdo-sus-cover.jpg",
+    image: "/images/songdo-pump-panel-exterior.webp",
     summary:
-      "인천환경공단 승기사업소 송도지소(송도 공공하수처리시설) 배수펌프 전기공사용 분전함을 스테인리스(SUS)로 맞춤 제작했습니다. 제작만이 아니라 분전반 설계와 제어회로도·결선도·외함 정면도/측면도·계통도 작성, 발주처 승인용 서류 준비까지 함께 진행했습니다. 인양고리·PL 표시등·내부 히터·내부 LED 조명을 적용했습니다.",
+      "인천환경공단 승기사업소 송도지소 재이용시설의 배수펌프 제어반을 SUS304 함체로 맞춤 제작했습니다. 펌프 A·B 제어 계통, 내부 조명·히터를 반영하고 제작승인서·도면·자재 사양서 등 승인도서 12종 문서 준비를 함께 진행했습니다. 공장 제작 사진과 짧은 사례 소개를 확인하세요.",
     highlights: ["공공기관 납품", "승인 서류 대응", "설계·도면 직접 수행", "스테인리스(SUS) 함체"],
     href: "/blog/2026-09-24-songdo-sewage-pump-sus-panel",
   },
@@ -104,7 +104,7 @@ export default function PortfolioPage() {
       />
       <PageHero
         title="실제 납품 사례"
-        subtitle="다양한 환경·규격·요구조건에 대응한 대표 프로젝트를 정리했습니다. 요청 시 유사 사양의 상세 도면과 시공 결과물을 공유해드립니다."
+        subtitle="다양한 환경·규격·요구조건에 대응한 대표 제작·납품 사례를 정리했습니다. 유사 사양의 자료는 공개 가능 범위를 확인한 뒤 개별 상담에서 안내해드립니다."
         breadcrumb={[
           { name: "홈", url: "/" },
           { name: "납품 사례", url: "/portfolio" },
@@ -123,7 +123,7 @@ export default function PortfolioPage() {
                   src={c.image}
                   alt={c.title}
                   fill
-                  className="object-cover"
+                  className={c.image.includes("songdo-pump-panel") ? "object-contain" : "object-cover"}
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
