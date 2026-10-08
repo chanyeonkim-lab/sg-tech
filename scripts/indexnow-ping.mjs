@@ -41,7 +41,7 @@ async function loadRecentPostUrls() {
         const stamp = new Date(p.updated ?? p.date).getTime();
         return stamp >= cutoff;
       })
-      .map((p) => `${SITE_URL}/blog/${p.slug}`);
+      .map((p) => `${SITE_URL}${p.permalink ?? `/blog/${p.slug}`}`);
   } catch (err) {
     console.warn("[indexnow] velite 로드 실패:", err.message);
     return [];

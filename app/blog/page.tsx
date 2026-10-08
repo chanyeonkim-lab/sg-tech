@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getAllPosts } from "@/lib/posts";
+import { getBlogPosts } from "@/lib/posts";
 import { PostCard } from "@/components/blog/PostCard";
 import { Breadcrumb } from "@/components/blog/Breadcrumb";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default function BlogIndexPage() {
-  const posts = getAllPosts();
+  const posts = getBlogPosts();
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-8 py-16">

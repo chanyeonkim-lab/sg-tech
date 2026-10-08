@@ -24,13 +24,21 @@ export const metadata: Metadata = {
 type Case = {
   title: string;
   sector: string;
-  image: string;
+  image?: string;
   summary: string;
   highlights: string[];
   href?: string;
 };
 
 const cases: Case[] = [
+  {
+    title: "서울교통공사 관제센터 CCTV 제어함체 10대",
+    sector: "공공기관 납품 · 기성함 가공 · 명판 제작",
+    summary:
+      "TS 600×800×150 기성함 10대에 전면 루버와 좌측 하부 75×250 mm 타공을 적용했습니다. CCTV 제어함 명판 10개를 함께 제작해 납품했습니다.",
+    highlights: ["공공기관 납품", "TS 기성함 10대", "전면 루버·측면 타공", "명판 제작"],
+    href: "/portfolio/2026-09-25-seoul-metro-tps-case",
+  },
   {
     title: "인천환경공단 송도 재이용시설 배수펌프 제어반",
     sector: "공공기관 납품 · 설계 · 도면 · 승인 서류",
@@ -119,13 +127,20 @@ export default function PortfolioPage() {
               className="bg-white rounded-2xl overflow-hidden shadow"
             >
               <div className="relative w-full aspect-[16/10] bg-sg-cream">
-                <Image
+                {c.image ? <Image
                   src={c.image}
                   alt={c.title}
                   fill
                   className={c.image.includes("songdo-pump-panel") ? "object-contain" : "object-cover"}
                   sizes="(max-width: 768px) 100vw, 50vw"
-                />
+                /> : (
+                  <div className="h-full flex flex-col items-center justify-center px-8 text-center bg-sg-charcoal text-white">
+                    <p className="text-sm text-sg-yellow mb-3">서울교통공사 관제센터</p>
+                    <p className="text-2xl md:text-3xl font-bold mb-4">CCTV 제어함체</p>
+                    <p className="text-base">TS 600 × 800 × 150 mm · 10대</p>
+                    <p className="text-sm text-sg-yellow mt-3">전면 루버 · 측면 타공 · 명판</p>
+                  </div>
+                )}
               </div>
               <div className="p-6">
                 <p className="text-xs text-sg-gray font-medium mb-2">

@@ -3,6 +3,7 @@ import type {
   WebSite,
   Blog,
   BlogPosting,
+  Article,
   BreadcrumbList,
   ContactPage,
   AboutPage,
@@ -165,13 +166,15 @@ export interface BlogPostingInput {
   wordCount?: number;
   readingTimeMinutes?: number;
   articleSection?: string;
+  permalink?: string;
+  isCaseStudy?: boolean;
 }
 
-export function blogPostingSchema(post: BlogPostingInput): WithContext<BlogPosting> {
-  const url = `${siteConfig.url}/blog/${post.slug}`;
+export function blogPostingSchema(post: BlogPostingInput): WithContext<BlogPosting | Article> {
+  const url = absoluteUrl(post.permalink ?? `/blog/${post.slug}`);
   return {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    "@type": post.isCaseStudy ? "Article" : "BlogPosting",
     headline: post.title,
     description: post.description,
     datePublished: post.datePublished,
@@ -202,10 +205,10 @@ export function blogPostingSchema(post: BlogPostingInput): WithContext<BlogPosti
       ? { timeRequired: `PT${post.readingTimeMinutes}M` }
       : {}),
     isPartOf: {
-      "@type": "Blog",
-      "@id": `${siteConfig.url}/blog#blog`,
-      name: `${siteConfig.name} 블로그`,
-      url: `${siteConfig.url}/blog`,
+      "@type": post.isCaseStudy ? "CollectionPage" : "Blog",
+      "@id": `${siteConfig.url}${post.isCaseStudy ? "/portfolio#cases" : "/blog#blog"}`,
+      name: `${siteConfig.name} ${post.isCaseStudy ? "납품 사례" : "블로그"}`,
+      url: `${siteConfig.url}${post.isCaseStudy ? "/portfolio" : "/blog"}`,
     },
   };
 }

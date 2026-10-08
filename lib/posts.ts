@@ -14,6 +14,14 @@ export function getPostBySlug(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug && !p.draft);
 }
 
+export function getBlogPosts(): Post[] {
+  return getAllPosts().filter((post) => post.category === "blog");
+}
+
+export function getCaseStudies(): Post[] {
+  return getAllPosts().filter((post) => post.category === "case-study");
+}
+
 /**
  * 현재 글과 태그가 겹치는 글을 겹침 수 → 최신순으로 정렬해 반환.
  * 겹치는 태그가 없으면 최신 글로 폴백해서 최소 개수를 채운다.
@@ -43,7 +51,7 @@ export function getRelatedPosts(current: Post, limit = 3): Post[] {
 
 export function getAllTags(): { tag: string; count: number }[] {
   const map = new Map<string, number>();
-  for (const post of getAllPosts()) {
+  for (const post of getBlogPosts()) {
     for (const tag of post.tags) {
       map.set(tag, (map.get(tag) ?? 0) + 1);
     }

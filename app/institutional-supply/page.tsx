@@ -48,10 +48,10 @@ const supplyCaseGroups = [
         href: "/blog/2026-09-24-songdo-sewage-pump-sus-panel",
       },
       {
-        title: "서울교통공사 사옥 CCTV 제어함체",
+        title: "서울교통공사 관제센터 CCTV 제어함체",
         summary:
-          "CCTV·출입통제 장비를 수용하는 제어함체를 제작했습니다. 설치 공간과 장비 배치에 맞춰 함체 규격과 배선 인입 위치를 구성했습니다.",
-        href: "/blog/2026-09-25-seoul-metro-tps-case",
+          "TS 600×800×150 기성함 10대에 전면 루버와 좌측 하부 타공을 적용했습니다. CCTV 제어함 명판 10개를 함께 제작·납품했습니다.",
+        href: "/portfolio/2026-09-25-seoul-metro-tps-case",
       },
     ],
   },

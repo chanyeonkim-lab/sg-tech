@@ -84,9 +84,9 @@ def next_pending(queue: dict) -> tuple[int | None, dict | None]:
 
 # ─── 기존 포스트 인벤토리 ─────────────────────────────
 def existing_posts() -> list[tuple[str, str]]:
-    """Return [(title, slug), ...] for all non-draft posts sorted newest first."""
-    items: list[tuple[str, str, str]] = []  # (date, title, slug)
-    for p in CONTENT_DIR.glob("*.mdx"):
+    """Return [(title, permalink), ...] for published articles and cases."""
+    items: list[tuple[str, str, str]] = []  # (date, title, permalink)
+    for p in (ROOT / "content").rglob("*.mdx"):
         if p.name.startswith("_"):
             continue
         text = p.read_text(encoding="utf-8")
@@ -98,7 +98,8 @@ def existing_posts() -> list[tuple[str, str]]:
             continue
         title = title_m.group(1).strip().strip('"')
         date_val = date_m.group(1) if date_m else "0000-00-00"
-        items.append((date_val, title, p.stem))
+        section = "portfolio" if re.search(r"^category:\s*case-study\s*$", text, re.MULTILINE) else "blog"
+        items.append((date_val, title, f"/{section}/{p.stem}"))
     items.sort(reverse=True)
     return [(t, s) for _, t, s in items]
 
@@ -106,7 +107,7 @@ def existing_posts() -> list[tuple[str, str]]:
 # ─── 프롬프트 조립 ─────────────────────────────────────
 def build_system_prompt(posts_inventory: list[tuple[str, str]]) -> str:
     posts_list = "\n".join(
-        f"- [{title}](/blog/{slug})" for title, slug in posts_inventory
+        f"- [{title}]({permalink})" for title, permalink in posts_inventory
     )
     banned_list = "\n".join(f"- {p}" for p in BANNED_PHRASES)
     today = datetime.date.today().isoformat()

@@ -1,5 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/blog/2026-09-25-seoul-metro-tps-case",
+        destination: "/portfolio/2026-09-25-seoul-metro-tps-case",
+        permanent: true,
+      },
+    ];
+  },
   webpack: (config) => {
     config.plugins.push(new VeliteBuildPlugin());
     return config;

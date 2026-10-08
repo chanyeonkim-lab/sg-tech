@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/lib/posts";
+import { getBlogPosts } from "@/lib/posts";
 import { siteConfig } from "@/lib/site";
 
 function escapeXml(input: string): string {
@@ -11,12 +11,12 @@ function escapeXml(input: string): string {
 }
 
 export function GET() {
-  const posts = getAllPosts().slice(0, 30);
+  const posts = getBlogPosts().slice(0, 30);
   const now = new Date().toUTCString();
 
   const items = posts
     .map((post) => {
-      const url = `${siteConfig.url}/blog/${post.slug}`;
+      const url = `${siteConfig.url}${post.permalink}`;
       return `    <item>
       <title>${escapeXml(post.title)}</title>
       <link>${url}</link>

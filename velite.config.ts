@@ -93,7 +93,7 @@ function extractFaqs(mdx: string): { question: string; answer: string }[] {
 
 const posts = defineCollection({
   name: "Post",
-  pattern: "blog/**/*.mdx",
+  pattern: "**/*.mdx",
   schema: s
     .object({
       title: s.string().max(120),
@@ -103,6 +103,7 @@ const posts = defineCollection({
       tags: s.array(s.string()).default([]),
       cover: s.string().optional(),
       draft: s.boolean().default(false),
+      category: s.enum(["blog", "case-study"]).default("blog"),
       slug: s.slug("posts").optional(),
       body: s.mdx(),
       metadata: s.metadata(),
@@ -131,7 +132,7 @@ const posts = defineCollection({
           readingTime: Math.max(1, Math.ceil(wordCount / 200)),
         },
         slug,
-        permalink: `/blog/${slug}`,
+        permalink: `/${data.category === "case-study" ? "portfolio" : "blog"}/${slug}`,
         faqs,
         howto,
       };

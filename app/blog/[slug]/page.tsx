@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getAllPosts, getPostBySlug, getRelatedPosts } from "@/lib/posts";
+import { getBlogPosts, getPostBySlug, getRelatedPosts } from "@/lib/posts";
 import { MdxRenderer } from "@/components/mdx/MdxRenderer";
 import { Breadcrumb } from "@/components/blog/Breadcrumb";
 import { AuthorByline } from "@/components/blog/AuthorByline";
@@ -22,7 +22,7 @@ function absoluteImage(path?: string): string {
 }
 
 export function generateStaticParams() {
-  return getAllPosts().map((post) => ({ slug: post.slug }));
+  return getBlogPosts().map((post) => ({ slug: post.slug }));
 }
 
 interface Params {
@@ -33,12 +33,12 @@ export function generateMetadata({ params }: Params): Metadata {
   const post = getPostBySlug(params.slug);
   if (!post) return {};
 
-  const url = `${siteConfig.url}/blog/${post.slug}`;
+  const url = `${siteConfig.url}${post.permalink}`;
 
   return {
     title: post.title,
     description: post.description,
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: { canonical: post.permalink },
     openGraph: {
       type: "article",
       title: post.title,
@@ -61,7 +61,11 @@ export default function BlogPostPage({ params }: Params) {
   const post = getPostBySlug(params.slug);
   if (!post) notFound();
 
-  const postUrl = `${siteConfig.url}/blog/${post.slug}`;
+  const postUrl = `${siteConfig.url}${post.permalink}`;
+  const isCase = post.category === "case-study";
+  const collection = isCase
+    ? { name: "납품 사례", url: "/portfolio" }
+    : { name: "블로그", url: "/blog" };
   const faqs = post.faqs ?? [];
 
   return (
@@ -78,12 +82,14 @@ export default function BlogPostPage({ params }: Params) {
             tags: post.tags,
             wordCount: post.metadata.wordCount,
             readingTimeMinutes: post.metadata.readingTime,
-            articleSection: post.tags[0],
+            articleSection: isCase ? "공공기관 납품 사례" : post.tags[0],
+            permalink: post.permalink,
+            isCaseStudy: isCase,
           }),
           breadcrumbSchema([
             { name: "홈", url: "/" },
-            { name: "블로그", url: "/blog" },
-            { name: post.title, url: `/blog/${post.slug}` },
+            collection,
+            { name: post.title, url: post.permalink },
           ]),
           ...(faqs.length > 0 ? [faqPageSchema(faqs, postUrl)] : []),
           ...(post.howto
@@ -101,8 +107,8 @@ export default function BlogPostPage({ params }: Params) {
       <Breadcrumb
         items={[
           { name: "홈", url: "/" },
-          { name: "블로그", url: "/blog" },
-          { name: post.title, url: `/blog/${post.slug}` },
+          collection,
+          { name: post.title, url: post.permalink },
         ]}
       />
 
