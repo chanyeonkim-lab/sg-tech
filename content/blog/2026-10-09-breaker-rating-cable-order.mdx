@@ -1,0 +1,95 @@
+---
+title: "20A·30A·50A 차단기, 전선 굵기는 어떻게 정할까? 용량 산정 전 확인사항"
+description: "20A·30A·50A 차단기와 전선 선정 순서를 KEC 과부하 보호 조건으로 설명합니다. 조건을 명시한 검토 예시와 전압강하·기동전류·제작 발주 항목을 정리했습니다."
+date: 2026-10-09
+tags: [20A전선굵기, 30A전선굵기, 50A전선굵기, 차단기용량, 전선선정, 분전반제작]
+cover: /images/product-main.jpg
+draft: false
+---
+
+20A·30A·50A 차단기에 연결할 전선은 회로의 설계전류와 설치 조건을 확인하고, 보정 후 허용전류가 차단기 정격 또는 설정전류 이상이 되도록 검토합니다. KEC 212.4.1의 기본 관계는 `I_B ≤ I_n ≤ I_Z`입니다. 전압강하와 단락 보호 조건도 함께 확인해 전선 규격을 정합니다.
+
+분전반 제작 상담에서는 부하 목록과 전선 규격을 회로별로 정리하는 것이 좋습니다. 차단기 용량을 정하기 전에 어떤 항목을 확인하는지 설명하겠습니다.
+
+## 부하전류·차단기 전류·허용전류는 어떻게 다른가요?
+
+| 기호 | 의미 | 확인할 자료 |
+| --- | --- | --- |
+| I_B | 회로의 설계전류 | 기기 명판, 부하 목록과 운전 조건 |
+| I_n | 보호장치 정격전류, 조정형은 적용 설정전류 | 차단기 모델과 설정값 |
+| I_Z | 실제 배선 조건에서의 전선 허용전류 | 전선 종류, 공사방법과 보정 결과 |
+| I₂ | 규약시간 안에 보호장치의 유효한 동작을 보장하는 전류 | 제조사 자료 또는 제품 표준 |
+
+KEC 212.4.1은 `I_B ≤ I_n ≤ I_Z`와 `I₂ ≤ 1.45 × I_Z`를 함께 요구합니다. 조정형 보호장치는 실제 적용하는 설정전류를 사용합니다. [한국전기설비규정: 도체와 과부하 보호장치 사이의 협조](https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000270772)
+
+쉽게 말하면 부하를 공급할 수 있는 전류 정격과 전선을 보호할 수 있는 조건을 함께 맞추는 과정입니다. 차단기의 차단 용량은 설치 지점의 예상 단락전류와 별도로 검토합니다. [Schneider Electric: 보호장치 선정의 기본 조건](https://www.electrical-installation.org/enwiki/Practical_values_for_a_protective_scheme)
+
+## 20A·30A·50A 전선 굵기 검토 예시
+
+아래는 앞 글의 PVC 허용전류표 중 B2 조건을 이용해 비교하는 예시입니다. 구리·PVC, 통전도체 3개, 벽면 전선관 안의 다심 케이블, 공기 중 30℃, 단일 회로이며 온도·집합 보정 전입니다. [참고표와 공사방법 설명](/blog/2026-10-09-wire-ampacity-table)
+
+| 차단기 정격 | 예시 단면적과 표의 값 | 다음 검토 |
+| --- | --- | --- |
+| 20A | 2.5mm²: 20A | 표의 값과 차단기 전류가 같으므로 실제 보정 조건을 확인 |
+| 30A | 4mm²: 27A, 6mm²: 34A | 4mm²는 이 조건에서 정격에 못 미침. 6mm²는 보정 후 값으로 재검토 |
+| 50A | 10mm²: 46A, 16mm²: 62A | 10mm²는 이 조건에서 정격에 못 미침. 16mm²는 보정 후 값으로 재검토 |
+
+이 예시는 표를 읽고 비교하는 방법을 보여줍니다. 단상 회로와 XLPE 절연 케이블은 각각 맞는 표로 검토합니다. [수치 출처: Schneider Electric Fig. G20](https://www.electrical-installation.org/enwiki/General_method_for_cable_sizing)
+
+### 30A 차단기에 6SQ를 검토할 때
+
+같은 B2·PVC 조건에서 주위온도가 40℃이면 온도 보정계수 0.87을 적용합니다. 집합 보정을 추가로 적용할 조건이 없다는 가정에서는 `34A × 0.87 = 29.58A`입니다. 30A보다 작아지므로 전선 규격과 회로 구성을 다시 검토해야 합니다. [온도 보정계수: Fig. G12](https://www.electrical-installation.org/enwiki/General_method_for_cable_sizing)
+
+최종 선정은 설계전류, 보호장치의 동작 특성, 전압강하와 단락 조건을 함께 만족하도록 진행합니다.
+
+## 용량 산정 전에 확인할 다섯 가지
+
+1. 전원 방식과 부하 명판: 단상·삼상, 사용 전압, 정격전류와 소비전력을 정리합니다.
+2. 운전 조건: 동시에 사용하는 기기, 운전 시간, 모터의 기동 조건을 확인합니다.
+3. 전선과 경로: 모델, 도체·절연 종류, 심수, 배선 길이와 공사방법을 정리합니다.
+4. 열 조건: 주위온도와 함께 포설하는 회로를 확인해 허용전류를 보정합니다.
+5. 보호와 접속: 차단기 동작 특성·차단 용량, 단자 접속 조건, 보호도체 구성을 검토합니다.
+
+모터는 운전전류와 기동 특성을 함께 확인합니다. 기동 때의 전류와 운전 빈도는 보호장치와 케이블 검토에 영향을 줍니다. [Schneider Electric: 전선 선정과 부하 특성](https://www.electrical-installation.org/enwiki/Conductor_sizing%3A_methodology_and_definition)
+
+## 30m·50m·100m 배선은 무엇을 더 확인하나요?
+
+분전반에서 부하까지의 케이블 길이가 길어지면 전압강하 계산이 필요합니다. 계산에는 길이, 부하전류, 도체의 저항·리액턴스와 역률을 반영합니다. 선정한 굵기의 전압강하가 적용 기준과 기기 운전 조건을 만족하는지 확인합니다. [Schneider Electric: 전압강하 계산](https://www.electrical-installation.org/enwiki/Calculation_of_voltage_drop_in_steady_load_conditions)
+
+상담할 때는 분전반과 기기 사이의 직선거리보다 실제 케이블 경로 길이를 전달해 주세요. 분전반 설치 위치와 인입 방향을 정하는 데도 도움이 됩니다.
+
+## 맞춤 분전반 제작 요청을 정리하는 방법
+
+에스지기전은 매장·공장·설비 등 다양한 목적의 분전반을 맞춤 제작합니다. 부하별 용도와 전원, 차단기 사양, 전선 규격을 한 목록에 정리하면 회로를 나누고 단자대·내부 배선 공간을 검토하기 쉽습니다.
+
+설치 공간의 가로·세로·깊이, 메인 케이블 인입 위치와 분기 케이블 출구도 함께 전달해 주세요. 맞춤 사이즈 함체만 필요한 경우에는 외형 치수와 수용 기기, 타공 위치를 중심으로 요청 내용을 정리하면 됩니다.
+
+## 자주 묻는 질문
+
+Q. 20A 차단기에는 몇 SQ 전선을 쓰나요?
+A. 전선 종류, 공사방법, 통전도체 수와 보정 조건을 확인해 선정합니다. 이 글의 B2·PVC 참고 조건에서는 2.5mm²의 표 값이 20A이며, 최종 적용은 보정 후 값과 보호 조건으로 판단합니다.
+
+Q. 30A 차단기에 6SQ를 쓰면 되나요?
+A. 이 글의 B2·PVC·30℃ 조건에서는 34A이지만, 40℃ 온도 보정만 적용해도 29.58A가 됩니다. 실제 회로 조건에 맞는 표와 보정 결과로 검토합니다.
+
+Q. 50A 차단기에 10SQ 전선을 사용할 수 있나요?
+A. 이 글의 B2·PVC·통전도체 3개 조건에서는 10mm²가 46A이므로 50A에 못 미칩니다. 케이블 종류와 공사방법을 확인하고 실제 허용전류·전압강하·보호 조건으로 선정합니다.
+
+Q. 차단기 용량을 키우려면 어떤 자료가 필요한가요?
+A. 추가 부하의 명판, 기존 전선과 배선 경로, 보호장치 사양, 상위 전원의 공급 조건을 먼저 확인합니다. 전기 담당자의 검토 결과를 전달하면 변경할 분전반의 제작 사양을 정리하기 좋습니다.
+
+<ContactCta headline="회로별 부하와 전선 규격에 맞는 분전반 제작 상담" />
+
+## 참고 자료
+
+- [국가법령정보센터: 한국전기설비규정, 212.4.1 및 232.5](https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000270772)
+- [Schneider Electric: General method for cable sizing, Fig. G12·G20](https://www.electrical-installation.org/enwiki/General_method_for_cable_sizing)
+- [Schneider Electric: Practical values for a protective scheme](https://www.electrical-installation.org/enwiki/Practical_values_for_a_protective_scheme)
+- [Schneider Electric: Conductor sizing, methodology and definition](https://www.electrical-installation.org/enwiki/Conductor_sizing%3A_methodology_and_definition)
+- [Schneider Electric: Calculation of voltage drop in steady load conditions](https://www.electrical-installation.org/enwiki/Calculation_of_voltage_drop_in_steady_load_conditions)
+
+## 다음 읽을거리
+
+- [전선 굵기별 허용전류표와 적용 조건](/blog/2026-10-09-wire-ampacity-table)
+- [차단기 명판 AF·AT·kA의 뜻](/blog/2026-08-31-af-at-ka-explained)
+- [접지선 굵기 KEC 기준표](/blog/2026-10-09-pe-conductor-kec-size)

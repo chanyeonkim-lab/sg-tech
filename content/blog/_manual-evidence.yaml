@@ -1,0 +1,31 @@
+# Manually verified article evidence; not an auto-generation approval brief.
+version: 1
+reviewed_on: 2026-10-09
+articles:
+  2026-10-09-wire-ampacity-table:
+    sources:
+      - url: https://www.electrical-installation.org/enwiki/General_method_for_cable_sizing
+        scope: Fig. G10 installation methods; Fig. G20 copper PVC, three loaded conductors, air 30 C, conductor 70 C; B1/B2/C rows 1.5 through 16 mm2
+      - url: https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000270772
+        scope: Official 2025-227 consolidated PDF, printed pages 231-232 (PDF pages 263-264), KEC 232.5.1 through 232.5.4
+    limits: IEC guide example is explicitly identified. Domestic selection requires applicable KEC/KS methods and correction factors. No universal SQ-to-breaker recommendation.
+  2026-10-09-breaker-rating-cable-order:
+    sources:
+      - url: https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000270772
+        scope: KEC 212.4.1, both overload coordination inequalities, adjustable-device setting, manufacturer/standard I2
+      - url: https://www.electrical-installation.org/enwiki/General_method_for_cable_sizing
+        scope: Fig. G20 B2 copper PVC three loaded conductors; Fig. G12 PVC 40 C factor 0.87
+      - url: https://www.electrical-installation.org/enwiki/Practical_values_for_a_protective_scheme
+        scope: Breaking capacity versus prospective short-circuit current
+      - url: https://www.electrical-installation.org/enwiki/Conductor_sizing%3A_methodology_and_definition
+        scope: Motor starting, duty, cable and protective-device sizing
+      - url: https://www.electrical-installation.org/enwiki/Calculation_of_voltage_drop_in_steady_load_conditions
+        scope: Length, current, resistance, reactance, power factor
+    limits: Three-loaded-conductor B2 examples are not single-phase selection rules. 34 times 0.87 equals 29.58 A; no additional grouping factor assumed in that example.
+  2026-10-09-pe-conductor-kec-size:
+    sources:
+      - url: https://www.law.go.kr/LSW/admRulLsInfoP.do?admRulSeq=2100000270772
+        scope: Official 2025-227 consolidated PDF; printed pages 30-33 (PDF pages 62-65), KEC 142.3.1 and 142.3.2; table 142.3-1 visually inspected at PDF page 64
+      - url: https://kec.kea.kr/sub_tech/regulation_all.php?b_name=report2&key=2026&keyfield=&mode=view&number=2454&page=1
+        scope: Official amendment notice and transition provisions
+    limits: Simplified table uses copper phase and same-material PE. Distinguishes PE, earthing conductor and bonding. Formula limited to disconnection time at most 5 s; mechanical minima apply alongside table/calculation. Does not generalize PE table to PEN or all grounding purposes.

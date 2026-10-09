@@ -1,5 +1,5 @@
 version: 1
-next_index: 0
+next_index: 1
 last_curated_index: 24
 topics:
 - slug: breaker-rating-cable-order
@@ -9,7 +9,8 @@ topics:
   intent: informational
   pain: 차단기 전류만으로 전선 굵기를 정해도 되는지 혼동함
   keywords: [20A 전선 굵기, 30A 전선 굵기, 50A 전선 굵기, 전선 허용전류표]
-  status: pending
+  status: done
+  published_slug: 2026-10-09-breaker-rating-cable-order
 - slug: busbar-ampacity-table-conditions
   title: 부스바 허용전류표마다 값이 다른 이유와 적용 조건 읽는 법
   segment: 검색유입
