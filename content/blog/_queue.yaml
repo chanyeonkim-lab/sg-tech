@@ -1,5 +1,5 @@
 version: 1
-next_index: 2
+next_index: 3
 last_curated_index: 24
 topics:
 - slug: breaker-rating-cable-order
@@ -38,7 +38,8 @@ topics:
   - 맞춤 사이즈 박스
   - 분전함 맞춤 제작
   - 함체 깊이
-  status: pending
+  status: done
+  published_slug: 2026-10-13-custom-box-size-order
 - slug: load-power-current-nameplate
   title: 차단기 용량과 기기 kW, 분전반 제작 상담에는 어떤 부하 정보를 보내나요?
   segment: 전기공사업체
