@@ -169,3 +169,10 @@ A. 시험 답변입니다.
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class CoverPoolTest(unittest.TestCase):
+    def test_pool_files_exist_and_pick_is_from_pool(self):
+        for cover in generator.COVER_POOL:
+            self.assertTrue((generator.ROOT / "public" / cover.lstrip("/")).exists(), cover)
+        self.assertIn(generator.pick_cover(), generator.COVER_POOL)
