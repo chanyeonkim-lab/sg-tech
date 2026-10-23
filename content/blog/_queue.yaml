@@ -1,5 +1,5 @@
 version: 1
-next_index: 3
+next_index: 4
 last_curated_index: 24
 topics:
 - slug: breaker-rating-cable-order
@@ -51,7 +51,8 @@ topics:
   - 소비전력 전류
   - 분전반 부하 목록
   - 기기 명판
-  status: pending
+  status: done
+  published_slug: 2026-10-23-load-power-current-nameplate
 - slug: neutral-switching-and-protection
   title: 차단기 중성선 개폐와 중성선 보호는 어떻게 다른가요?
   segment: 검색유입
