@@ -197,6 +197,8 @@ def build_system_prompt(posts_inventory: list[tuple[str, str]], cover: str = COV
 - 출처에 없는 KEC/KS 조항, 허용전류표, 이격거리, 감도·트립 설정,
   체결 토크, 여유율, 합격 기준, 가격을 만들지 않는다.
 - 확인되지 않은 수치는 발주·설계 때 확인할 항목으로 설명한다.
+- facts에 없는 숫자+단위 조합(예: 220V, 5kW, 16A, 80%, 30mA)은 예시로도 쓰지 않는다.
+  숫자 없이 '정격 전압', '명판의 kW 표기', '차단기 정격 전류'처럼 항목 이름으로만 쓴다.
 - 기존 글은 관련 링크 대상이다. 오래된 글의 수치·주장을 새 근거로 복사하지 않는다.
 - 영어 원문은 짧게 한국어로 풀어 쓰고 출처 링크를 가까이 둔다.
 - 제공된 실제 납품 사실만 사용하고 관련된 주제에만 사례를 연결한다.
@@ -345,8 +347,12 @@ def validate_mdx(text: str, brief: dict, inventory: list[tuple[str, str]],
     normalize = lambda value: re.sub(r"\s+", "", value).lower()
     fact_text = "\n".join(brief.get("facts", []))
     reviewed_values = {normalize(m.group()) for m in quantity.finditer(fact_text)}
-    if any(normalize(m.group()) not in reviewed_values for m in quantity.finditer(body)):
-        return False, "검토된 사실에 없는 단위·수치: 별도 근거 검토 필요"
+    unreviewed = sorted({m.group().strip() for m in quantity.finditer(body)
+                         if normalize(m.group()) not in reviewed_values})
+    if unreviewed:
+        return False, ("검토된 사실에 없는 단위·수치: 별도 근거 검토 필요 "
+                       f"(발견: {', '.join(unreviewed[:8])}). 숫자와 단위가 붙은 예시를 모두 빼고 "
+                       "'정격 전압', '명판의 kW' 같은 말로 풀어 쓰세요")
 
     return True, "OK"
 
