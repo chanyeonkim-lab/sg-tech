@@ -404,8 +404,75 @@ def generate_post(topic: dict, brief: dict, posts_inventory: list[tuple[str, str
     raise SystemExit(f"Generation failed after 3 attempts")
 
 
+# ─── 사람이 작성해 예약한 글 ─────────────────────────────
+PREPARED_DIR = CONTENT_DIR / "_prepared"
+
+
+def validate_prepared(text: str, inventory: list[tuple[str, str]]) -> tuple[bool, str]:
+    """Format and safety guards for a hand-written post (no API, no brief)."""
+    parts = text.split("---", 2)
+    if not text.startswith("---") or len(parts) < 3:
+        return False, "Frontmatter 형식 오류"
+    try:
+        data = yaml.safe_load(parts[1])
+    except yaml.YAMLError:
+        return False, "Frontmatter YAML 오류"
+    if not isinstance(data, dict) or data.get("draft") is not False:
+        return False, "draft: false 필요"
+    for field in ("title", "description", "date", "tags"):
+        if not data.get(field):
+            return False, f"Frontmatter에 {field} 없음"
+    if len(str(data["description"])) > 200 or len(str(data["title"])) > 120:
+        return False, "제목 또는 설명 길이 초과"
+    if "**" in text or "—" in text:
+        return False, "금지된 글쓰기 기호 포함"
+    for phrase in BANNED_PHRASES:
+        if phrase in text:
+            return False, f"금지 어구 포함: {phrase}"
+    for pattern, label in PROHIBITED_CLAIM_PATTERNS:
+        if pattern.search(text):
+            return False, f"금지된 제품 주장 포함: {label}"
+    body = parts[2]
+    if body.count("<ContactCta") != 1:
+        return False, "하단 CTA 한 번만 사용"
+    allowed = {url for _, url in inventory} | {
+        "/contact", "/products", "/portfolio", "/institutional-supply",
+    }
+    for link in re.findall(r"(?<!!)\[[^\]]+\]\(([^\s)]+)\)", body):
+        if link not in allowed and not link.startswith("https://www.law.go.kr/"):
+            return False, f"확인되지 않은 링크: {link}"
+    for src in re.findall(r"!\[[^\]]*\]\(([^\s)]+)\)", body) + [str(data.get("cover", ""))]:
+        if src.startswith("/") and not (ROOT / "public" / src.lstrip("/")).exists():
+            return False, f"이미지 파일 없음: {src}"
+    return True, "OK"
+
+
+def publish_prepared(inventory: list[tuple[str, str]]) -> bool:
+    """Release the oldest hand-written post held in _prepared/. Returns True if released."""
+    held = sorted(PREPARED_DIR.glob("*.mdx.hold")) if PREPARED_DIR.exists() else []
+    if not held:
+        return False
+    src = held[0]
+    slug = src.name.removesuffix(".mdx.hold")
+    today = local_today().isoformat()
+    text = re.sub(r"^date:\s*\S+", f"date: {today}", src.read_text(encoding="utf-8"),
+                  count=1, flags=re.MULTILINE)
+    ok, reason = validate_prepared(text, inventory)
+    if not ok:
+        raise SystemExit(f"예약 글 검사 실패 ({src.name}): {reason}")
+    dest = CONTENT_DIR / f"{today}-{slug}.mdx"
+    if dest.exists():
+        raise SystemExit(f"이미 존재하는 파일: {dest.name}")
+    dest.write_text(text, encoding="utf-8")
+    src.unlink()
+    print(f"✓ 예약 글 발행: {dest.name}", flush=True)
+    return True
+
+
 # ─── 메인 ───────────────────────────────────────────────
 def main() -> None:
+    if "--check-config" not in sys.argv and publish_prepared(existing_posts()):
+        return
     queue = load_queue()
     briefs = load_briefs()
     posts_inventory = existing_posts()

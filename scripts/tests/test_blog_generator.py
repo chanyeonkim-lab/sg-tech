@@ -176,3 +176,38 @@ class CoverPoolTest(unittest.TestCase):
         for cover in generator.COVER_POOL:
             self.assertTrue((generator.ROOT / "public" / cover.lstrip("/")).exists(), cover)
         self.assertIn(generator.pick_cover(), generator.COVER_POOL)
+
+
+class PreparedPostTest(unittest.TestCase):
+    def test_held_posts_pass_guards(self):
+        held = list((generator.CONTENT_DIR / "_prepared").glob("*.mdx.hold"))
+        inventory = generator.existing_posts()
+        for path in held:
+            ok, reason = generator.validate_prepared(path.read_text(encoding="utf-8"), inventory)
+            self.assertTrue(ok, f"{path.name}: {reason}")
+
+    def test_guards_reject_bad_input(self):
+        inventory = [("기초", "/blog/basics")]
+        base = ('---\ntitle: "t"\ndescription: "d"\ndate: 2026-10-27\ntags: [a]\ndraft: false\n---\n\n'
+                '본문입니다.\n\n<ContactCta headline="상담" />\n')
+        self.assertTrue(generator.validate_prepared(base, inventory)[0])
+        for bad in (base + "**굵게**", base + "[x](https://fake.example)", base + "IP66",
+                    base.replace("draft: false", "draft: true"), base + "<ContactCta />",
+                    base + "![x](/images/missing.png)"):
+            self.assertFalse(generator.validate_prepared(bad, inventory)[0])
+
+    def test_release_moves_file_and_sets_today(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = pathlib.Path(tmp)
+            (tmp / "_prepared").mkdir()
+            text = ('---\ntitle: "t"\ndescription: "d"\ndate: 2000-01-01\ntags: [a]\ndraft: false\n---\n\n'
+                    '본문입니다.\n\n<ContactCta headline="상담" />\n')
+            (tmp / "_prepared" / "demo.mdx.hold").write_text(text, encoding="utf-8")
+            with patch.object(generator, "CONTENT_DIR", tmp), \
+                    patch.object(generator, "PREPARED_DIR", tmp / "_prepared"):
+                self.assertTrue(generator.publish_prepared([]))
+                self.assertFalse(generator.publish_prepared([]))
+            out = tmp / f"{generator.local_today()}-demo.mdx"
+            self.assertIn(f"date: {generator.local_today()}", out.read_text(encoding="utf-8"))
+            self.assertFalse((tmp / "_prepared" / "demo.mdx.hold").exists())
