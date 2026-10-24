@@ -43,3 +43,5 @@ next-env.d.ts
 *.docx
 *.doc
 *.hwp
+__pycache__/
+*.pyc
