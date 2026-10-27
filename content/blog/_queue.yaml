@@ -1,5 +1,5 @@
 version: 1
-next_index: 4
+next_index: 5
 last_curated_index: 24
 topics:
 - slug: breaker-rating-cable-order
@@ -63,7 +63,8 @@ topics:
   - 차단기 중성선
   - 중성선 보호
   - 차단기 극수
-  status: pending
+  status: done
+  published_slug: 2026-10-27-neutral-switching-and-protection
 - slug: cctv-cabinet-cutout-order
   title: CCTV 제어함체 타공 주문에 필요한 치수와 방향 정리
   segment: 보안업체
