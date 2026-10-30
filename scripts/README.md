@@ -165,7 +165,7 @@ content/blog/_evidence.yaml에 다음을 준비합니다.
 
 ## 표지 이미지
 
-자동 글의 표지는 에스지기전이 제작한 분전반·제어반 작업 사진 8장(public/images/work-*.webp)에서 고릅니다.
+자동 글의 표지는 에스지기전이 제작한 분전반·제어반 작업 사진 12장(public/images/work-*.webp)에서 고릅니다.
 생성기가 사용 횟수가 가장 적은 사진을 정해 프롬프트에 전달하고, 검사에서 일치 여부를 확인합니다.
 사진을 추가하려면 파일을 public/images에 넣고 generate-blog-post.py의 COVER_POOL에 경로를 추가합니다.
 특정 고객·현장 사례 사진이라고 쓰지 않습니다.

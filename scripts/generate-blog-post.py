@@ -69,6 +69,10 @@ COVER_POOL = [
     "/images/work-timer-2motor-panel-interior.webp",
     "/images/work-door-back-relay-wiring.webp",
     "/images/work-4motor-panel-interior-2.webp",
+    "/images/work-large-800x1800-panel-interior.webp",
+    "/images/work-large-800x1800-panel-exterior.webp",
+    "/images/work-large-panel-busbar-detail.webp",
+    "/images/work-large-panel-main-breaker-detail.webp",
 ]
 
 # SG기전 판매 제품에 근거 없는 인증·등급 표현이 게시되지 않도록
