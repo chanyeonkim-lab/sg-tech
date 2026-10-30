@@ -1,5 +1,5 @@
 version: 1
-next_index: 5
+next_index: 6
 last_curated_index: 24
 topics:
 - slug: breaker-rating-cable-order
@@ -75,7 +75,8 @@ topics:
   - CCTV 제어함체 타공
   - 기성함 가공
   - 명판 제작
-  status: pending
+  status: done
+  published_slug: 2026-10-30-cctv-cabinet-cutout-order
 - slug: leakage-alarm-and-disconnection
   title: 누전 경보가 울리면 전원도 자동으로 차단되나요?
   segment: 시설관리자
