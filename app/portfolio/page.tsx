@@ -32,6 +32,15 @@ type Case = {
 
 const cases: Case[] = [
   {
+    title: "잠실 롯데백화점 밀도(meal°) 베이커리 분전반",
+    sector: "백화점 입점 매장 · 대형 분전반 · 아크릴 차폐판",
+    image: "/images/case-jamsil-lotte-bakery-interior.webp",
+    summary:
+      "롯데백화점 잠실점 밀도(meal°) 베이커리 매장에 폭 800 × 높이 1500 × 깊이 200mm 포스코 STS304 헤어라인 스테인리스 분전반을 제작·납품했습니다. LS ELECTRIC 차단기로 통일하고, 충전부 앞에는 지지대와 나비볼트로 탈부착하는 투명 아크릴 차폐판을 설치했습니다.",
+    highlights: ["LS ELECTRIC 차단기", "포스코 STS304 HL", "투명 아크릴 차폐판", "800×1500×200 대형 분전반"],
+    href: "/portfolio/2026-10-31-jamsil-lotte-meal-bakery-panel",
+  },
+  {
     title: "서울교통공사 관제센터 CCTV 제어함체 10대",
     sector: "공공기관 납품 · 기성함 가공 · 명판 제작",
     summary:
